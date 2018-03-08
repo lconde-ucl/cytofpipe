@@ -1,0 +1,173 @@
+---
+title: "Cytofpipe --clustering Summary" 
+date: "`r format(Sys.time(), '%d %B, %Y')`" 
+output: pdf_document 
+params:
+   rscript: 1
+   inputparams: 1
+   rdata: 1
+---
+
+
+```{r echo=FALSE}
+knitr::read_chunk(params$rscript)
+```
+
+
+# Inputfiles
+
+**Command arguments**
+```{r args, echo=F}
+
+library(ini)
+
+args<-read.ini(params$inputparams)
+arguments=args$paramsclustering$ARGS
+arguments2=strsplit(arguments, " -")
+paste0("-",unlist(arguments2))
+```
+
+**FCS files**
+```{r FCSfiles, echo=F}
+
+inputfiles=args$paramsclustering$INPUTFILE
+
+files_short <- list.files(inputfiles,pattern='.fcs$', full=F)
+files_short
+```
+
+**Markers used for clustering**
+```{r Markers, echo=F}
+
+markersFile=args$paramsclustering$MARKERSFILE
+
+usermarkers <- as.character(read.table(markersFile, header = FALSE)[,1])
+usermarkers
+```
+
+**Config parameters**
+```{r Config, echo=F}
+
+transformMethod = args$paramsclustering$TRANSFORM
+mergeMethod = args$paramsclustering$MERGE
+fixedNum = args$paramsclustering$DOWNSAMPLE
+displayAll = args$paramsclustering$DISPLAY
+configFile = args$paramsclustering$CONFIGFILE
+
+config<-read.ini(configFile)
+
+if (transformMethod != '-'){config$clustering$TRANSFORM = transformMethod}
+if (mergeMethod != '-'){config$clustering$MERGE = mergeMethod}
+if (fixedNum != '-'){config$clustering$DOWNSAMPLE = fixedNum}
+if (displayAll != '-'){config$clustering$DISPLAY_ALL = displayAll}
+
+str(config)
+```
+
+\newpage						
+
+# Gating
+
+```{r Gates, fig.align='center',echo=FALSE, message=FALSE,warning=FALSE,results="asis"}
+
+autogating = config$clustering$GATING
+outputdir=args$paramsclustering$OUTPUTFILE
+if(length(autogating)==1){
+	tolower(autogating);
+	if(autogating == "yes"){
+		
+		cat("  \n**Gating template**  \n")
+		cat("\\newline")
+		cat(paste0("![Gating scheme]( ",outputdir,"/Gating/gating_scheme.pdf)"))
+		cat("\\newline")
+		cat("\\newpage")
+
+		for(i in 1:length(files_short)){
+
+			cat(paste0("  \n**Gating ", files_short[i], "**  \n"))
+			cat("\\newline")
+			cat(paste0("![Gating]( ",outputdir,"/Gating/gating_",files_short[i],".pdf)"))
+			cat("\\newline")
+			cat("\\newpage")
+		}
+
+	}else{
+		cat("  \n**NO AUTOMATIC GATING PERFORMED**  \n")
+		cat("\\newpage")
+
+	}
+}
+```
+
+
+# Clustering results
+
+```{r Clustering, fig.align='center', echo=F,results='asis', message=FALSE,warning=FALSE}
+
+library(cytofkit)
+
+load(params$rdata)
+
+exprs <- as.data.frame(analysis_results$expressionData)
+clusterData <- analysis_results$clusterRes
+visualizationData <- analysis_results$dimReducedRes[analysis_results$visualizationMethods]
+ifMultiFCS <- length(unique(sub("_[0-9]*$", "", row.names(exprs)))) > 1
+
+if(!is.null(clusterData[[1]]) && length(clusterData) > 0){
+
+	for(j in 1:length(clusterData)){
+		if(!is.null(clusterData[[j]])){
+			methodj <- names(clusterData)[j]
+			dataj <- clusterData[[j]]
+			
+##			cat("\\begin{center}")
+			cat(paste0("  \n**",methodj, "**  \n"))
+##			cat("\\end{center}")
+			cat("\\newline")
+			if(!is.null(dataj)){
+				for(i in 1:length(visualizationData)){
+					if(!is.null(visualizationData[[i]])){
+						methodi <- names(visualizationData)[i]
+
+						cat(paste0("  \n**",methodi, "**  \n"))
+						cat("\\newline")
+						cat(paste0("![Cluster plot]( ",outputdir,"/", methodj,"/cytofpipe_",methodi,"_",methodj,"_cluster_scatter_plot.pdf)"))
+						cat("\\newline")
+						cat("\\newpage")
+					}
+				}
+
+				cat(paste0("  \n**Median (scaled) Heatmap**  \n"))
+				cat("\\newline")
+				cat(paste0("![Heatmap]( ",outputdir,"/", methodj,"/cytofpipe_",methodj,"_cluster_median_heatmap_scaled.pdf)"))
+				cat("\\newline")
+				cat("\\newpage")                          
+			}
+		}
+	}
+}else{
+	cat("  \n**NO CLUSTERING PERFORMED**  \n")
+	cat("\\newpage")
+}
+
+```
+
+
+# Marker Level Plots
+
+```{r LevelPlots, fig.align='center', echo=F,results='asis', message=FALSE,warning=FALSE}
+
+for(i in 1:length(visualizationData)){
+	if(!is.null(visualizationData[[i]])){
+		vis <- names(visualizationData)[i]
+
+		cat(paste0("  \n**Marker level plot (",vis, ")**  \n"))
+		cat("\\newline")
+		cat(paste0("![LevelPlot]( ",outputdir,"/cytofpipe_",vis,"_level_plot.pdf)"))
+		cat("\\newline")
+		cat("\\newpage")
+	
+	}
+}
+
+```

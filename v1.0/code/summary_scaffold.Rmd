@@ -1,0 +1,257 @@
+---
+title: "Cytofpipe --scaffold Summary" 
+date: "`r format(Sys.time(), '%d %B, %Y')`" 
+output: pdf_document 
+params:
+   rdata: 1
+   rscript: 1
+   inputparams: 1
+---
+
+
+```{r echo=FALSE}
+knitr::read_chunk(params$rscript)
+```
+
+
+# Inputfiles
+
+**Command arguments**
+```{r args, echo=F, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+
+library(ini)
+
+args<-read.ini(params$inputparams)
+arguments=args$paramsscaffold$ARGS
+arguments2=strsplit(arguments, " -")
+paste0("-",unlist(arguments2))
+```
+
+**FCS files**
+```{r FCSfiles, echo=F}
+
+inputfiles=args$paramsscaffold$INPUTFILE
+ref=args$paramsscaffold$REF
+
+files.list <- list.files(inputfiles, pattern='.fcs$', full=F)
+files.list <- files.list[files.list != ref]
+files.list <- c(ref, files.list)
+files.list
+```
+
+**Reference FCS**
+```{r ref, echo=F}
+ref
+```
+
+**Markers used for clustering**
+```{r Markers, echo=F}
+
+markersFile=args$paramsscaffold$MARKERSFILE
+
+usermarkers <- as.character(read.table(markersFile, header = FALSE)[,1])
+usermarkers
+```
+
+**Config parameters**
+```{r Config, echo=F}
+
+asinh.cofactor=args$paramsscaffold$ASINH
+merge=args$paramsscaffold$MERGE
+fixedNum=args$paramsscaffold$DOWNSAMPLE
+
+if(asinh.cofactor == '-'){asinh.cofactor=5}
+
+if(merge == '-'){
+	cat(paste0("Asinh cofactor: ", asinh.cofactor))
+        if(fixedNum == '-'){
+		fixedNum = 10000
+		cat(paste0("Events: ", fixedNum))
+	}else{
+		cat(paste0("Events: ", fixedNum))
+	}
+}else{
+	cat(paste0("Events: ", mergeMethod))
+}
+
+
+<<fixedparameters>>
+cat(paste0("Num. cores: ",num.cores))
+cat(paste0("Num. clusters: ",num_clusters))
+cat(paste0("Num. samples: ",num_samples))
+
+```
+
+
+```{r functions, echo=F, message=FALSE,warning=FALSE}
+
+# MODIFIED FROM http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
+#
+# Multiple plot function 
+#
+# ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects)
+# - cols:   Number of columns in layout
+# - layout: A matrix specifying the layout. If present, 'cols' is ignored.
+#
+# If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),
+# then plot 1 will go in the upper left, 2 will go in the upper right, and
+# 3 will go all the way across the bottom.
+#
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+
+  # Make a list from the ... arguments and plotlist
+  plots <- c((...), plotlist)
+
+  numPlots = length(plots)
+
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                    ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+
+  # Set up the page
+  grid.newpage()
+  pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+
+  # Make each plot, in the correct location
+  for (i in 1:numPlots) {
+    # Get the i,j matrix positions of the regions that contain this subplot
+    matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+ 
+    print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                    layout.pos.col = matchidx$col))
+  }
+}
+
+```
+
+
+\newpage
+
+# Scaffold maps
+
+```{r maps2, fig.align='center', echo=F,results='asis', message=FALSE,warning=FALSE}
+
+library(ggplot2)
+library(igraph)
+library(ggrepel)
+
+outputdir=args$paramsscaffold$OUTPUTFILE
+
+con <- file(params$rdata, "rb")
+data <- unserialize(con)
+close(con)
+
+
+#- Get min and max x and y coordinates
+x<-vector()
+y<-vector()
+for (i in 1:length(data$graphs)) {
+	G <- data$graphs[[i]]
+	
+	layout<-cbind(V(G)$x,V(G)$y)  
+	x<-c(x, layout[,1])
+	y<-c(y, layout[,2])
+}
+range.x<-max(x)-min(x)
+range.y<-max(y)-min(y)
+xlim=c(min(x), max(x))
+ylim=c(min(y), max(y))
+
+gated.dir <- paste(inputfiles, "gated/", sep = "/")
+gated.files <- list.files(gated.dir, ".fcs")
+
+plots<-vector('list', length(data$graphs))
+for (i in 1:length(data$graphs)) {
+	G <- data$graphs[[i]]
+	
+	name=names(data$graphs[i])
+	name2=gsub(pattern = "\\.fcs.*", "", name)    
+
+	#-get the node coordinates
+	plotcord <- data.frame(cbind(V(G)$x,V(G)$y), row.names=V(G)$name)
+	colnames(plotcord) = c("X1","X2")
+
+	#-reverse data so that lanmark populatios are plotted last
+	plotcord <- plotcord[rev(rownames(plotcord)),]
+	
+	#-get edges, which are pairs of node IDs
+	edgelist <- get.edgelist(G)
+	
+	#-convert to a four column edge data frame with source and destination coordinates, and reverse
+	edges <- data.frame(plotcord[edgelist[,1],], plotcord[edgelist[,2],])
+	colnames(edges) <- c("X1","Y1","X2","Y2")
+	edges <- edges[rev(rownames(edges)),]
+
+	#- labels, colours, node sizes.. and reverse
+	labels<-c(V(G)$name[1:length(gated.files)], rep(NA, vcount(G)-length(gated.files)))
+	labels<-rev(labels)
+	colores<-c(rep(rgb(255/255,117/255,128/255, 0.9),length(gated.files)), rep(rgb(79/255, 147/255, 222/255, 0.3), vcount(G)-length(gated.files)))
+	colores<-rev(colores)
+	popsize<-(V(G)$popsize/sum(V(G)$popsize, na.rm = T))*(range.x/8)
+	popsize[is.na(V(G)$popsize)]<-quantile(popsize, .80,na.rm = TRUE)
+	popsize <- rev(popsize)
+
+	titleplot=name2
+	if(i == 1){
+		titleplot=paste0(titleplot, " (ref)")
+	}
+	p<-ggplot() + geom_segment(aes(x=X1, y=Y1, xend = X2, yend = Y2), data=edges, size = 0.5, colour="grey") + 
+		geom_point(aes(X1, X2), size=popsize, colour=colores, data=plotcord) +
+		geom_text_repel(aes(X1, X2),data=plotcord, label = labels) +
+		xlim(xlim) +
+		ylim(ylim) +
+		ggtitle(titleplot) +
+		theme(axis.line=element_blank(),
+			axis.text.x=element_blank(),
+			axis.text.y=element_blank(),
+			axis.ticks=element_blank(),
+			axis.title.x=element_blank(),
+			axis.title.y=element_blank(),
+			legend.position="none",
+			plot.title = element_text(size=10),
+			panel.background=element_blank(),
+			panel.border=element_blank(),
+			panel.grid.major=element_blank(),
+			panel.grid.minor=element_blank(),
+			plot.background=element_blank())
+	plots[[i]]<-p
+#	print(p)
+}
+
+#multiplot(plots, cols=2)
+
+
+for(i in seq(1,length(plots), 2)) {
+	i1=i+1
+	if( i1 <= length(plots)){
+		multiplot(plots[c(i:i1)], cols=2)
+	}else{
+		p<-ggplot() +
+			geom_point(aes(x=0,y=0),colour="snow") +
+			theme(axis.line=element_blank(),
+				axis.text.x=element_blank(),
+				axis.text.y=element_blank(),
+				axis.ticks=element_blank(),
+				axis.title.x=element_blank(),
+				axis.title.y=element_blank(),
+				legend.position="none",
+				plot.title = element_text(size=10),
+				panel.background=element_blank(),
+				panel.border=element_blank(),
+				panel.grid.major=element_blank(),
+				panel.grid.minor=element_blank(),
+				plot.background=element_blank())
+		plots[[i1]]<-p
+		multiplot(plots[c(i:i1)], cols=2)
+	}
+}
+
+```
+
+

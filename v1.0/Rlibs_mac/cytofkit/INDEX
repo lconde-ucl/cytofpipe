@@ -1,0 +1,35 @@
+ClusterX                Fast clustering by automatic search and find of
+                        density peaks
+DensVM                  Density-based local maxima cluster with SVM
+Rphenograph             RphenoGraph clustering
+cytof_addToFCS          Add data to the original FCS files
+cytof_cluster           Subset detection by clustering
+cytof_clusterMtrx       Expression values by cluster
+cytof_clusterPlot       Scatter plot of the cluster results
+cytof_clusterStat       Statistics of the cluster results
+cytof_colorPlot         Plot the data with color-coded marker values
+cytof_dimReduction      Dimension reduction for high dimension data
+cytof_exprsExtract      Extract the expression data from a FCS file
+                        with preprocessing
+cytof_exprsMerge        Merge the expression matrix from multiple FCS
+                        files with preprocessing
+cytof_heatmap           Heatmap plot of cluster mean value results
+cytof_progression       Progression estimation of cytof expression data
+cytof_progressionPlot   Progression plot
+cytof_writeResults      Save the cytofkit analysis results
+cytofkit                cytofkit: an integrated mass cytometry data
+                        analysis pipeline
+cytofkit-package        cytofkit: an integrated mass cytometry data
+                        analysis pipeline
+cytofkitNews            check the package update news
+cytofkitShinyAPP        A Shiny APP to interactively visualize the
+                        analysis results
+cytofkit_GUI            Function for launching the user friendly GUI
+                        client for 'cytofkit-package'
+fixedLogicleParameters_GUI
+                        GUI for gettting parameter for logicle
+                        transformation
+getParameters_GUI       GUI for marker selection
+launchShinyAPP_GUI      GUI for launching shiny APP
+spectral1               First Function for spectral color palette
+spectral2               Second Function for spectral color palette

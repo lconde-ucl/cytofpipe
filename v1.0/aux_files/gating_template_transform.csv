@@ -1,0 +1,4 @@
+alias,pop,parent,dims,gating_method,gating_args,collapseDataForGating,groupBy,preprocessing_method,preprocessing_args
+BeadNeg,BeadNeg,root,"arcsinh_Ce142Di,arcsinh_Ce140Di",boundary,"max=c(10,7)",NA,NA,NA,NA
+Cells,Cells,/BeadNeg,"arcsinh_Ir193Di,arcsinh_Ir191Di",dnaGate,NA,NA,NA,NA,NA
+Live,Live,/BeadNeg/Cells,"arcsinh_Y89Di,arcsinh_Pt195Di",boundary,"max=c(9,7)",NA,NA,NA,NA

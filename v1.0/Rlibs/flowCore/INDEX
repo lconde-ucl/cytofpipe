@@ -1,0 +1,172 @@
+%in%-methods            Filter-specific membership methods
+%on%                    Methods for Function %on% in Package 'flowCore'
+EHtrans-class           Class "EHtrans"
+FCSTransTransform       Computes a transform using the 'iplogicle'
+                        function
+GvHD                    Extract of a Graft versus Host Disease
+                        monitoring experiment (Rizzieri et al., 2007)
+Subset                  Subset a flowFrame or a flowSet
+actionItem-class        Class "actionItem"
+arcsinhTransform        Create the definition of an arcsinh
+                        transformation function (base specified by
+                        user) to be applied on a data set
+asinht-class            Class "asinht"
+asinhtGml2-class        Class asinhtGml2
+biexponentialTransform
+                        Compute a transform using the 'biexponential'
+                        function
+boundaryFilter-class    Class "boundaryFilter"
+characterOrTransformation-class
+                        Class "characterOrTransformation"
+checkOffset             Fix the offset when its values recorded in
+                        header and TEXT don't agree
+coerce                  Convert an object to another class
+compensateActionItem-class
+                        Class "compensateActionItem"
+compensateView-class    Class "compensateView"
+compensatedParameter-class
+                        Class "compensatedParameter"
+compensation-class      Class "compensation"
+concreteFilter-class    Class "concreteFilter"
+dg1polynomial-class     Class "dg1polynomial"
+each_col                Method to apply functions over flowFrame
+                        margins
+ellipsoidGate-class     Class "ellipsoidGate"
+estimateMedianLogicle   Estimates a common logicle transformation for a
+                        flowSet.
+exponential-class       Class "exponential"
+expressionFilter-class
+                        Class "expressionFilter"
+fcReference-class       Class "fcReference" and its subclasses
+filter                  Filter FCS files
+filter-class            A class for representing filtering operations
+                        to be applied to flow data.
+filterDetails-methods   Obtain details about a filter operation
+filterList-class        Class "filterList"
+filterReference-class   Class filterReference
+filterResult-class      Class "filterResult"
+filterResultList-class
+                        Class "filterResultList"
+filterSet-class         Class filterSet(deprecated)
+filterSummary-class     Class "filterSummary"
+filterSummaryList-class
+                        Class "filterSummaryList"
+filters-class           Class "filters" and "filtersList"
+flowCore-package        Provides S4 data structures and basic
+                        infrastructure and functions to deal with flow
+                        cytometry data.
+flowFrame-class         'flowFrame': a class for storing observed
+                        quantitative properties for a population of
+                        cells from a FACS run
+flowSet-class           'flowSet': a class for storing flow cytometry
+                        raw data from quantitative cell-based assays
+fsApply                 Apply a Function over values in a flowSet
+gateActionItem-class    Class "gateActionItem"
+gateView-class          Class "gateView"
+getChannelMarker        get channel and marker information from a
+                        'flowFrame' that matches to the given keyword
+getIndexSort            Extract Index Sorted Data from an FCS File
+hyperlog-class          Class "hyperlog"
+hyperlogtGml2-class     Class hyperlogtGml2
+identifier              Retrieve the GUID of flowCore objects
+intersectFilter-method
+                        Take the intersection of two filters
+inverseLogicleTransform
+                        Computes the inverse of the transform defined
+                        by the 'logicleTransform' function
+invsplitscale-class     Class "invsplitscale"
+keyword-methods         Methods to retrieve keywords of a flowFrame
+kmeansFilter-class      Class "kmeansFilter"
+linearTransform         Create the definition of a linear
+                        transformation function to be applied on a data
+                        set
+lintGml2-class          Class lintGml2
+lnTransform             Create the definition of a ln transformation
+                        function (natural logarthim) to be applied on a
+                        data set
+logTransform            Create the definition of a log transformation
+                        function (base specified by user) to be applied
+                        on a data set
+logarithm-class         Class "logarithm"
+logicalFilterResult-class
+                        Class "logicalFilterResult"
+logicleTransform        Computes a transform using the
+                        'logicle_transform' function
+logicletGml2-class      Class logicletGml2
+logtGml2-class          Class logtGml2
+manyFilterResult-class
+                        Class "manyFilterResult"
+markernames             get or update the marker names
+multipleFilterResult-class
+                        Class "multipleFilterResult"
+norm2Filter-class       Class "norm2Filter"
+normalization-class     Class "normalization"
+normalizeActionItem-class
+                        Class "normalizeActionItem"
+normalizeView-class     Class "normalizeView"
+parameterFilter-class   Class "parameterFilter"
+parameterTransform-class
+                        Class "parameterTransform"
+parameters              Obtain information about parameters for flow
+                        cytometry objects.
+parameters-class        Class "parameters"
+polygonGate-class       Class "polygonGate"
+polytopeGate-class      Define filter boundaries
+quadGate-class          Class "quadGate"
+quadratic-class         Class "quadratic"
+quadraticTransform      Create the definition of a quadratic
+                        transformation function to be applied on a data
+                        set
+randomFilterResult-class
+                        Class "randomFilterResult"
+ratio-class             Class "ratio"
+ratiotGml2-class        Class "ratiotGml2"
+read.FCS                Read an FCS file
+read.FCSheader          Read the TEXT section of a FCS file
+read.flowSet            Read a set of FCS files
+rectangleGate-class     Class "rectangleGate"
+sampleFilter-class      Class "sampleFilter"
+scaleTransform          Create the definition of a scale transformation
+                        function to be applied on a data set
+setOperationFilter-class
+                        Class "setOperationFilter"
+singleParameterTransform-class
+                        Class "singleParameterTransform"
+sinht-class             Class "sinht"
+spillover               Compute a spillover matrix from a flowSet
+split-methods           Methods to split flowFrames and flowSets
+                        according to filters
+splitScaleTransform     Compute the split-scale transformation describe
+                        by FL. Battye
+splitscale-class        Class "splitscale"
+squareroot-class        Class "squareroot"
+subsetting-class        Class "subsetting"
+subsettingActionItem-class
+                        Class "subsettingActionItem"
+subsettingView-class    Class "subsettingView"
+summarizeFilter-methods
+                        Methods for function summarizeFilter
+timeFilter-class        Class "timeFilter"
+transform-class         'transform': a class for transforming
+                        flow-cytometry data by applying scale factors.
+transformActionItem-class
+                        Class "transformActionItem"
+transformFilter-class   A class for encapsulating a filter to be
+                        performed on transformed parameters
+transformList-class     Class "transformList"
+transformMap-class      A class for mapping transforms between
+                        parameters
+transformReference-class
+                        Class "transformReference"
+transformView-class     Class "transformView"
+transformation-class    Class "transformation"
+truncateTransform       Create the definition of a truncate
+                        transformation function to be applied on a data
+                        set
+unitytransform-class    Class "unitytransform"
+validFilters            Check if all filters in a filters matches same
+                        paramters
+view-class              Class "view"
+workFlow-class          Class "workFlow"(deprecated)
+write.FCS               Write an FCS file
+write.flowSet           Write an FCS file

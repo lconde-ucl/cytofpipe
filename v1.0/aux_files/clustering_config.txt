@@ -1,0 +1,23 @@
+[ clustering ]
+
+GATING = no
+
+TRANSFORM = cytofAsinh
+MERGE = ceil
+DOWNSAMPLE = 10000
+
+PERPLEXITY = 30
+THETA = 0.5
+MAX_ITER = 1000
+
+PCA = no
+ISOMAP = no
+
+DISPLAY_ALL = no
+
+PHENOGRAPH = yes
+CLUSTERX = no
+DENSVM = no
+FLOWSOM = no
+FLOWSOM_K = 15
+
