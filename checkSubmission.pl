@@ -14,7 +14,7 @@ use File::Basename;
 ##   Modify CYTOFPIPE_HOME to point to cytofpipe master directory    ##
 #######################################################################
 
-$ENV{'CYTOFPIPE_HOME'} = '/home/regmond/Scratch/cytof/cytofpipe_v1.0';
+$ENV{'CYTOFPIPE_HOME'} = '/home/regmond/Scratch/cytof/standalone_cytofpipe/cytofpipe_v1.1';
 
 my $os=$^O;
 if($os eq 'darwin'){
@@ -54,6 +54,9 @@ sub parse_clustering {
 	my $displayall='';
 	my $all='';
 	my $downsample='';
+	my $randomtsneSeed='';
+	my $randomsampleSeed='';
+	my $randomflowSeed='';
 
 	GetOptionsFromArray (
 	    \@args,
@@ -66,6 +69,9 @@ sub parse_clustering {
 	    "displayAll"   => \$displayall,
 	    "all"   => \$all,
 	    "downsample=i"   => \$downsample,
+	   "randomSampleSeed"   => \$randomsampleSeed,
+	    "randomTsneSeed"   => \$randomtsneSeed,
+	    "randomFlowSeed"   => \$randomflowSeed,
 	    "<>"   => \&print_clustering
 	) or die "\n";
 
@@ -261,7 +267,7 @@ sub success {
 
 	my $usage0="";
 	my $usage1="Program: Cytofpipe";
-	my $usage2 = "Version: 1.0";
+	my $usage2 = "Version: 1.1";
 	my $usage3 = "Contact: Lucia Conde <l.conde\@ucl.ac.uk>";
 	my $usage4="";
 	my $usage5="Usage:   cytofpipe <command> [options]";
@@ -281,7 +287,7 @@ sub print_usage {
 
 	my $usage0="";
 	my $usage1="Program: Cytofpipe";
-	my $usage2 = "Version: 1.0";
+	my $usage2 = "Version: 1.1";
 	my $usage3 = "Contact: Lucia Conde <l.conde\@ucl.ac.uk>";
 	my $usage4="";
 	my $usage5="Usage:   cytofpipe <command> [options]";
@@ -318,12 +324,16 @@ sub print_clustering {
 	my $usage11="         --flow | --cyto		Flow cytometry data (transformation = autoLgcl) or Cytof data (transformation = cytofAsinh) [--cytof]";
 	my $usage12="         --all | --downsample NUM	Use all events in the analysis or downsample each FCS file to the specified number of events (with no replacement for sample with events < NUM) [--downsample 10000]";
 	my $usage13="         --displayAll			Display all markers in output files [NULL]";
-	my $usage14="";
+	my $usage14="	      --randomSampleSeed	Use a random sampling seed instead of default seed used for reproducible expression matrix merging [NULL]";
+        my $usage15="	      --randomTsneSeed		Use a random tSNE seed instead of default seed used for reproducible tSNE results [NULL]";
+        my $usage16="	      --randomFlowSeed		Use a random flowSOM seed instead of default seed used for reproducible flowSOM results [NULL]";
+        my $usage17="";
 
 	print "$usage0\n$usage1\n$usage2\n$usage3\n";
 	print "$usage4\n$usage5\n$usage6\n$usage7\n";
 	print "$usage8\n$usage9\n$usage10\n$usage11\n";
 	print "$usage12\n$usage13\n$usage14\n";
+	print "$usage15\n$usage16\n$usage17\n";
 
 	die "ERROR: Invalid argument '@a' in --clustering mode\n";
 }
@@ -333,7 +343,7 @@ sub usage_clustering {
   my $error=shift;
   die qq(
 Program: Cytofpipe --clustering
-Version: 1.0
+Version: 1.1
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe --clustering -i DIR -o DIR -m FILE [options]
@@ -345,6 +355,9 @@ Options: --config FILE			Configuration file to customize the analysis
          --flow | --cyto		Flow cytometry data (transformation = autoLgcl) or Cytof data (transformation = cytofAsinh) [--cytof]
          --all | --downsample NUM	Use all events in the analysis or downsample each FCS file to the specified number of events (with no replacement for sample with events < NUM) [--downsample 10000]
          --displayAll			Display all markers in output files [NULL]
+         --randomSampleSeed        Use a random sampling seed instead of default seed used for reproducible expression matrix merging [NULL]
+         --randomTsneSeed          Use a random tSNE seed instead of default seed used for reproducible tSNE results [NULL]
+         --randomFlowSeed          Use a random flowSOM seed instead of default seed used for reproducible flowSOM results [NULL]
 
 ERROR: $error
 );
@@ -355,7 +368,7 @@ sub usage_clustering_config {
   my $error=shift;
   die qq(
 Program: Cytofpipe --clustering
-Version: 1.0
+Version: 1.1
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 ------------------
@@ -387,6 +400,9 @@ ISOMAP = yes|no
 
 #- Other:
 DISPLAY_ALL = yes|no
+RANDOM_SAMPLE_SEED = yes|no
+RANDOM_TSNE_SEED = yes|no
+RANDOM_FLOW_SEED = yes|no
 ------------------
 
 ERROR: $error
@@ -614,6 +630,30 @@ sub check_config_clustering {
 			my $display=$1;
 			if($display !~/^yes$/i && $display !~/^no$/i){
 				usage_clustering_config("\"$display\" is not a valid DISPLAY_ALL option in <$config>. Please correct the config file and choose if you want to display all the markers in the output files \(\"YES or NO\"\)");
+				return;
+			}
+		}
+		if($line=~/^RANDOM_SAMPLE_SEED\s*\=\s*(.*)\s*$/){
+			my $sampleSeed=$1;
+			if($sampleSeed !~/^yes$/i && $sampleSeed !~/^no$/i){
+				print_usage_clustering_config();
+				jsv_reject("\"$sampleSeed\" is not a valid SAMPLE_SEED option in <$config>. Please correct the config file and choose if you want to use the default sampling seed for reproducible expression matrix merging \(\"YES or NO\"\)");
+				return;
+			}
+		}
+		if($line=~/^RANDOM_TSNE_SEED\s*\=\s*(.*)\s*$/){
+			my $tsneSeed=$1;
+			if($tsneSeed !~/^yes$/i && $tsneSeed !~/^no$/i){
+				print_usage_clustering_config();
+				jsv_reject("\"$tsneSeed\" is not a valid TSNE_SEED option in <$config>. Please correct the config file and choose if you want to use the default tSNE seed for repreducible tSNE results \(\"YES or NO\"\)");
+				return;
+			}
+		}
+		if($line=~/^RANDOM_FLOW_SEED\s*\=\s*(.*)\s*$/){
+			my $flowSeed=$1;
+			if($flowSeed !~/^yes$/i && $flowSeed !~/^no$/i){
+				print_usage_clustering_config();
+				jsv_reject("\"$flowSeed\" is not a valid FLOW_SEED option in <$config>. Please correct the config file and choose if you want to use the default flowSOM seed for repreducible flowSOM results \(\"YES or NO\"\)");
 				return;
 			}
 		}

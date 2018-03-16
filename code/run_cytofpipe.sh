@@ -17,6 +17,9 @@ downsample="-";
 asinh="-";
 displayAll="-";
 medians="-";
+randomTsneSeed="-";
+randomSampleSeed="-";
+randomFlowSeed="-";
 
 
 command=$1
@@ -51,6 +54,15 @@ case "$command" in
                 config)
                     configfile="${PWD}/${!OPTIND}";
 		    OPTIND=$(( $OPTIND + 1 ))
+                    ;;
+                randomSampleSeed)
+                    randomSampleSeed="yes";
+                    ;;
+                randomTsneSeed)
+                    randomTsneSeed="yes";
+                    ;;
+                randomFlowSeed)
+                    randomFlowSeed="yes";
                     ;;
                 *)
                     if [ "$OPTERR" = 1 ] && [ "${optspec:0:1}" != ":" ]; then
@@ -357,6 +369,9 @@ TRANSFORM = $transform
 MERGE = $merge
 DOWNSAMPLE = $downsample
 DISPLAY_ALL = $displayAll
+RANDOM_SAMPLE_SEED = $randomSampleSeed
+RANDOM_TSNE_SEED = $randomTsneSeed
+RANDOM_FLOW_SEED = $randomFlowSeed
 ARGS = ${arguments[*]}
 EOM
 

@@ -53,6 +53,9 @@ mergeMethod = args$paramsclustering$MERGE
 fixedNum = args$paramsclustering$DOWNSAMPLE
 displayAll = args$paramsclustering$DISPLAY
 configFile = args$paramsclustering$CONFIGFILE
+randomSampleSeed = args$paramsclustering$RANDOM_SAMPLE_SEED
+randomTsneSeed = args$paramsclustering$RANDOM_TSNE_SEED
+randomFlowSeed = args$paramsclustering$RANDOM_FLOW_SEED
 
 config<-read.ini(configFile)
 
@@ -60,6 +63,9 @@ if (transformMethod != '-'){config$clustering$TRANSFORM = transformMethod}
 if (mergeMethod != '-'){config$clustering$MERGE = mergeMethod}
 if (fixedNum != '-'){config$clustering$DOWNSAMPLE = fixedNum}
 if (displayAll != '-'){config$clustering$DISPLAY_ALL = displayAll}
+if (randomSampleSeed != '-'){config$clustering$RANDOM_SAMPLE_SEED = randomSampleSeed}
+if (randomTsneSeed != '-'){config$clustering$RANDOM_TSNE_SEED = randomTsneSeed}
+if (randomFlowSeed != '-'){config$clustering$RANDOM_FLOW_SEED = randomFlowSeed}
 
 str(config)
 ```

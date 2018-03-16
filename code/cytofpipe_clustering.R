@@ -32,6 +32,9 @@ transformMethod = args$paramsclustering$TRANSFORM
 mergeMethod = args$paramsclustering$MERGE
 fixedNum = args$paramsclustering$DOWNSAMPLE
 displayAll = args$paramsclustering$DISPLAY_ALL
+randomSampleSeed = args$paramsclustering$RANDOM_SAMPLE_SEED
+randomTsneSeed = args$paramsclustering$RANDOM_TSNE_SEED
+randomFlowSeed = args$paramsclustering$RANDOM_FLOW_SEED
 
 
 #---------------------------------------------------------------------------------------------
@@ -258,7 +261,7 @@ if(transformMethod == '-'){transformMethod = config$clustering$TRANSFORM}
 if(mergeMethod == '-'){mergeMethod = config$clustering$MERGE}
 if(fixedNum == '-'){
 	if(is.null(config$clustering$DOWNSAMPLE)){
-		fixedNum = 100
+		fixedNum = 10000
 	}else{
 		fixedNum = config$clustering$DOWNSAMPLE
 	}
@@ -268,6 +271,27 @@ if(displayAll == '-'){
 		displayAll = "no"
 	}else{
 		displayAll = config$clustering$DISPLAY_ALL
+	}
+}
+if(randomSampleSeed == '-'){
+	if(is.null(config$clustering$RANDOM_SAMPLE_SEED)){
+		randomSampleSeed = "no"
+	}else{
+		randomSampleSeed = config$clustering$RANDOM_SAMPLE_SEED
+	}
+}
+if(randomTsneSeed == '-'){
+	if(is.null(config$clustering$RANDOM_TSNE_SEED)){
+		randomTsneSeed = "no"
+	}else{
+		randomTsneSeed = config$clustering$RANDOM_TSNE_SEED
+	}
+}
+if(randomFlowSeed == '-'){
+	if(is.null(config$clustering$RANDOM_FLOW_SEED)){
+		randomFlowSeed = "no"
+	}else{
+		randomFlowSeed = config$clustering$RANDOM_FLOW_SEED
 	}
 }
 flowsom_num = 15
@@ -280,12 +304,10 @@ if(length(config$clustering$PERPLEXITY)==1){perplexity=config$clustering$PERPLEX
 if(length(config$clustering$THETA)==1){theta=config$clustering$THETA}
 if(length(config$clustering$MAX_ITER)==1){max_iter=config$clustering$MAX_ITER}
 
-if(length(config$clustering$PHENOGRAPH)==1){tolower(config$clustering$PHENOGRAPH);if(config$clustering$PHENOGRAPH == 
-"yes"){clusterMethods<-c(clusterMethods,"Rphenograph")}}
+if(length(config$clustering$PHENOGRAPH)==1){tolower(config$clustering$PHENOGRAPH);if(config$clustering$PHENOGRAPH == "yes"){clusterMethods<-c(clusterMethods,"Rphenograph")}}
 if(length(config$clustering$CLUSTERX)==1){tolower(config$clustering$CLUSTERX);if(config$clustering$CLUSTERX == "yes"){clusterMethods<-c(clusterMethods,"ClusterX")}}
 if(length(config$clustering$DENSVM)==1){tolower(config$clustering$DENSVM);if(config$clustering$DENSVM == "yes"){clusterMethods<-c(clusterMethods,"DensVM")}}
-if(length(config$clustering$FLOWSOM)==1){tolower(config$clustering$FLOWSOM);if(config$clustering$FLOWSOM == 
-"yes"){clusterMethods<-c(clusterMethods,"FlowSOM");flowsom_num=config$clustering$FLOWSOM_K}}
+if(length(config$clustering$FLOWSOM)==1){tolower(config$clustering$FLOWSOM);if(config$clustering$FLOWSOM == "yes"){clusterMethods<-c(clusterMethods,"FlowSOM");flowsom_num=config$clustering$FLOWSOM_K}}
 if(length(clusterMethods) == 0){clusterMethods<-c(clusterMethods,"NULL")}
 
 if(length(config$clustering$PCA)==1){tolower(config$clustering$PCA);if(config$clustering$PCA == "yes"){visualizationMethods<-c(visualizationMethods,"pca")}}
@@ -348,9 +370,25 @@ if(autogating == 'yes'){
 ## @knitr cytofkit
 
 
+#- Set seeds
+sampleSeed=123
+if(randomSampleSeed == 'yes'){
+	sampleSeed=sample(1:1000000,1)
+}
+tsneSeed=42
+if(randomTsneSeed == 'yes'){
+	tsneSeed=sample(1:1000000,1)
+}
+flowSeed=100
+if(randomFlowSeed == 'yes'){
+        flowSeed=sample(1:1000000,1)
+}
+
+
 #- cytof_exprsMerge calls cytof_exprsExtract, which excludes Time and Event channels from the expression matrix, and excludes FSC/SSC from transformation
+#- By default has sampleSeed = 123
 exprs_data <- cytof_exprsMerge(fcsFiles = files, comp = FALSE, verbose = FALSE, 
-                                   transformMethod = transformMethod, 
+                                   transformMethod = transformMethod, sampleSeed = sampleSeed,
                                    mergeMethod = mergeMethod, fixedNum = as.numeric(fixedNum))
 
 #- change the colnames here so that the plots show the markers as uploaded by the user
@@ -360,10 +398,12 @@ for(i in 1:length(colnames(exprs_data))){
  }
 
 ## dimension reduced data, a list
+#- By default has tsneSeed = 42
 alldimReductionMethods <- unique(c(visualizationMethods, dimReductionMethod))
 allDimReducedList <- lapply(alldimReductionMethods, 
                              cytof_dimReduction, data = exprs_data, 
 			     markers = markersUserName,
+			     tsneSeed = tsneSeed,
 			     perplexity = as.numeric(perplexity),
 			     theta = as.numeric(theta),
 			     max_iter = as.numeric(max_iter))
@@ -371,12 +411,12 @@ names(allDimReducedList) <- alldimReductionMethods
 
 
 ## cluster results, a list
-seed=100
+#- by default has flowSeed = NULL, I was using flowSeed=100 in v1.0 as that's what they used when they changed the code to make FlowSOM reproducible
 cluster_res <- lapply(clusterMethods, cytof_cluster, 
                           ydata = allDimReducedList[[dimReductionMethod]], 
                           xdata = exprs_data[, markersUserName],
                           FlowSOM_k = as.numeric(flowsom_num),
-                          flowSeed = seed)
+                          flowSeed = flowSeed)
 names(cluster_res) <- clusterMethods
 
 
@@ -547,6 +587,9 @@ paste0("markersUserName: ", markersUserName)
 paste0("displayMarkers: ", displayMarkers)
 paste0("mergeMethod: ", mergeMethod)
 paste0("fixedNum: ", as.numeric(fixedNum))
+paste0("randomSampleSeed: ", randomSampleSeed," (sampleSeed = ", sampleSeed,")")
+paste0("randomTsneSeed: ", randomTsneSeed," (tsneSeed = ", tsneSeed,")")
+paste0("randomFlowSeed: ", randomFlowSeed," (flowseed = ", flowSeed,")")
 paste0("perplexity: ", as.numeric(perplexity))
 paste0("theta: ", as.numeric(theta))
 paste0("max_iter: ", as.numeric(max_iter))

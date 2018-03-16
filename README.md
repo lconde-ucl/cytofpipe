@@ -1,2 +1,2 @@
 # cytofpipe
-Stand-alone version of cytofpipe
+Stand-alone version of cytofpipe v1.1
