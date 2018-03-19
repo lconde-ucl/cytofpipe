@@ -215,10 +215,10 @@ Exiting.
 <h3>2. Using a machine (mac, linux) without queue system</h3>
 <p><br /></p>
 <p><strong>1.- Installation</strong></p>
-<p>Download cytofpipe from <strong>URL</strong> and uncompress it using tar:</p>
-<p><code>$ tar -xvf cytofpipe_v1.1.tar.gz</code></p>
-<p>That will create a ‘cytofpipe_v1.1’ masters folder that contains the code almost ready to use. You will just need to tell cytofpipe where you have downloaded the code. For that, open the cytofpipe_v1.1/Cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so that it points to the master folder:</p>
-<pre><code>$ENV{CYTOFPIPE_HOME}=&quot;/path/where/your/have/cytofpie_v1.1&quot;</code></pre>
+<p>Download cytofpipe from <a href="https://github.com/UCL-BLIC/cytofpipe/archive/v1.1.tar.gz" class="uri">https://github.com/UCL-BLIC/cytofpipe/archive/v1.1.tar.gz</a> and uncompress it using tar:</p>
+<p><code>$ tar -xvf cytofpipe_1.1.tar.gz</code></p>
+<p>That will create a ‘cytofpipe_1.1’ masters folder that contains the code almost ready to use. You will just need to tell cytofpipe where you have downloaded the code. For that, open the cytofpipe_1.1/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so that it points to the master folder:</p>
+<pre><code>$ENV{CYTOFPIPE_HOME}=&quot;/path/where/your/have/cytofpipe_1.1&quot;</code></pre>
 <p><strong>2.- Dependencies</strong></p>
 <p>You will need to have R installed and in your path (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>), as well as Pandoc (<a href="https://pandoc.org/" class="uri">https://pandoc.org/</a>). Pandoc is simply used to generate a summary PDF after each run. If you don’t have pandoc installed is not a big issue: the summary PDF will not be generated and you will see an error in the terminal regarding this, but cytofpipe will run anyway and you should be able to see all the other output files.</p>
 Cytofpipe depends on several R packages, mainly:

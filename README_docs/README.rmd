@@ -153,14 +153,14 @@ If you submit a job, and later on it does not show when you do qstat, that means
 
 **1.- Installation**
 
-Download cytofpipe from **URL** and uncompress it using tar:
+Download cytofpipe from https://github.com/UCL-BLIC/cytofpipe/archive/v1.1.tar.gz and uncompress it using tar:
 
-`$ tar -xvf cytofpipe_v1.1.tar.gz`
+`$ tar -xvf cytofpipe_1.1.tar.gz`
 
-That will create a 'cytofpipe_v1.1' masters folder that contains the code almost ready to use. You will just need to tell cytofpipe where you have downloaded the code. For that, open the cytofpipe_v1.1/Cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so that it points to the master folder:
+That will create a 'cytofpipe_1.1' masters folder that contains the code almost ready to use. You will just need to tell cytofpipe where you have downloaded the code. For that, open the cytofpipe_1.1/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so that it points to the master folder:
 
 ```
-$ENV{CYTOFPIPE_HOME}="/path/where/your/have/cytofpie_v1.1"
+$ENV{CYTOFPIPE_HOME}="/path/where/your/have/cytofpipe_1.1"
 ```
 
 
