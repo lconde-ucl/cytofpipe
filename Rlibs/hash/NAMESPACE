@@ -1,3 +1,0 @@
-exportPattern("^[[:alpha:]]+")
-export( .set )
-exportClasses( hash )

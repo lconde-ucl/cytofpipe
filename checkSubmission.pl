@@ -14,16 +14,9 @@ use File::Basename;
 ##   Modify CYTOFPIPE_HOME to point to cytofpipe master directory    ##
 #######################################################################
 
-$ENV{'CYTOFPIPE_HOME'} = '/home/regmond/Scratch/cytof/standalone_cytofpipe/cytofpipe_v1.1';
+$ENV{'CYTOFPIPE_HOME'} = '/home/regmond/Scratch/cytof/standalone_cytofpipe/cytofpipe_v1.2';
 
-my $os=$^O;
-if($os eq 'darwin'){
-	$ENV{'R_LIBS'} = $ENV{'CYTOFPIPE_HOME'}."/Rlibs_mac";
-}elsif ($os eq 'linux'){
-	$ENV{'R_LIBS'} = $ENV{'CYTOFPIPE_HOME'}."/Rlibs";	
-}else{
-	$ENV{'R_LIBS'} = $ENV{'CYTOFPIPE_HOME'}."/Rlibs";	
-}
+
 $ENV{'R_MAX_NUM_DLLS'} = 153;
 $ENV{'JOB_ID'} = `od -N 4 -t uL -An /dev/urandom | tr -d " " | tr -d "\n"`;
 
@@ -42,6 +35,17 @@ GetOptionsFromArray (
 ) or die "\n";
 
 
+sub check_R_packages {
+	my $execute = `Rscript --no-save $ENV{'CYTOFPIPE_HOME'}/code/check_missing_packages.R`;
+	print $? if $?;
+	print "\n",$execute;
+	if($execute =~/ERROR/){
+ 		die "\n";
+	}
+	return;		
+}
+	
+
 sub parse_clustering {
 
 	my @args=@ARGV;
@@ -49,6 +53,7 @@ sub parse_clustering {
 
 	my $inputdir=''; my $outputdir=''; my $markersfile='';
 	my $configfile='';
+	my $groupsfile='';
 	my $flow='0';
 	my $cytof='0';
 	my $displayall='';
@@ -64,6 +69,7 @@ sub parse_clustering {
 	    "o=s"   => \$outputdir,
 	    "m=s"   => \$markersfile,
 	    "config=s"   => \$configfile,
+	    "groups=s"   => \$groupsfile,
 	    "flow"   => \$flow,
 	    "cytof"   => \$cytof,
 	    "displayAll"   => \$displayall,
@@ -113,7 +119,15 @@ sub parse_clustering {
 			check_config_clustering($configfile)
 		}
 	}
+	if ($groupsfile ne ''){
+		if (!-e "$groupsfile") {
+			usage_clustering("Can't find groups file <$groupsfile>");
+			return;
+		}
+	}
 
+	check_R_packages();
+	
 	&success;
 }
 
@@ -184,6 +198,7 @@ sub parse_scaffold {
 		}	
 	}
 
+	check_R_packages();
 	&success;
 
 }
@@ -258,6 +273,7 @@ sub parse_citrus {
 		}
 	}
 
+	check_R_packages();
 	&success;
 
 }
@@ -267,7 +283,7 @@ sub success {
 
 	my $usage0="";
 	my $usage1="Program: Cytofpipe";
-	my $usage2 = "Version: 1.1";
+	my $usage2 = "Version: 1.2";
 	my $usage3 = "Contact: Lucia Conde <l.conde\@ucl.ac.uk>";
 	my $usage4="";
 	my $usage5="Usage:   cytofpipe <command> [options]";
@@ -287,7 +303,7 @@ sub print_usage {
 
 	my $usage0="";
 	my $usage1="Program: Cytofpipe";
-	my $usage2 = "Version: 1.1";
+	my $usage2 = "Version: 1.2";
 	my $usage3 = "Contact: Lucia Conde <l.conde\@ucl.ac.uk>";
 	my $usage4="";
 	my $usage5="Usage:   cytofpipe <command> [options]";
@@ -312,7 +328,7 @@ sub print_clustering {
 
 	my $usage0="";
 	my $usage1="Program: Cytofpipe --clustering";
-	my $usage2 = "Version: 1.0";
+	my $usage2 = "Version: 1.2";
 	my $usage3 = "Contact: Lucia Conde <l.conde\@ucl.ac.uk>";
 	my $usage4="";
 	my $usage5="Usage:   cytofpipe --clustering -i DIR -o DIR -m FILE [options]";
@@ -327,13 +343,14 @@ sub print_clustering {
 	my $usage14="	      --randomSampleSeed	Use a random sampling seed instead of default seed used for reproducible expression matrix merging [NULL]";
         my $usage15="	      --randomTsneSeed		Use a random tSNE seed instead of default seed used for reproducible tSNE results [NULL]";
         my $usage16="	      --randomFlowSeed		Use a random flowSOM seed instead of default seed used for reproducible flowSOM results [NULL]";
-        my $usage17="";
+        my $usage17="	      --groups FILE                     Get marker level plots for groups of samples [NULL]";
+       	my $usage18="";
 
 	print "$usage0\n$usage1\n$usage2\n$usage3\n";
 	print "$usage4\n$usage5\n$usage6\n$usage7\n";
 	print "$usage8\n$usage9\n$usage10\n$usage11\n";
 	print "$usage12\n$usage13\n$usage14\n";
-	print "$usage15\n$usage16\n$usage17\n";
+	print "$usage15\n$usage16\n$usage17\n$usage18\n";
 
 	die "ERROR: Invalid argument '@a' in --clustering mode\n";
 }
@@ -343,7 +360,7 @@ sub usage_clustering {
   my $error=shift;
   die qq(
 Program: Cytofpipe --clustering
-Version: 1.1
+Version: 1.2
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe --clustering -i DIR -o DIR -m FILE [options]
@@ -358,6 +375,7 @@ Options: --config FILE			Configuration file to customize the analysis
          --randomSampleSeed        Use a random sampling seed instead of default seed used for reproducible expression matrix merging [NULL]
          --randomTsneSeed          Use a random tSNE seed instead of default seed used for reproducible tSNE results [NULL]
          --randomFlowSeed          Use a random flowSOM seed instead of default seed used for reproducible flowSOM results [NULL]
+	 --groups FILE                     Get marker level plots for groups of samples [NULL]
 
 ERROR: $error
 );
@@ -368,7 +386,7 @@ sub usage_clustering_config {
   my $error=shift;
   die qq(
 Program: Cytofpipe --clustering
-Version: 1.1
+Version: 1.2
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 ------------------
@@ -416,7 +434,7 @@ sub print_scaffold {
 
 	my $usage0="";
 	my $usage1="Program: Cytofpipe --scaffold";
-	my $usage2 = "Version: 1.0";
+	my $usage2 = "Version: 1.2";
 	my $usage3 = "Contact: Lucia Conde <l.conde\@ucl.ac.uk>";
 	my $usage4="";
 	my $usage5="Usage:   cytofpipe --scaffold -i DIR -o DIR -m FILE --ref FILE [options]";
@@ -444,7 +462,7 @@ sub usage_scaffold {
   my $error=shift;
   die qq(
 Program: Cytofpipe --scaffold
-Version: 1.0
+Version: 1.2
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe --scaffold -i DIR -o DIR -m FILE --ref FILE [options]
@@ -467,7 +485,7 @@ sub print_citrus {
 
 	my $usage0="";
 	my $usage1="Program: Cytofpipe --citrus";
-	my $usage2 = "Version: 1.0";
+	my $usage2 = "Version: 1.2";
 	my $usage3 = "Contact: Lucia Conde <l.conde\@ucl.ac.uk>";
 	my $usage4="";
 	my $usage5="Usage:   cytofpipe --citrus -i DIR -o DIR -m FILE --cond FILE [options]";
@@ -494,7 +512,7 @@ sub usage_citrus {
   my $error=shift;
   die qq(
 Program: Cytofpipe --citrus
-Version: 1.0
+Version: 1.2
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe --citrus -i DIR -o DIR -m FILE --cond FILE [options]

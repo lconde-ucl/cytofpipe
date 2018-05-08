@@ -1,5 +1,5 @@
 ---
-title: "Cytofpipe --clustering Summary" 
+title: "Cytofpipe v1.2 --clustering Summary" 
 date: "`r format(Sys.time(), '%d %B, %Y')`" 
 output: pdf_document 
 params:
@@ -34,6 +34,16 @@ inputfiles=args$paramsclustering$INPUTFILE
 
 files_short <- list.files(inputfiles,pattern='.fcs$', full=F)
 files_short
+
+groupfile=args$paramsclustering$GROUPS
+if(basename(groupfile) != "-"){
+	cat("\nGroups: ")
+
+	conditions<-read.table(groupfile, header=F, sep="\t")
+	colnames(conditions)<-c("Sample","Group")
+	conditions
+}	
+
 ```
 
 **Markers used for clustering**
@@ -51,7 +61,7 @@ usermarkers
 transformMethod = args$paramsclustering$TRANSFORM
 mergeMethod = args$paramsclustering$MERGE
 fixedNum = args$paramsclustering$DOWNSAMPLE
-displayAll = args$paramsclustering$DISPLAY
+displayAll = args$paramsclustering$DISPLAY_ALL
 configFile = args$paramsclustering$CONFIGFILE
 randomSampleSeed = args$paramsclustering$RANDOM_SAMPLE_SEED
 randomTsneSeed = args$paramsclustering$RANDOM_TSNE_SEED

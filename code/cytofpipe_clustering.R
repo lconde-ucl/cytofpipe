@@ -32,6 +32,7 @@ transformMethod = args$paramsclustering$TRANSFORM
 mergeMethod = args$paramsclustering$MERGE
 fixedNum = args$paramsclustering$DOWNSAMPLE
 displayAll = args$paramsclustering$DISPLAY_ALL
+groupfile = args$paramsclustering$GROUPS
 randomSampleSeed = args$paramsclustering$RANDOM_SAMPLE_SEED
 randomTsneSeed = args$paramsclustering$RANDOM_TSNE_SEED
 randomFlowSeed = args$paramsclustering$RANDOM_FLOW_SEED
@@ -160,6 +161,51 @@ cytof_wrap_colorPlot <- function(data, xlim=NULL, ylim=NULL, xlab, ylab, markers
      return(gp)
 }
 
+
+## Heat Map (modified from cytof_heatmap to show all percentage heat maps in groups with same scale
+
+cytof_heatmap_LC <- function (data, baseName = "Cluster", scaleMethod = "none", dendrogram = c("both",
+    "row", "column", "none"), colPalette = c("bluered", "greenred",
+    "spectral1", "spectral2"), cex_row_label = NULL, cex_col_label = NULL,
+    key.par = list(mgp = c(1.5, 0.5, 0), mar = c(3, 2.5, 3.5,
+        1)), keysize = 1.4, margins = c(6, 6), max=100, min=0)
+{
+    data <- as.matrix(data)
+    dendrogram <- match.arg(dendrogram)
+    colPalette <- match.arg(colPalette)
+    if (is.null(cex_row_label)) {
+        cex_row_label <- (11 - ceiling(nrow(data)/10))/10
+    }
+    if (is.null(cex_col_label)) {
+        cex_col_label <- (11 - ceiling(ncol(data)/10))/10
+    }
+    if (dendrogram == "row") {
+        dendrogramRowv <- TRUE
+        dendrogramColv <- FALSE
+    }
+    else if (dendrogram == "column") {
+        dendrogramRowv <- FALSE
+        dendrogramColv <- TRUE
+    }
+    else if (dendrogram == "none") {
+        dendrogramRowv <- FALSE
+        dendrogramColv <- FALSE
+    }
+    else {
+        dendrogramRowv <- TRUE
+        dendrogramColv <- TRUE
+    }
+
+    par(cex.main=0.8)
+    heatmap.2(x = data, Rowv = dendrogramRowv, Colv = dendrogramColv,
+        dendrogram = dendrogram, col = colPalette, trace = "none",
+        symbreaks = FALSE, scale = scaleMethod, cexRow = cex_row_label,
+        cexCol = cex_col_label, srtCol = 30, symkey = FALSE,
+        key.par = key.par, margins = margins, keysize = keysize,
+        main = paste(baseName, "Heat Map"), breaks=seq(min, max, length.out=51))
+}
+
+
 #- A function to normalize expression values to a 0-1 range
 range01 <- function(x, ...){(x - min(x, ...)) / (max(x, ...) - min(x, ...))}
 
@@ -253,8 +299,8 @@ dimReductionMethod="tsne"
 clusterMethods<-vector()
 visualizationMethods<-vector()
 visualizationMethods<-c(visualizationMethods,"tsne")
-
 config<-read.ini(configFile)
+groups<-hash()
 
 autogating=config$clustering$GATING
 if(transformMethod == '-'){transformMethod = config$clustering$TRANSFORM}
@@ -272,6 +318,15 @@ if(displayAll == '-'){
 	}else{
 		displayAll = config$clustering$DISPLAY_ALL
 	}
+}
+if(basename(groupfile) != '-'){
+
+        conditions<-read.table(groupfile, header=F, sep="\t")
+        colnames(conditions)<-c("Sample","Group")
+
+        for(i in 1:length(conditions$Sample)){
+                groups[[ sub(".fcs$", "", conditions$Sample[i], ignore.case=T) ]] <- as.character(conditions$Group[i])
+        }
 }
 if(randomSampleSeed == '-'){
 	if(is.null(config$clustering$RANDOM_SAMPLE_SEED)){
@@ -480,16 +535,76 @@ for(i in 1:length(visualizationData)){
 	if(!is.null(visualizationData[[i]])){
 		methodi <- names(visualizationData)[i]
 		datai <- as.data.frame(visualizationData[[i]])
-		
-		## Level plots
-		pdf(paste0(outputdir,"/",projectName, "_", methodi, "_level_plot.pdf"))
-		gp<-cytof_wrap_colorPlot(data=data_all,xlab=paste0(methodi,".", methodi,"_1"), ylab=paste0(methodi,".", methodi, "_2"), markers=displayMarkers, colorPalette = c("spectral1"), pointSize=0.1)
-		print(gp)
-		dev.off()
+
+                ## Level plots
+                pdf(paste0(outputdir,"/",projectName, "_", methodi, "_level_plot.pdf"))
+                gp<-cytof_wrap_colorPlot(data=data_all,xlab=paste0(methodi,".", methodi,"_1"), ylab=paste0(methodi,".", methodi, "_2"), markers=displayMarkers, colorPalette = c("spectral1"), pointSize=0.1)
+                print(gp)
+                dev.off()
+
+                ## Level plots per file
+                #- get min and max expression values for marker level plot colour scale
+                min=min(apply(exprs,2,min))
+                max=max(apply(exprs,2,max))
 
 		## if multiple files, do level plots per file and redo he cluster grid plot to correct label size
 		if (ifMultiFCS) {
- 			if(!is.null(clusterData) && length(clusterData) > 0){
+			# combine datai and dataj
+                        xlab <- colnames(datai)[1]
+                        ylab <- colnames(datai)[2]
+                        dataik<- datai
+                        dataik$sample <- sub("_[0-9]*$", "", row.names(dataik))
+                        sample <- "sample"
+			
+			X<-split(dataik, dataik$sample)
+                        for (d in 1:length(X)){
+                                samplename=X[[d]]$sample[1]
+                                data_all_sample <- subset(data_all, rownames(data_all) %in% rownames(X[[d]]))
+
+                                #- so that all the plots have the same x and y scales
+                                xlab=paste0(methodi,".", methodi,"_1")
+                                ylab=paste0(methodi,".", methodi,"_2")
+
+                                range.x<-max(data_all[xlab])-min(data_all[xlab])
+                                range.y<-max(data_all[ylab])-min(data_all[ylab])
+                                xlim=c(min(data_all[xlab]), max(data_all[xlab]))
+                                ylim=c(min(data_all[ylab]), max(data_all[ylab]))
+
+                                pdf(paste0(outputdir,"/",projectName, "_", methodi,  "_", samplename,  "_sample_level_plot.pdf"))
+                                gp<-cytof_wrap_colorPlot(data=data_all_sample, xlim=xlim, ylim=ylim, xlab=xlab, ylab=ylab, markers=displayMarkers, colorPalette = c("spectral1"), pointSize=0.1, min=min, max=max)
+                                print(gp)
+                                dev.off()
+                        }
+
+ 			#- add a colum with the groups
+                        if(basename(groupfile) != '-'){
+                                for(l in 1:length(dataik$sample)){
+                                        dataik$group[l] <- values(groups, keys=dataik$sample[l])
+                                }
+
+                                ## Level plots per group
+                                X2<-split(dataik, dataik$group)
+                                for (d2 in 1:length(X2)){
+                                        groupname=X2[[d2]]$group[1]
+                                        data_all_group <- subset(data_all, rownames(data_all) %in% rownames(X2[[d2]]))
+
+                                        #- so that all the plots have the same x and y scales
+                                        xlab=paste0(methodi,".", methodi,"_1")
+                                        ylab=paste0(methodi,".", methodi,"_2")
+
+                                        range.x<-max(data_all[xlab])-min(data_all[xlab])
+                                        range.y<-max(data_all[ylab])-min(data_all[ylab])
+                                        xlim=c(min(data_all[xlab]), max(data_all[xlab]))
+                                        ylim=c(min(data_all[ylab]), max(data_all[ylab]))
+
+                                        pdf(paste0(outputdir,"/",projectName, "_", methodi,  "_", groupname,  "_group_level_plot.pdf"))
+                                        gp<-cytof_wrap_colorPlot(data=data_all_group, xlim=xlim, ylim=ylim, xlab=xlab, ylab=ylab, markers=displayMarkers, colorPalette = c("spectral1"), pointSize=0.1, min=min, max=max)
+                                        print(gp)
+                                        dev.off()
+                                }
+                        }
+
+			if(!is.null(clusterData) && length(clusterData) > 0){
 				for(j in 1:length(clusterData)){
 					if(!is.null(clusterData[[j]])){
 						methodj <- names(clusterData)[j]
@@ -503,38 +618,16 @@ for(i in 1:length(visualizationData)){
 						dataij$cluster <- factor(dataj)
 						cluster <- "cluster"
 						sample <- "sample"
-                        	    
-
-						## cluster grid plot if multiple files
-						figName <- paste(projectName, methodi, methodj, sep=" ")
-						labelsizesscaled=floor(10/numFCS)-1
-						labelsizesscaled <- ifelse(labelsizesscaled > 2, labelsizesscaled , 2)
 						
-						pdf(paste0(outputdir,"/",projectName, "_", methodi, "_", methodj, "_cluster_grid_scatter_plot.pdf"))
-						cluster_grid_plot <- cytof_clusterPlot(dataij, xlab, ylab, cluster, sample, figName, 2, point_size =0.5, labelSize= labelsizesscaled)
-						print(cluster_grid_plot)
-						dev.off()
+						## cluster grid plot if multiple files
+                                                figName <- paste(projectName, methodi, methodj, sep=" ")
+                                                labelsizesscaled=floor(10/numFCS)-1
+                                                labelsizesscaled <- ifelse(labelsizesscaled > 2, labelsizesscaled , 2)
 
-						## Level plots per file
-						X<-split(dataij, dataij$sample)				
-						for (d in 1:length(X)){
-							samplename=X[[d]]$sample[1]
-							data_all_sample <- subset(data_all, rownames(data_all) %in% rownames(X[[d]]))
-
-							#- so that all the plots have the same x and y scales
-							xlab=paste0(methodi,".", methodi,"_1")
-							ylab=paste0(methodi,".", methodi,"_2")
-							
-							range.x<-max(data_all[xlab])-min(data_all[xlab])
-							range.y<-max(data_all[ylab])-min(data_all[ylab])
-							xlim=c(min(data_all[xlab]), max(data_all[xlab]))
-							ylim=c(min(data_all[ylab]), max(data_all[ylab]))
-
-							pdf(paste0(outputdir,"/",projectName, "_", methodi,  "_", samplename,  "_sample_level_plot.pdf"))
-							gp<-cytof_wrap_colorPlot(data=data_all_sample, xlim=xlim, ylim=ylim, xlab=xlab, ylab=ylab, markers=displayMarkers, colorPalette = c("spectral1"), pointSize=0.1)
-							print(gp)
-							dev.off()		
-                      	    			}
+                                                pdf(paste0(outputdir,"/",projectName, "_", methodi, "_", methodj, "_cluster_grid_scatter_plot.pdf"))
+                                                cluster_grid_plot <- cytof_clusterPlot(dataij, xlab, ylab, cluster, sample, figName, 2, point_size =0.5, labelSize= labelsizesscaled)
+                                                print(cluster_grid_plot)
+                                                dev.off()
 
 					}
 				}
@@ -569,14 +662,37 @@ if(!is.null(clusterData) && length(clusterData) > 0){
 			cytof_heatmap(cluster_median_norm01, paste(projectName, methodj, "\ncluster median (norm01)", sep = " "))
 			dev.off()
 
-			## cluster percentage
-			if (ifMultiFCS) {
-				cluster_percentage <- cytof_clusterStat(data=exprs_cluster_sample, cluster = "cluster", statMethod = "percentage")
-				pdf(paste0(outputdir,"/",projectName, "_",methodj, "_cluster_percentage_heatmap_scaled.pdf"))
-				cytof_heatmap(cluster_percentage,scaleMethod="column", paste(projectName, methodj, "cluster\ncell percentage (scaled)", sep = " "))
-				dev.off()
-			}
+                      if(basename(groupfile) != '-'){
+                                ## cluster percentage
+                                if (ifMultiFCS) {
+                                        cluster_percentage <- cytof_clusterStat(data=exprs_cluster_sample, cluster = "cluster", statMethod = "percentage")
 
+                                        exprs_cluster_sample$sample <- sub("_[0-9]*$", "", row.names(exprs_cluster_sample))
+                                        sample <- "sample"
+                                        #- add a colum with the groups
+                                        for(l in 1:length(exprs_cluster_sample$sample)){
+                                                exprs_cluster_sample$group[l] <- values(groups, keys= exprs_cluster_sample$sample[l])
+                                        }
+
+                                        ## Percentage plots per group
+                                        X3<-split(exprs_cluster_sample, exprs_cluster_sample$group)
+                                        for (d3 in 1:length(X3)){
+                                                groupname=X3[[d3]]$group[1]
+                                                exprs_group <- subset(exprs_cluster_sample, rownames(exprs_cluster_sample) %in% rownames(X3[[d3]]))
+                                                exprs_group$sample <- NULL
+                                                exprs_group$group <- NULL
+                                                cluster_percentage_group <- cytof_clusterStat(data=exprs_group, cluster = "cluster", statMethod = "percentage")
+
+                                                write.table(cluster_percentage_group, file=paste0(outputdir,"/",projectName, "_",methodj, "_", groupname, "_group_cluster_percentage_data.csv"), col.names=NA, sep=",")
+                                                if (ncol(cluster_percentage_group) > 1){
+                                                        pdf(paste0(outputdir,"/",projectName, "_",methodj, "_", groupname, "_group_cluster_percentage_heatmap.pdf"))
+                                                        cytof_heatmap_LC(cluster_percentage_group,paste(projectName, methodj, groupname,"cluster\ncell percentage", sep = " "), max=max(cluster_percentage), min=min(cluster_percentage))
+                                                        dev.off()
+                                                }
+                                        }
+                                }
+
+			}
 		}
 	}
 }
@@ -584,6 +700,10 @@ if(!is.null(clusterData) && length(clusterData) > 0){
 paste0("files: ", files)
 paste0("transformMethod: ", transformMethod)
 paste0("markersUserName: ", markersUserName)
+paste0("groupfile: ", groupfile)
+if(basename(groupfile) != '-'){
+        groups
+}
 paste0("displayMarkers: ", displayMarkers)
 paste0("mergeMethod: ", mergeMethod)
 paste0("fixedNum: ", as.numeric(fixedNum))
