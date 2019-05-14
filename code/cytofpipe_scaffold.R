@@ -19,7 +19,7 @@ rm(list = ls())
 
 ## @knitr arguments
 
-jobid <- as.character(Sys.getenv("RAND_ID"))
+jobid <- as.character(Sys.getenv("JOB"))
 input <- paste0(jobid, ".txt")
 
 args<-read.ini(input)

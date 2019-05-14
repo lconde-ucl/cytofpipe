@@ -14,7 +14,7 @@ use File::Basename;
 ##   Modify CYTOFPIPE_HOME to point to cytofpipe master directory    ##
 #######################################################################
 
-$ENV{'CYTOFPIPE_HOME'} = '/home/regmond/Scratch/cytof/standalone_cytofpipe/cytofpipe_v1.2';
+$ENV{'CYTOFPIPE_HOME'} = '/home/regmond/Scratch/cytof/standalone_cytofpipe/cytofpipe_v1.3';
 
 
 $ENV{'R_MAX_NUM_DLLS'} = 153;
@@ -62,7 +62,7 @@ sub parse_clustering {
 	my $randomtsneSeed='';
 	my $randomsampleSeed='';
 	my $randomflowSeed='';
-
+	my $array='';
 	GetOptionsFromArray (
 	    \@args,
 	    "i=s" => \$inputdir,
@@ -78,6 +78,7 @@ sub parse_clustering {
 	   "randomSampleSeed"   => \$randomsampleSeed,
 	    "randomTsneSeed"   => \$randomtsneSeed,
 	    "randomFlowSeed"   => \$randomflowSeed,
+	    "array"   => \$array,
 	    "<>"   => \&print_clustering
 	) or die "\n";
 
