@@ -120,6 +120,7 @@ sub parse_clustering {
 		if (!-e "$groupsfile") {
 			usage_clustering("Can't find groups file <$groupsfile>");
 			return;
+		}
 	}
 
 	check_R_packages();
