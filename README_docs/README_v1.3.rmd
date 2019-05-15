@@ -749,7 +749,6 @@ _________________
 <li>Added support for cytofpipe_array</li>
 <li>Versions: cytofkit 1.10.0, scaffold 1.0, citrus 0.08</li>
 </ul>
-<ul>
 <li><b>v1.2</b>
 <ul>
 <li>Added --groups option to generate cluster percentage plots and marker level plots for groups of samples</li>
