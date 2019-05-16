@@ -421,6 +421,10 @@ function run_clustering {
 		cp ${CYTOFPIPE_HOME}/code/summary_clustering.Rmd ${PWD}/${outputfiles}/.
 		R --vanilla  -e "rmarkdown::render('${PWD}/${outputfiles}/summary_clustering.Rmd',params=list(rscript='${CYTOFPIPE_HOME}/code/cytofpipe_clustering.R',rdata='${PWD}/${outputfiles}/cytofpipe.RData',inputparams='${FILE}'))"
 		rm -rf ${PWD}/${outputfiles}/summary_clustering.Rmd
+		if [ -e "${PWD}/${outputfiles}/summary_clustering.tex" ]
+		  then
+		      rm ${PWD}/${outputfiles}/summary_clustering.tex
+		fi
 		
 		for i in $PWD/Rplots*; do
 		   if [ -f "$i" ]; 
