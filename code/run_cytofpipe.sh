@@ -211,20 +211,26 @@ case "$command" in
 esac
 
 
+## Sets the name of the output file for the times command
+if [[ ! $SGE_TASK_ID ]]; then \
+  TIMES_FILE=.times.$JOB_NAME.$JOB_ID
+else
+  TIMES_FILE=.times.$JOB_NAME.$JOB_ID.$SGE_TASK_ID
+fi
+ 
 ## Required by function die
 trap "exit 1" TERM
 export TOP_PID=$$
  
-
 function die {
   echo "******************************************************"
   echo "["`date`"] ERROR while running $1"
   echo "******************************************************"
+  cat $TIMES_FILE
+  rm $TIMES_FILE
   kill -s TERM $TOP_PID
 }
  
-
-
 function run {
   echo ""
   echo "======================================================"
@@ -243,13 +249,13 @@ function run {
 
   if [ $mode == "out" ]
   then
-    if ! /usr/bin/time -va -o $TIMES_FILE \
+    if ! /usr/bin/time > $TIMES_FILE \
       $cmd > $out
     then
       die $*
     fi
   else
-    if ! /usr/bin/time  -va -o $TIMES_FILE \
+    if ! /usr/bin/time > $TIMES_FILE \
       $*
     then
       die $*
