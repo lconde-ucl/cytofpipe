@@ -224,6 +224,40 @@ function die {
 }
  
 
+
+function run {
+  echo ""
+  echo "======================================================"
+  echo "["`date`"] Starting $1"
+  echo " $*"
+  echo "======================================================"
+
+  cmd=""
+  out=""
+  mode="cmd"
+  for arg in $*; do
+    if [[ $arg == ">" ]]; then mode="out"; else
+      if [ $mode == "cmd" ]; then cmd="$cmd $arg"; else out=$arg; fi
+    fi
+  done
+
+  if [ $mode == "out" ]
+  then
+    if ! /usr/bin/time -va -o $TIMES_FILE \
+      $cmd > $out
+    then
+      die $*
+    fi
+  else
+    if ! /usr/bin/time  -va -o $TIMES_FILE \
+      $*
+    then
+      die $*
+    fi
+  fi
+}
+
+
 function run_clustering {
 
 	JOB=${RAND_ID} R CMD BATCH --vanilla --no-save ${CYTOFPIPE_HOME}/code/cytofpipe_clustering.R  ${PWD}/${outputfiles}/log_R.txt
