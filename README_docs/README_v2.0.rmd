@@ -281,9 +281,10 @@ All the asub options can be found in Heng Li's github page (https://github.com/l
 
 `$ /path/to/asub`
 
+<br>
 
+__*NOTE: check submission before submitting to the queue*__
 
-*NOTE: check submission*
 
 Sometimes, particularly when the user requests a lot of time, memory, nodes, or simply when the cluster is busy, the job might
 be queued for a long time before ir runs. And one frustrating thing is to find out that, after being in queue for perhaps hours,
@@ -487,8 +488,10 @@ All the asub options can be found in Heng Li's github page (https://github.com/l
 
 `$ /path/to/asub`
 
+<br>
 
-*NOTE: Check submission*
+__*NOTE: check submission before submitting to the queue*__
+
 
 Sometimes, particularly when the user requests a lot of time, memory, nodes, or simply when the cluster is busy, the job might
 be queued for a long time before ir runs. And one frustrating thing is to find out that, after being in queue for perhaps hours,
