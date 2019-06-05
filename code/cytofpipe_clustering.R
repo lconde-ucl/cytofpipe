@@ -1,16 +1,10 @@
 ## @knitr libraries
 
-library(cytofkit) 
+library(cytofkit2) 
 library(flowCore)
 library(ini)
 library(hash)
-library(openCyto)
-library(mvtnorm)
-
 require(reshape2)
-require(VGAM)
-require(colourpicker)
-require(gplots)
 
 #------------------------------------------------------------------
 #- Parse parameters
@@ -23,58 +17,25 @@ input <- paste0(jobid, ".txt")
 
 args<-read.ini(input)
 
-inputfiles=args$paramsclustering$INPUTFILE
-outputdir=args$paramsclustering$OUTPUTFILE
-markersFile=args$paramsclustering$MARKERSFILE
-configFile =args$paramsclustering$CONFIGFILE
-template=args$paramsclustering$GATINGFILE
-transformMethod = args$paramsclustering$TRANSFORM
-mergeMethod = args$paramsclustering$MERGE
-fixedNum = args$paramsclustering$DOWNSAMPLE
-displayAll = args$paramsclustering$DISPLAY_ALL
-groupfile = args$paramsclustering$GROUPS
-randomSampleSeed = args$paramsclustering$RANDOM_SAMPLE_SEED
-randomTsneSeed = args$paramsclustering$RANDOM_TSNE_SEED
-randomFlowSeed = args$paramsclustering$RANDOM_FLOW_SEED
-array = args$paramsclustering$ARRAY
+inputfiles=args$params$INPUTFILE
+outputdir=args$params$OUTPUTFILE
+markersFile=args$params$MARKERSFILE
+configFile =args$params$CONFIGFILE
+template=args$params$GATINGFILE
+transformMethod = args$params$TRANSFORM
+mergeMethod = args$params$MERGE
+fixedNum = args$params$DOWNSAMPLE
+displayAll = args$params$DISPLAY_ALL
+groupfile = args$params$GROUPS
+randomSampleSeed = args$params$RANDOM_SAMPLE_SEED
+randomTsneSeed = args$params$RANDOM_TSNE_SEED
+randomFlowSeed = args$params$RANDOM_FLOW_SEED
+array = args$params$ARRAY
 
 
 #---------------------------------------------------------------------------------------------
 #- Functions
 #---------------------------------------------------------------------------------------------
-
-## @knitr functions_opencyto
-
-
-#- A custom gating function for a DNA/DNA gate on CyTOF data.
-#- Finds the intersection between a quantile of a multivariate normal fit
-#- of a population and a boundary along y = -x+b 
-#- author: jfreling@fhcrc.org
-boundry <-  function(xs) {
-    # find the boundry events that are above a quantile and below a line 
-
-    cxs <- scale(xs) # scale data so that it can be compaired to the results from qnorm
-    f <- qnorm(0.95) # set a boundry level
-    pd <- dmvnorm(c(f, f))[1] # and find the p(x) for that level
-
-    pxs <- dmvnorm(x=cxs)  
-    idxs <- (pxs > pd) # find those points who are above the boundy level
-
-    idxs2 <- ((-1*cxs[,1]) + 1.96) > cxs[,2] # find points that are below the line with y=-1*x+b 
-    pos_xs <- xs[idxs&idxs2,] # intersection of points below line and above threshold level
-
-    hpts <- chull(pos_xs) # find the boundry points of the intersection of cells
-    return(pos_xs[hpts,])
-}
-
-.dnaGate <- function(fr, pp_res, channels = NA, filterId="", ...){
-   xs <- exprs(fr[,channels])
-  pnts <- boundry(xs)
-  return(polygonGate(.gate=pnts, filterId=filterId))
-}
-
-registerPlugins(fun=.dnaGate,methodName='dnaGate', dep='mvtnorm','gating')
-
 
 ## @knitr functions_cytofkit
 
@@ -305,29 +266,28 @@ for(i in 1:length(markersNameDesc)){
 
 projectName = "cytofpipe"
 
-dimReductionMethod="tsne"
+dimReductionMethod="umap"
 clusterMethods<-vector()
 visualizationMethods<-vector()
-visualizationMethods<-c(visualizationMethods,"tsne")
+visualizationMethods<-c(visualizationMethods,"umap")
 groups<-hash()
 
 config<-read.ini(configFile)
 
-autogating=config$clustering$GATING
-if(transformMethod == '-'){transformMethod = config$clustering$TRANSFORM}
-if(mergeMethod == '-'){mergeMethod = config$clustering$MERGE}
+if(transformMethod == '-'){transformMethod = config$cytofpipe$TRANSFORM}
+if(mergeMethod == '-'){mergeMethod = config$cytofpipe$MERGE}
 if(fixedNum == '-'){
-	if(is.null(config$clustering$DOWNSAMPLE)){
+	if(is.null(config$cytofpipe$DOWNSAMPLE)){
 		fixedNum = 100
 	}else{
-		fixedNum = config$clustering$DOWNSAMPLE
+		fixedNum = config$cytofpipe$DOWNSAMPLE
 	}
 }
 if(displayAll == '-'){
-	if(is.null(config$clustering$DISPLAY_ALL)){
+	if(is.null(config$cytofpipe$DISPLAY_ALL)){
 		displayAll = "no"
 	}else{
-		displayAll = config$clustering$DISPLAY_ALL
+		displayAll = config$cytofpipe$DISPLAY_ALL
 	}
 }
 if(basename(groupfile) != '-'){
@@ -340,24 +300,24 @@ if(basename(groupfile) != '-'){
 	}
 }
 if(randomSampleSeed == '-'){
-	if(is.null(config$clustering$RANDOM_SAMPLE_SEED)){
+	if(is.null(config$cytofpipe$RANDOM_SAMPLE_SEED)){
 		randomSampleSeed = "no"
 	}else{
-		randomSampleSeed = config$clustering$RANDOM_SAMPLE_SEED
+		randomSampleSeed = config$cytofpipe$RANDOM_SAMPLE_SEED
 	}
 }
 if(randomTsneSeed == '-'){
-	if(is.null(config$clustering$RANDOM_TSNE_SEED)){
+	if(is.null(config$cytofpipe$RANDOM_TSNE_SEED)){
 		randomTsneSeed = "no"
 	}else{
-		randomTsneSeed = config$clustering$RANDOM_TSNE_SEED
+		randomTsneSeed = config$cytofpipe$RANDOM_TSNE_SEED
 	}
 }
 if(randomFlowSeed == '-'){
-	if(is.null(config$clustering$RANDOM_FLOW_SEED)){
+	if(is.null(config$cytofpipe$RANDOM_FLOW_SEED)){
 		randomFlowSeed = "no"
 	}else{
-		randomFlowSeed = config$clustering$RANDOM_FLOW_SEED
+		randomFlowSeed = config$cytofpipe$RANDOM_FLOW_SEED
 	}
 }
 flowsom_num = 15
@@ -366,67 +326,20 @@ theta = 0.5
 max_iter = 1000
 
 
-if(length(config$clustering$PERPLEXITY)==1){perplexity=config$clustering$PERPLEXITY}
-if(length(config$clustering$THETA)==1){theta=config$clustering$THETA}
-if(length(config$clustering$MAX_ITER)==1){max_iter=config$clustering$MAX_ITER}
+if(length(config$cytofpipe$PERPLEXITY)==1){perplexity=config$cytofpipe$PERPLEXITY}
+if(length(config$cytofpipe$THETA)==1){theta=config$cytofpipe$THETA}
+if(length(config$cytofpipe$MAX_ITER)==1){max_iter=config$cytofpipe$MAX_ITER}
 
-if(length(config$clustering$PHENOGRAPH)==1){tolower(config$clustering$PHENOGRAPH);if(config$clustering$PHENOGRAPH == "yes"){clusterMethods<-c(clusterMethods,"Rphenograph")}}
-if(length(config$clustering$CLUSTERX)==1){tolower(config$clustering$CLUSTERX);if(config$clustering$CLUSTERX == "yes"){clusterMethods<-c(clusterMethods,"ClusterX")}}
-if(length(config$clustering$DENSVM)==1){tolower(config$clustering$DENSVM);if(config$clustering$DENSVM == "yes"){clusterMethods<-c(clusterMethods,"DensVM")}}
-if(length(config$clustering$FLOWSOM)==1){tolower(config$clustering$FLOWSOM);if(config$clustering$FLOWSOM == "yes"){clusterMethods<-c(clusterMethods,"FlowSOM");flowsom_num=config$clustering$FLOWSOM_K}}
+if(length(config$cytofpipe$PHENOGRAPH)==1){tolower(config$cytofpipe$PHENOGRAPH);if(config$cytofpipe$PHENOGRAPH == "yes"){clusterMethods<-c(clusterMethods,"Rphenograph")}}
+if(length(config$cytofpipe$CLUSTERX)==1){tolower(config$cytofpipe$CLUSTERX);if(config$cytofpipe$CLUSTERX == "yes"){clusterMethods<-c(clusterMethods,"ClusterX")}}
+if(length(config$cytofpipe$DENSVM)==1){tolower(config$cytofpipe$DENSVM);if(config$cytofpipe$DENSVM == "yes"){clusterMethods<-c(clusterMethods,"DensVM")}}
+if(length(config$cytofpipe$FLOWSOM)==1){tolower(config$cytofpipe$FLOWSOM);if(config$cytofpipe$FLOWSOM == "yes"){clusterMethods<-c(clusterMethods,"FlowSOM");flowsom_num=config$cytofpipe$FLOWSOM_K}}
 if(length(clusterMethods) == 0){clusterMethods<-c(clusterMethods,"NULL")}
 
-if(length(config$clustering$PCA)==1){tolower(config$clustering$PCA);if(config$clustering$PCA == "yes"){visualizationMethods<-c(visualizationMethods,"pca")}}
-if(length(config$clustering$ISOMAP)==1){tolower(config$clustering$ISOMAP);if(config$clustering$ISOMAP == "yes"){visualizationMethods<-c(visualizationMethods,"isomap")}}
+if(length(config$cytofpipe$TSNE)==1){tolower(config$cytofpipe$TSNE);if(config$cytofpipe$TSNE == "yes"){visualizationMethods<-c(visualizationMethods,"tsne")}}
+if(length(config$cytofpipe$PCA)==1){tolower(config$cytofpipe$PCA);if(config$cytofpipe$PCA == "yes"){visualizationMethods<-c(visualizationMethods,"pca")}}
+if(length(config$cytofpipe$ISOMAP)==1){tolower(config$cytofpipe$ISOMAP);if(config$cytofpipe$ISOMAP == "yes"){visualizationMethods<-c(visualizationMethods,"isomap")}}
 
-
-#------------------------------------------------------------------
-#- Do automatic gating
-#------------------------------------------------------------------
-
-## @knitr gating
-
-if(autogating == 'yes'){
-
-	gt<-gatingTemplate(template)
-
-	#------------------------------------------------------------------------------------------------
-	#- gates are based on arcSinh transformed data, so raw files need to be transformed before gating
-	#------------------------------------------------------------------------------------------------
-	
-	arcsinh <- arcsinhTransform("arcsinh transformation")	
-	dataTransform <- transform(read.flowSet(files), 
-			"arcsinh_Ce142Di"= arcsinh(Ce142Di),
-			"arcsinh_Ce140Di"= arcsinh(Ce140Di),
-			"arcsinh_Ir191Di"= arcsinh(Ir191Di),
-			"arcsinh_Ir193Di"= arcsinh(Ir193Di),
-			"arcsinh_Y89Di"= arcsinh(Y89Di),
-			"arcsinh_Pt195Di"= arcsinh(Pt195Di)
-	)
-
-	gs <- GatingSet(dataTransform)
-	gating(x = gt, y = gs)
-	fs_live <- getData(gs,"Live")
-
-	pdf(paste0(outputdir,"/gating_scheme.pdf"))
-	plot(gs)
-	dev.off()
-
-	write.flowSet(fs_live, paste0(outputdir, "/gating_fs_live"))
-
-	rm(files)
-	rm(files_short)
-
-	files<-list.files(paste0(outputdir, "/gating_fs_live"), patter=".fcs", full=T)
-	files_short<-list.files(paste0(outputdir, "/gating_fs_live"), patter=".fcs", full=F)
-
-	for(i in 1:length(files_short)){
-		pdf(paste0(outputdir,"/gating_",files_short[i],".pdf"))
-		plotGate(gs[[i]])
-		dev.off()
-	}
-
-}
 
 
 #------------------------------------------------------------------

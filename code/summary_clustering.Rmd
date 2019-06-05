@@ -1,5 +1,5 @@
 ---
-title: "Cytofpipe v1.2 --clustering Summary" 
+title: "Cytofpipe v2.0 Summary" 
 date: "`r format(Sys.time(), '%d %B, %Y')`" 
 output: pdf_document 
 params:
@@ -22,7 +22,7 @@ knitr::read_chunk(params$rscript)
 library(ini)
 
 args<-read.ini(params$inputparams)
-arguments=args$paramsclustering$ARGS
+arguments=args$params$ARGS
 arguments2=strsplit(arguments, " -")
 paste0("-",unlist(arguments2))
 ```
@@ -30,12 +30,12 @@ paste0("-",unlist(arguments2))
 **FCS files**
 ```{r FCSfiles, echo=F}
 
-inputfiles=args$paramsclustering$INPUTFILE
+inputfiles=args$params$INPUTFILE
 
 files_short <- list.files(inputfiles,pattern='.fcs$', full=F)
 files_short
 
-groupfile=args$paramsclustering$GROUPS
+groupfile=args$params$GROUPS
 if(basename(groupfile) != "-"){
 	cat("\nGroups: ")
 
@@ -49,7 +49,7 @@ if(basename(groupfile) != "-"){
 **Markers used for clustering**
 ```{r Markers, echo=F}
 
-markersFile=args$paramsclustering$MARKERSFILE
+markersFile=args$params$MARKERSFILE
 
 usermarkers <- as.character(read.table(markersFile, header = FALSE)[,1])
 usermarkers
@@ -58,14 +58,15 @@ usermarkers
 **Config parameters**
 ```{r Config, echo=F}
 
-transformMethod = args$paramsclustering$TRANSFORM
-mergeMethod = args$paramsclustering$MERGE
-fixedNum = args$paramsclustering$DOWNSAMPLE
-displayAll = args$paramsclustering$DISPLAY_ALL
-configFile = args$paramsclustering$CONFIGFILE
-randomSampleSeed = args$paramsclustering$RANDOM_SAMPLE_SEED
-randomTsneSeed = args$paramsclustering$RANDOM_TSNE_SEED
-randomFlowSeed = args$paramsclustering$RANDOM_FLOW_SEED
+transformMethod = args$params$TRANSFORM
+mergeMethod = args$params$MERGE
+fixedNum = args$params$DOWNSAMPLE
+displayAll = args$params$DISPLAY_ALL
+configFile = args$params$CONFIGFILE
+randomSampleSeed = args$params$RANDOM_SAMPLE_SEED
+randomTsneSeed = args$params$RANDOM_TSNE_SEED
+randomFlowSeed = args$params$RANDOM_FLOW_SEED
+outputdir=args$params$OUTPUTFILE
 
 config<-read.ini(configFile)
 
@@ -82,45 +83,11 @@ str(config)
 
 \newpage						
 
-# Gating
-
-```{r Gates, fig.align='center',echo=FALSE, message=FALSE,warning=FALSE,results="asis"}
-
-autogating = config$clustering$GATING
-outputdir=args$paramsclustering$OUTPUTFILE
-if(length(autogating)==1){
-	tolower(autogating);
-	if(autogating == "yes"){
-		
-		cat("  \n**Gating template**  \n")
-		cat("\\newline")
-		cat(paste0("![Gating scheme]( ",outputdir,"/Gating/gating_scheme.pdf)"))
-		cat("\\newline")
-		cat("\\newpage")
-
-		for(i in 1:length(files_short)){
-
-			cat(paste0("  \n**Gating ", files_short[i], "**  \n"))
-			cat("\\newline")
-			cat(paste0("![Gating]( ",outputdir,"/Gating/gating_",files_short[i],".pdf)"))
-			cat("\\newline")
-			cat("\\newpage")
-		}
-
-	}else{
-		cat("  \n**NO AUTOMATIC GATING PERFORMED**  \n")
-		cat("\\newpage")
-
-	}
-}
-```
-
-
 # Clustering results
 
 ```{r Clustering, fig.align='center', echo=F,results='asis', message=FALSE,warning=FALSE}
 
-library(cytofkit)
+library(cytofkit2)
 
 load(params$rdata)
 

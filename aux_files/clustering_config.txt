@@ -1,23 +1,22 @@
-[ clustering ]
-
-GATING = no
+[ cytofpipe ]
 
 TRANSFORM = cytofAsinh
 MERGE = ceil
 DOWNSAMPLE = 10000
-
-PERPLEXITY = 30
-THETA = 0.5
-MAX_ITER = 1000
-
-PCA = no
-ISOMAP = no
 
 PHENOGRAPH = yes
 CLUSTERX = no
 DENSVM = no
 FLOWSOM = no
 FLOWSOM_K = 15
+
+TSNE = yes
+PCA = no
+ISOMAP = no
+
+PERPLEXITY = 30
+THETA = 0.5
+MAX_ITER = 1000
 
 DISPLAY_ALL = no
 RANDOM_SAMPLE_SEED = no

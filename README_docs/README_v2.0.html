@@ -11,7 +11,7 @@
 
 
 
-<title>README_v1.3.utf8.md</title>
+<title>README_v2.0.utf8.md</title>
 
 <script>/*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 !function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.3",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for("boolean"==typeof g&&(j=g,g=arguments[h]||{},h++),"object"==typeof g||m.isFunction(g)||(g={}),h===i&&(g=this,h--);i>h;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&&(j&&c&&(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&&m.isArray(a)?a:[]):f=a&&m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&&(g[d]=c));return g},m.extend({expando:"jQuery"+(l+Math.random()).replace(/\D/g,""),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return"function"===m.type(a)},isArray:Array.isArray||function(a){return"array"===m.type(a)},isWindow:function(a){return null!=a&&a==a.window},isNumeric:function(a){return!m.isArray(a)&&a-parseFloat(a)+1>=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||"object"!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&&!j.call(a,"constructor")&&!j.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.call(a,b)},type:function(a){return null==a?a+"":"object"==typeof a||"function"==typeof a?h[i.call(a)]||"object":typeof a},globalEval:function(b){b&&m.trim(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(o,"ms-").replace(p,q)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toLowerCase()===b.toLowerCase()},each:function(a,b,c){var d,e=0,f=a.length,g=r(a);if(c){if(g){for(;f>e;e++)if(d=b.apply(a[e],c),d===!1)break}else for(e in a)if(d=b.apply(a[e],c),d===!1)break}else if(g){for(;f>e;e++)if(d=b.call(a[e],e,a[e]),d===!1)break}else for(e in a)if(d=b.call(a[e],e,a[e]),d===!1)break;return a},trim:function(a){return null==a?"":(a+"").replace(n,"")},makeArray:function(a,b){var c=b||[];return null!=a&&(r(Object(a))?m.merge(c,"string"==typeof a?[a]:a):f.call(c,a)),c},inArray:function(a,b,c){var d;if(b){if(g)return g.call(b,a,c);for(d=b.length,c=c?0>c?Math.max(0,d+c):c:0;d>c;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,b){var c=+b.length,d=0,e=a.length;while(c>d)a[e++]=b[d++];if(c!==c)while(void 0!==b[d])a[e++]=b[d++];return a.length=e,a},grep:function(a,b,c){for(var d,e=[],f=0,g=a.length,h=!c;g>f;f++)d=!b(a[f],f),d!==h&&e.push(a[f]);return e},map:function(a,b,c){var d,f=0,g=a.length,h=r(a),i=[];if(h)for(;g>f;f++)d=b(a[f],f,c),null!=d&&i.push(d);else for(f in a)d=b(a[f],f,c),null!=d&&i.push(d);return e.apply([],i)},guid:1,proxy:function(a,b){var c,e,f;return"string"==typeof b&&(f=a[b],b=a,a=f),m.isFunction(a)?(c=d.call(arguments,2),e=function(){return a.apply(b||this,c.concat(d.call(arguments)))},e.guid=a.guid=a.guid||m.guid++,e):void 0},now:function(){return+new Date},support:k}),m.each("Boolean Number String Function Array Date RegExp Object Error".split(" "),function(a,b){h["[object "+b+"]"]=b.toLowerCase()});function r(a){var b="length"in a&&a.length,c=m.type(a);return"function"===c||m.isWindow(a)?!1:1===a.nodeType&&b?!0:"array"===c||0===b||"number"==typeof b&&b>0&&b-1 in a}var s=function(a){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u="sizzle"+1*new Date,v=a.document,w=0,x=0,y=ha(),z=ha(),A=ha(),B=function(a,b){return a===b&&(l=!0),0},C=1<<31,D={}.hasOwnProperty,E=[],F=E.pop,G=E.push,H=E.push,I=E.slice,J=function(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1},K="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",L="[\\x20\\t\\r\\n\\f]",M="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",N=M.replace("w","w#"),O="\\["+L+"*("+M+")(?:"+L+"*([*^$|!~]?=)"+L+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+N+"))|)"+L+"*\\]",P=":("+M+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+O+")*)|.*)\\)|)",Q=new RegExp(L+"+","g"),R=new RegExp("^"+L+"+|((?:^|[^\\\\])(?:\\\\.)*)"+L+"+$","g"),S=new RegExp("^"+L+"*,"+L+"*"),T=new RegExp("^"+L+"*([>+~]|"+L+")"+L+"*"),U=new RegExp("="+L+"*([^\\]'\"]*?)"+L+"*\\]","g"),V=new RegExp(P),W=new RegExp("^"+N+"$"),X={ID:new RegExp("^#("+M+")"),CLASS:new RegExp("^\\.("+M+")"),TAG:new RegExp("^("+M.replace("w","w*")+")"),ATTR:new RegExp("^"+O),PSEUDO:new RegExp("^"+P),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+L+"*(even|odd|(([+-]|)(\\d*)n|)"+L+"*(?:([+-]|)"+L+"*(\\d+)|))"+L+"*\\)|)","i"),bool:new RegExp("^(?:"+K+")$","i"),needsContext:new RegExp("^"+L+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+L+"*((?:-\\d)?\\d*)"+L+"*\\)|)(?=[^-]|$)","i")},Y=/^(?:input|select|textarea|button)$/i,Z=/^h\d$/i,$=/^[^{]+\{\s*\[native \w/,_=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,aa=/[+~]/,ba=/'|\\/g,ca=new RegExp("\\\\([\\da-f]{1,6}"+L+"?|("+L+")|.)","ig"),da=function(a,b,c){var d="0x"+b-65536;return d!==d||c?b:0>d?String.fromCharCode(d+65536):String.fromCharCode(d>>10|55296,1023&d|56320)},ea=function(){m()};try{H.apply(E=I.call(v.childNodes),v.childNodes),E[v.childNodes.length].nodeType}catch(fa){H={apply:E.length?function(a,b){G.apply(a,I.call(b))}:function(a,b){var c=a.length,d=0;while(a[c++]=b[d++]);a.length=c-1}}}function ga(a,b,d,e){var f,h,j,k,l,o,r,s,w,x;if((b?b.ownerDocument||b:v)!==n&&m(b),b=b||n,d=d||[],k=b.nodeType,"string"!=typeof a||!a||1!==k&&9!==k&&11!==k)return d;if(!e&&p){if(11!==k&&(f=_.exec(a)))if(j=f[1]){if(9===k){if(h=b.getElementById(j),!h||!h.parentNode)return d;if(h.id===j)return d.push(h),d}else if(b.ownerDocument&&(h=b.ownerDocument.getElementById(j))&&t(b,h)&&h.id===j)return d.push(h),d}else{if(f[2])return H.apply(d,b.getElementsByTagName(a)),d;if((j=f[3])&&c.getElementsByClassName)return H.apply(d,b.getElementsByClassName(j)),d}if(c.qsa&&(!q||!q.test(a))){if(s=r=u,w=b,x=1!==k&&a,1===k&&"object"!==b.nodeName.toLowerCase()){o=g(a),(r=b.getAttribute("id"))?s=r.replace(ba,"\\$&"):b.setAttribute("id",s),s="[id='"+s+"'] ",l=o.length;while(l--)o[l]=s+ra(o[l]);w=aa.test(a)&&pa(b.parentNode)||b,x=o.join(",")}if(x)try{return H.apply(d,w.querySelectorAll(x)),d}catch(y){}finally{r||b.removeAttribute("id")}}}return i(a.replace(R,"$1"),b,d,e)}function ha(){var a=[];function b(c,e){return a.push(c+" ")>d.cacheLength&&delete b[a.shift()],b[c+" "]=e}return b}function ia(a){return a[u]=!0,a}function ja(a){var b=n.createElement("div");try{return!!a(b)}catch(c){return!1}finally{b.parentNode&&b.parentNode.removeChild(b),b=null}}function ka(a,b){var c=a.split("|"),e=a.length;while(e--)d.attrHandle[c[e]]=b}function la(a,b){var c=b&&a,d=c&&1===a.nodeType&&1===b.nodeType&&(~b.sourceIndex||C)-(~a.sourceIndex||C);if(d)return d;if(c)while(c=c.nextSibling)if(c===b)return-1;return a?1:-1}function ma(a){return function(b){var c=b.nodeName.toLowerCase();return"input"===c&&b.type===a}}function na(a){return function(b){var c=b.nodeName.toLowerCase();return("input"===c||"button"===c)&&b.type===a}}function oa(a){return ia(function(b){return b=+b,ia(function(c,d){var e,f=a([],c.length,b),g=f.length;while(g--)c[e=f[g]]&&(c[e]=!(d[e]=c[e]))})})}function pa(a){return a&&"undefined"!=typeof a.getElementsByTagName&&a}c=ga.support={},f=ga.isXML=function(a){var b=a&&(a.ownerDocument||a).documentElement;return b?"HTML"!==b.nodeName:!1},m=ga.setDocument=function(a){var b,e,g=a?a.ownerDocument||a:v;return g!==n&&9===g.nodeType&&g.documentElement?(n=g,o=g.documentElement,e=g.defaultView,e&&e!==e.top&&(e.addEventListener?e.addEventListener("unload",ea,!1):e.attachEvent&&e.attachEvent("onunload",ea)),p=!f(g),c.attributes=ja(function(a){return a.className="i",!a.getAttribute("className")}),c.getElementsByTagName=ja(function(a){return a.appendChild(g.createComment("")),!a.getElementsByTagName("*").length}),c.getElementsByClassName=$.test(g.getElementsByClassName),c.getById=ja(function(a){return o.appendChild(a).id=u,!g.getElementsByName||!g.getElementsByName(u).length}),c.getById?(d.find.ID=function(a,b){if("undefined"!=typeof b.getElementById&&p){var c=b.getElementById(a);return c&&c.parentNode?[c]:[]}},d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){return a.getAttribute("id")===b}}):(delete d.find.ID,d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){var c="undefined"!=typeof a.getAttributeNode&&a.getAttributeNode("id");return c&&c.value===b}}),d.find.TAG=c.getElementsByTagName?function(a,b){return"undefined"!=typeof b.getElementsByTagName?b.getElementsByTagName(a):c.qsa?b.querySelectorAll(a):void 0}:function(a,b){var c,d=[],e=0,f=b.getElementsByTagName(a);if("*"===a){while(c=f[e++])1===c.nodeType&&d.push(c);return d}return f},d.find.CLASS=c.getElementsByClassName&&function(a,b){return p?b.getElementsByClassName(a):void 0},r=[],q=[],(c.qsa=$.test(g.querySelectorAll))&&(ja(function(a){o.appendChild(a).innerHTML="<a id='"+u+"'></a><select id='"+u+"-\f]' msallowcapture=''><option selected=''></option></select>",a.querySelectorAll("[msallowcapture^='']").length&&q.push("[*^$]="+L+"*(?:''|\"\")"),a.querySelectorAll("[selected]").length||q.push("\\["+L+"*(?:value|"+K+")"),a.querySelectorAll("[id~="+u+"-]").length||q.push("~="),a.querySelectorAll(":checked").length||q.push(":checked"),a.querySelectorAll("a#"+u+"+*").length||q.push(".#.+[+~]")}),ja(function(a){var b=g.createElement("input");b.setAttribute("type","hidden"),a.appendChild(b).setAttribute("name","D"),a.querySelectorAll("[name=d]").length&&q.push("name"+L+"*[*^$|!~]?="),a.querySelectorAll(":enabled").length||q.push(":enabled",":disabled"),a.querySelectorAll("*,:x"),q.push(",.*:")})),(c.matchesSelector=$.test(s=o.matches||o.webkitMatchesSelector||o.mozMatchesSelector||o.oMatchesSelector||o.msMatchesSelector))&&ja(function(a){c.disconnectedMatch=s.call(a,"div"),s.call(a,"[s!='']:x"),r.push("!=",P)}),q=q.length&&new RegExp(q.join("|")),r=r.length&&new RegExp(r.join("|")),b=$.test(o.compareDocumentPosition),t=b||$.test(o.contains)?function(a,b){var c=9===a.nodeType?a.documentElement:a,d=b&&b.parentNode;return a===d||!(!d||1!==d.nodeType||!(c.contains?c.contains(d):a.compareDocumentPosition&&16&a.compareDocumentPosition(d)))}:function(a,b){if(b)while(b=b.parentNode)if(b===a)return!0;return!1},B=b?function(a,b){if(a===b)return l=!0,0;var d=!a.compareDocumentPosition-!b.compareDocumentPosition;return d?d:(d=(a.ownerDocument||a)===(b.ownerDocument||b)?a.compareDocumentPosition(b):1,1&d||!c.sortDetached&&b.compareDocumentPosition(a)===d?a===g||a.ownerDocument===v&&t(v,a)?-1:b===g||b.ownerDocument===v&&t(v,b)?1:k?J(k,a)-J(k,b):0:4&d?-1:1)}:function(a,b){if(a===b)return l=!0,0;var c,d=0,e=a.parentNode,f=b.parentNode,h=[a],i=[b];if(!e||!f)return a===g?-1:b===g?1:e?-1:f?1:k?J(k,a)-J(k,b):0;if(e===f)return la(a,b);c=a;while(c=c.parentNode)h.unshift(c);c=b;while(c=c.parentNode)i.unshift(c);while(h[d]===i[d])d++;return d?la(h[d],i[d]):h[d]===v?-1:i[d]===v?1:0},g):n},ga.matches=function(a,b){return ga(a,null,null,b)},ga.matchesSelector=function(a,b){if((a.ownerDocument||a)!==n&&m(a),b=b.replace(U,"='$1']"),!(!c.matchesSelector||!p||r&&r.test(b)||q&&q.test(b)))try{var d=s.call(a,b);if(d||c.disconnectedMatch||a.document&&11!==a.document.nodeType)return d}catch(e){}return ga(b,n,null,[a]).length>0},ga.contains=function(a,b){return(a.ownerDocument||a)!==n&&m(a),t(a,b)},ga.attr=function(a,b){(a.ownerDocument||a)!==n&&m(a);var e=d.attrHandle[b.toLowerCase()],f=e&&D.call(d.attrHandle,b.toLowerCase())?e(a,b,!p):void 0;return void 0!==f?f:c.attributes||!p?a.getAttribute(b):(f=a.getAttributeNode(b))&&f.specified?f.value:null},ga.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)},ga.uniqueSort=function(a){var b,d=[],e=0,f=0;if(l=!c.detectDuplicates,k=!c.sortStable&&a.slice(0),a.sort(B),l){while(b=a[f++])b===a[f]&&(e=d.push(f));while(e--)a.splice(d[e],1)}return k=null,a},e=ga.getText=function(a){var b,c="",d=0,f=a.nodeType;if(f){if(1===f||9===f||11===f){if("string"==typeof a.textContent)return a.textContent;for(a=a.firstChild;a;a=a.nextSibling)c+=e(a)}else if(3===f||4===f)return a.nodeValue}else while(b=a[d++])c+=e(b);return c},d=ga.selectors={cacheLength:50,createPseudo:ia,match:X,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:!0}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:!0},"~":{dir:"previousSibling"}},preFilter:{ATTR:function(a){return a[1]=a[1].replace(ca,da),a[3]=(a[3]||a[4]||a[5]||"").replace(ca,da),"~="===a[2]&&(a[3]=" "+a[3]+" "),a.slice(0,4)},CHILD:function(a){return a[1]=a[1].toLowerCase(),"nth"===a[1].slice(0,3)?(a[3]||ga.error(a[0]),a[4]=+(a[4]?a[5]+(a[6]||1):2*("even"===a[3]||"odd"===a[3])),a[5]=+(a[7]+a[8]||"odd"===a[3])):a[3]&&ga.error(a[0]),a},PSEUDO:function(a){var b,c=!a[6]&&a[2];return X.CHILD.test(a[0])?null:(a[3]?a[2]=a[4]||a[5]||"":c&&V.test(c)&&(b=g(c,!0))&&(b=c.indexOf(")",c.length-b)-c.length)&&(a[0]=a[0].slice(0,b),a[2]=c.slice(0,b)),a.slice(0,3))}},filter:{TAG:function(a){var b=a.replace(ca,da).toLowerCase();return"*"===a?function(){return!0}:function(a){return a.nodeName&&a.nodeName.toLowerCase()===b}},CLASS:function(a){var b=y[a+" "];return b||(b=new RegExp("(^|"+L+")"+a+"("+L+"|$)"))&&y(a,function(a){return b.test("string"==typeof a.className&&a.className||"undefined"!=typeof a.getAttribute&&a.getAttribute("class")||"")})},ATTR:function(a,b,c){return function(d){var e=ga.attr(d,a);return null==e?"!="===b:b?(e+="","="===b?e===c:"!="===b?e!==c:"^="===b?c&&0===e.indexOf(c):"*="===b?c&&e.indexOf(c)>-1:"$="===b?c&&e.slice(-c.length)===c:"~="===b?(" "+e.replace(Q," ")+" ").indexOf(c)>-1:"|="===b?e===c||e.slice(0,c.length+1)===c+"-":!1):!0}},CHILD:function(a,b,c,d,e){var f="nth"!==a.slice(0,3),g="last"!==a.slice(-4),h="of-type"===b;return 1===d&&0===e?function(a){return!!a.parentNode}:function(b,c,i){var j,k,l,m,n,o,p=f!==g?"nextSibling":"previousSibling",q=b.parentNode,r=h&&b.nodeName.toLowerCase(),s=!i&&!h;if(q){if(f){while(p){l=b;while(l=l[p])if(h?l.nodeName.toLowerCase()===r:1===l.nodeType)return!1;o=p="only"===a&&!o&&"nextSibling"}return!0}if(o=[g?q.firstChild:q.lastChild],g&&s){k=q[u]||(q[u]={}),j=k[a]||[],n=j[0]===w&&j[1],m=j[0]===w&&j[2],l=n&&q.childNodes[n];while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if(1===l.nodeType&&++m&&l===b){k[a]=[w,n,m];break}}else if(s&&(j=(b[u]||(b[u]={}))[a])&&j[0]===w)m=j[1];else while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if((h?l.nodeName.toLowerCase()===r:1===l.nodeType)&&++m&&(s&&((l[u]||(l[u]={}))[a]=[w,m]),l===b))break;return m-=e,m===d||m%d===0&&m/d>=0}}},PSEUDO:function(a,b){var c,e=d.pseudos[a]||d.setFilters[a.toLowerCase()]||ga.error("unsupported pseudo: "+a);return e[u]?e(b):e.length>1?(c=[a,a,"",b],d.setFilters.hasOwnProperty(a.toLowerCase())?ia(function(a,c){var d,f=e(a,b),g=f.length;while(g--)d=J(a,f[g]),a[d]=!(c[d]=f[g])}):function(a){return e(a,0,c)}):e}},pseudos:{not:ia(function(a){var b=[],c=[],d=h(a.replace(R,"$1"));return d[u]?ia(function(a,b,c,e){var f,g=d(a,null,e,[]),h=a.length;while(h--)(f=g[h])&&(a[h]=!(b[h]=f))}):function(a,e,f){return b[0]=a,d(b,null,f,c),b[0]=null,!c.pop()}}),has:ia(function(a){return function(b){return ga(a,b).length>0}}),contains:ia(function(a){return a=a.replace(ca,da),function(b){return(b.textContent||b.innerText||e(b)).indexOf(a)>-1}}),lang:ia(function(a){return W.test(a||"")||ga.error("unsupported lang: "+a),a=a.replace(ca,da).toLowerCase(),function(b){var c;do if(c=p?b.lang:b.getAttribute("xml:lang")||b.getAttribute("lang"))return c=c.toLowerCase(),c===a||0===c.indexOf(a+"-");while((b=b.parentNode)&&1===b.nodeType);return!1}}),target:function(b){var c=a.location&&a.location.hash;return c&&c.slice(1)===b.id},root:function(a){return a===o},focus:function(a){return a===n.activeElement&&(!n.hasFocus||n.hasFocus())&&!!(a.type||a.href||~a.tabIndex)},enabled:function(a){return a.disabled===!1},disabled:function(a){return a.disabled===!0},checked:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&!!a.checked||"option"===b&&!!a.selected},selected:function(a){return a.parentNode&&a.parentNode.selectedIndex,a.selected===!0},empty:function(a){for(a=a.firstChild;a;a=a.nextSibling)if(a.nodeType<6)return!1;return!0},parent:function(a){return!d.pseudos.empty(a)},header:function(a){return Z.test(a.nodeName)},input:function(a){return Y.test(a.nodeName)},button:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&"button"===a.type||"button"===b},text:function(a){var b;return"input"===a.nodeName.toLowerCase()&&"text"===a.type&&(null==(b=a.getAttribute("type"))||"text"===b.toLowerCase())},first:oa(function(){return[0]}),last:oa(function(a,b){return[b-1]}),eq:oa(function(a,b,c){return[0>c?c+b:c]}),even:oa(function(a,b){for(var c=0;b>c;c+=2)a.push(c);return a}),odd:oa(function(a,b){for(var c=1;b>c;c+=2)a.push(c);return a}),lt:oa(function(a,b,c){for(var d=0>c?c+b:c;--d>=0;)a.push(d);return a}),gt:oa(function(a,b,c){for(var d=0>c?c+b:c;++d<b;)a.push(d);return a})}},d.pseudos.nth=d.pseudos.eq;for(b in{radio:!0,checkbox:!0,file:!0,password:!0,image:!0})d.pseudos[b]=ma(b);for(b in{submit:!0,reset:!0})d.pseudos[b]=na(b);function qa(){}qa.prototype=d.filters=d.pseudos,d.setFilters=new qa,g=ga.tokenize=function(a,b){var c,e,f,g,h,i,j,k=z[a+" "];if(k)return b?0:k.slice(0);h=a,i=[],j=d.preFilter;while(h){(!c||(e=S.exec(h)))&&(e&&(h=h.slice(e[0].length)||h),i.push(f=[])),c=!1,(e=T.exec(h))&&(c=e.shift(),f.push({value:c,type:e[0].replace(R," ")}),h=h.slice(c.length));for(g in d.filter)!(e=X[g].exec(h))||j[g]&&!(e=j[g](e))||(c=e.shift(),f.push({value:c,type:g,matches:e}),h=h.slice(c.length));if(!c)break}return b?h.length:h?ga.error(a):z(a,i).slice(0)};function ra(a){for(var b=0,c=a.length,d="";c>b;b++)d+=a[b].value;return d}function sa(a,b,c){var d=b.dir,e=c&&"parentNode"===d,f=x++;return b.first?function(b,c,f){while(b=b[d])if(1===b.nodeType||e)return a(b,c,f)}:function(b,c,g){var h,i,j=[w,f];if(g){while(b=b[d])if((1===b.nodeType||e)&&a(b,c,g))return!0}else while(b=b[d])if(1===b.nodeType||e){if(i=b[u]||(b[u]={}),(h=i[d])&&h[0]===w&&h[1]===f)return j[2]=h[2];if(i[d]=j,j[2]=a(b,c,g))return!0}}}function ta(a){return a.length>1?function(b,c,d){var e=a.length;while(e--)if(!a[e](b,c,d))return!1;return!0}:a[0]}function ua(a,b,c){for(var d=0,e=b.length;e>d;d++)ga(a,b[d],c);return c}function va(a,b,c,d,e){for(var f,g=[],h=0,i=a.length,j=null!=b;i>h;h++)(f=a[h])&&(!c||c(f,d,e))&&(g.push(f),j&&b.push(h));return g}function wa(a,b,c,d,e,f){return d&&!d[u]&&(d=wa(d)),e&&!e[u]&&(e=wa(e,f)),ia(function(f,g,h,i){var j,k,l,m=[],n=[],o=g.length,p=f||ua(b||"*",h.nodeType?[h]:h,[]),q=!a||!f&&b?p:va(p,m,a,h,i),r=c?e||(f?a:o||d)?[]:g:q;if(c&&c(q,r,h,i),d){j=va(r,n),d(j,[],h,i),k=j.length;while(k--)(l=j[k])&&(r[n[k]]=!(q[n[k]]=l))}if(f){if(e||a){if(e){j=[],k=r.length;while(k--)(l=r[k])&&j.push(q[k]=l);e(null,r=[],j,i)}k=r.length;while(k--)(l=r[k])&&(j=e?J(f,l):m[k])>-1&&(f[j]=!(g[j]=l))}}else r=va(r===g?r.splice(o,r.length):r),e?e(null,g,r,i):H.apply(g,r)})}function xa(a){for(var b,c,e,f=a.length,g=d.relative[a[0].type],h=g||d.relative[" "],i=g?1:0,k=sa(function(a){return a===b},h,!0),l=sa(function(a){return J(b,a)>-1},h,!0),m=[function(a,c,d){var e=!g&&(d||c!==j)||((b=c).nodeType?k(a,c,d):l(a,c,d));return b=null,e}];f>i;i++)if(c=d.relative[a[i].type])m=[sa(ta(m),c)];else{if(c=d.filter[a[i].type].apply(null,a[i].matches),c[u]){for(e=++i;f>e;e++)if(d.relative[a[e].type])break;return wa(i>1&&ta(m),i>1&&ra(a.slice(0,i-1).concat({value:" "===a[i-2].type?"*":""})).replace(R,"$1"),c,e>i&&xa(a.slice(i,e)),f>e&&xa(a=a.slice(e)),f>e&&ra(a))}m.push(c)}return ta(m)}function ya(a,b){var c=b.length>0,e=a.length>0,f=function(f,g,h,i,k){var l,m,o,p=0,q="0",r=f&&[],s=[],t=j,u=f||e&&d.find.TAG("*",k),v=w+=null==t?1:Math.random()||.1,x=u.length;for(k&&(j=g!==n&&g);q!==x&&null!=(l=u[q]);q++){if(e&&l){m=0;while(o=a[m++])if(o(l,g,h)){i.push(l);break}k&&(w=v)}c&&((l=!o&&l)&&p--,f&&r.push(l))}if(p+=q,c&&q!==p){m=0;while(o=b[m++])o(r,s,g,h);if(f){if(p>0)while(q--)r[q]||s[q]||(s[q]=F.call(i));s=va(s)}H.apply(i,s),k&&!f&&s.length>0&&p+b.length>1&&ga.uniqueSort(i)}return k&&(w=v,j=t),r};return c?ia(f):f}return h=ga.compile=function(a,b){var c,d=[],e=[],f=A[a+" "];if(!f){b||(b=g(a)),c=b.length;while(c--)f=xa(b[c]),f[u]?d.push(f):e.push(f);f=A(a,ya(e,d)),f.selector=a}return f},i=ga.select=function(a,b,e,f){var i,j,k,l,m,n="function"==typeof a&&a,o=!f&&g(a=n.selector||a);if(e=e||[],1===o.length){if(j=o[0]=o[0].slice(0),j.length>2&&"ID"===(k=j[0]).type&&c.getById&&9===b.nodeType&&p&&d.relative[j[1].type]){if(b=(d.find.ID(k.matches[0].replace(ca,da),b)||[])[0],!b)return e;n&&(b=b.parentNode),a=a.slice(j.shift().value.length)}i=X.needsContext.test(a)?0:j.length;while(i--){if(k=j[i],d.relative[l=k.type])break;if((m=d.find[l])&&(f=m(k.matches[0].replace(ca,da),aa.test(j[0].type)&&pa(b.parentNode)||b))){if(j.splice(i,1),a=f.length&&ra(j),!a)return H.apply(e,f),e;break}}}return(n||h(a,o))(f,b,!p,e,aa.test(a)&&pa(b.parentNode)||b),e},c.sortStable=u.split("").sort(B).join("")===u,c.detectDuplicates=!!l,m(),c.sortDetached=ja(function(a){return 1&a.compareDocumentPosition(n.createElement("div"))}),ja(function(a){return a.innerHTML="<a href='#'></a>","#"===a.firstChild.getAttribute("href")})||ka("type|href|height|width",function(a,b,c){return c?void 0:a.getAttribute(b,"type"===b.toLowerCase()?1:2)}),c.attributes&&ja(function(a){return a.innerHTML="<input/>",a.firstChild.setAttribute("value",""),""===a.firstChild.getAttribute("value")})||ka("value",function(a,b,c){return c||"input"!==a.nodeName.toLowerCase()?void 0:a.defaultValue}),ja(function(a){return null==a.getAttribute("disabled")})||ka(K,function(a,b,c){var d;return c?void 0:a[b]===!0?b.toLowerCase():(d=a.getAttributeNode(b))&&d.specified?d.value:null}),ga}(a);m.find=s,m.expr=s.selectors,m.expr[":"]=m.expr.pseudos,m.unique=s.uniqueSort,m.text=s.getText,m.isXMLDoc=s.isXML,m.contains=s.contains;var t=m.expr.match.needsContext,u=/^<(\w+)\s*\/?>(?:<\/\1>|)$/,v=/^.[^:#\[\.,]*$/;function w(a,b,c){if(m.isFunction(b))return m.grep(a,function(a,d){return!!b.call(a,d,a)!==c});if(b.nodeType)return m.grep(a,function(a){return a===b!==c});if("string"==typeof b){if(v.test(b))return m.filter(b,a,c);b=m.filter(b,a)}return m.grep(a,function(a){return m.inArray(a,b)>=0!==c})}m.filter=function(a,b,c){var d=b[0];return c&&(a=":not("+a+")"),1===b.length&&1===d.nodeType?m.find.matchesSelector(d,a)?[d]:[]:m.find.matches(a,m.grep(b,function(a){return 1===a.nodeType}))},m.fn.extend({find:function(a){var b,c=[],d=this,e=d.length;if("string"!=typeof a)return this.pushStack(m(a).filter(function(){for(b=0;e>b;b++)if(m.contains(d[b],this))return!0}));for(b=0;e>b;b++)m.find(a,d[b],c);return c=this.pushStack(e>1?m.unique(c):c),c.selector=this.selector?this.selector+" "+a:a,c},filter:function(a){return this.pushStack(w(this,a||[],!1))},not:function(a){return this.pushStack(w(this,a||[],!0))},is:function(a){return!!w(this,"string"==typeof a&&t.test(a)?m(a):a||[],!1).length}});var x,y=a.document,z=/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,A=m.fn.init=function(a,b){var c,d;if(!a)return this;if("string"==typeof a){if(c="<"===a.charAt(0)&&">"===a.charAt(a.length-1)&&a.length>=3?[null,a,null]:z.exec(a),!c||!c[1]&&b)return!b||b.jquery?(b||x).find(a):this.constructor(b).find(a);if(c[1]){if(b=b instanceof m?b[0]:b,m.merge(this,m.parseHTML(c[1],b&&b.nodeType?b.ownerDocument||b:y,!0)),u.test(c[1])&&m.isPlainObject(b))for(c in b)m.isFunction(this[c])?this[c](b[c]):this.attr(c,b[c]);return this}if(d=y.getElementById(c[2]),d&&d.parentNode){if(d.id!==c[2])return x.find(a);this.length=1,this[0]=d}return this.context=y,this.selector=a,this}return a.nodeType?(this.context=this[0]=a,this.length=1,this):m.isFunction(a)?"undefined"!=typeof x.ready?x.ready(a):a(m):(void 0!==a.selector&&(this.selector=a.selector,this.context=a.context),m.makeArray(a,this))};A.prototype=m.fn,x=m(y);var B=/^(?:parents|prev(?:Until|All))/,C={children:!0,contents:!0,next:!0,prev:!0};m.extend({dir:function(a,b,c){var d=[],e=a[b];while(e&&9!==e.nodeType&&(void 0===c||1!==e.nodeType||!m(e).is(c)))1===e.nodeType&&d.push(e),e=e[b];return d},sibling:function(a,b){for(var c=[];a;a=a.nextSibling)1===a.nodeType&&a!==b&&c.push(a);return c}}),m.fn.extend({has:function(a){var b,c=m(a,this),d=c.length;return this.filter(function(){for(b=0;d>b;b++)if(m.contains(this,c[b]))return!0})},closest:function(a,b){for(var c,d=0,e=this.length,f=[],g=t.test(a)||"string"!=typeof a?m(a,b||this.context):0;e>d;d++)for(c=this[d];c&&c!==b;c=c.parentNode)if(c.nodeType<11&&(g?g.index(c)>-1:1===c.nodeType&&m.find.matchesSelector(c,a))){f.push(c);break}return this.pushStack(f.length>1?m.unique(f):f)},index:function(a){return a?"string"==typeof a?m.inArray(this[0],m(a)):m.inArray(a.jquery?a[0]:a,this):this[0]&&this[0].parentNode?this.first().prevAll().length:-1},add:function(a,b){return this.pushStack(m.unique(m.merge(this.get(),m(a,b))))},addBack:function(a){return this.add(null==a?this.prevObject:this.prevObject.filter(a))}});function D(a,b){do a=a[b];while(a&&1!==a.nodeType);return a}m.each({parent:function(a){var b=a.parentNode;return b&&11!==b.nodeType?b:null},parents:function(a){return m.dir(a,"parentNode")},parentsUntil:function(a,b,c){return m.dir(a,"parentNode",c)},next:function(a){return D(a,"nextSibling")},prev:function(a){return D(a,"previousSibling")},nextAll:function(a){return m.dir(a,"nextSibling")},prevAll:function(a){return m.dir(a,"previousSibling")},nextUntil:function(a,b,c){return m.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return m.dir(a,"previousSibling",c)},siblings:function(a){return m.sibling((a.parentNode||{}).firstChild,a)},children:function(a){return m.sibling(a.firstChild)},contents:function(a){return m.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:m.merge([],a.childNodes)}},function(a,b){m.fn[a]=function(c,d){var e=m.map(this,b,c);return"Until"!==a.slice(-5)&&(d=c),d&&"string"==typeof d&&(e=m.filter(d,e)),this.length>1&&(C[a]||(e=m.unique(e)),B.test(a)&&(e=e.reverse())),this.pushStack(e)}});var E=/\S+/g,F={};function G(a){var b=F[a]={};return m.each(a.match(E)||[],function(a,c){b[c]=!0}),b}m.Callbacks=function(a){a="string"==typeof a?F[a]||G(a):m.extend({},a);var b,c,d,e,f,g,h=[],i=!a.once&&[],j=function(l){for(c=a.memory&&l,d=!0,f=g||0,g=0,e=h.length,b=!0;h&&e>f;f++)if(h[f].apply(l[0],l[1])===!1&&a.stopOnFalse){c=!1;break}b=!1,h&&(i?i.length&&j(i.shift()):c?h=[]:k.disable())},k={add:function(){if(h){var d=h.length;!function f(b){m.each(b,function(b,c){var d=m.type(c);"function"===d?a.unique&&k.has(c)||h.push(c):c&&c.length&&"string"!==d&&f(c)})}(arguments),b?e=h.length:c&&(g=d,j(c))}return this},remove:function(){return h&&m.each(arguments,function(a,c){var d;while((d=m.inArray(c,h,d))>-1)h.splice(d,1),b&&(e>=d&&e--,f>=d&&f--)}),this},has:function(a){return a?m.inArray(a,h)>-1:!(!h||!h.length)},empty:function(){return h=[],e=0,this},disable:function(){return h=i=c=void 0,this},disabled:function(){return!h},lock:function(){return i=void 0,c||k.disable(),this},locked:function(){return!i},fireWith:function(a,c){return!h||d&&!i||(c=c||[],c=[a,c.slice?c.slice():c],b?i.push(c):j(c)),this},fire:function(){return k.fireWith(this,arguments),this},fired:function(){return!!d}};return k},m.extend({Deferred:function(a){var b=[["resolve","done",m.Callbacks("once memory"),"resolved"],["reject","fail",m.Callbacks("once memory"),"rejected"],["notify","progress",m.Callbacks("memory")]],c="pending",d={state:function(){return c},always:function(){return e.done(arguments).fail(arguments),this},then:function(){var a=arguments;return m.Deferred(function(c){m.each(b,function(b,f){var g=m.isFunction(a[b])&&a[b];e[f[1]](function(){var a=g&&g.apply(this,arguments);a&&m.isFunction(a.promise)?a.promise().done(c.resolve).fail(c.reject).progress(c.notify):c[f[0]+"With"](this===d?c.promise():this,g?[a]:arguments)})}),a=null}).promise()},promise:function(a){return null!=a?m.extend(a,d):d}},e={};return d.pipe=d.then,m.each(b,function(a,f){var g=f[2],h=f[3];d[f[1]]=g.add,h&&g.add(function(){c=h},b[1^a][2].disable,b[2][2].lock),e[f[0]]=function(){return e[f[0]+"With"](this===e?d:this,arguments),this},e[f[0]+"With"]=g.fireWith}),d.promise(e),a&&a.call(e,e),e},when:function(a){var b=0,c=d.call(arguments),e=c.length,f=1!==e||a&&m.isFunction(a.promise)?e:0,g=1===f?a:m.Deferred(),h=function(a,b,c){return function(e){b[a]=this,c[a]=arguments.length>1?d.call(arguments):e,c===i?g.notifyWith(b,c):--f||g.resolveWith(b,c)}},i,j,k;if(e>1)for(i=new Array(e),j=new Array(e),k=new Array(e);e>b;b++)c[b]&&m.isFunction(c[b].promise)?c[b].promise().done(h(b,k,c)).fail(g.reject).progress(h(b,j,i)):--f;return f||g.resolveWith(k,c),g.promise()}});var H;m.fn.ready=function(a){return m.ready.promise().done(a),this},m.extend({isReady:!1,readyWait:1,holdReady:function(a){a?m.readyWait++:m.ready(!0)},ready:function(a){if(a===!0?!--m.readyWait:!m.isReady){if(!y.body)return setTimeout(m.ready);m.isReady=!0,a!==!0&&--m.readyWait>0||(H.resolveWith(y,[m]),m.fn.triggerHandler&&(m(y).triggerHandler("ready"),m(y).off("ready")))}}});function I(){y.addEventListener?(y.removeEventListener("DOMContentLoaded",J,!1),a.removeEventListener("load",J,!1)):(y.detachEvent("onreadystatechange",J),a.detachEvent("onload",J))}function J(){(y.addEventListener||"load"===event.type||"complete"===y.readyState)&&(I(),m.ready())}m.ready.promise=function(b){if(!H)if(H=m.Deferred(),"complete"===y.readyState)setTimeout(m.ready);else if(y.addEventListener)y.addEventListener("DOMContentLoaded",J,!1),a.addEventListener("load",J,!1);else{y.attachEvent("onreadystatechange",J),a.attachEvent("onload",J);var c=!1;try{c=null==a.frameElement&&y.documentElement}catch(d){}c&&c.doScroll&&!function e(){if(!m.isReady){try{c.doScroll("left")}catch(a){return setTimeout(e,50)}I(),m.ready()}}()}return H.promise(b)};var K="undefined",L;for(L in m(k))break;k.ownLast="0"!==L,k.inlineBlockNeedsLayout=!1,m(function(){var a,b,c,d;c=y.getElementsByTagName("body")[0],c&&c.style&&(b=y.createElement("div"),d=y.createElement("div"),d.style.cssText="position:absolute;border:0;width:0;height:0;top:0;left:-9999px",c.appendChild(d).appendChild(b),typeof b.style.zoom!==K&&(b.style.cssText="display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1",k.inlineBlockNeedsLayout=a=3===b.offsetWidth,a&&(c.style.zoom=1)),c.removeChild(d))}),function(){var a=y.createElement("div");if(null==k.deleteExpando){k.deleteExpando=!0;try{delete a.test}catch(b){k.deleteExpando=!1}}a=null}(),m.acceptData=function(a){var b=m.noData[(a.nodeName+" ").toLowerCase()],c=+a.nodeType||1;return 1!==c&&9!==c?!1:!b||b!==!0&&a.getAttribute("classid")===b};var M=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,N=/([A-Z])/g;function O(a,b,c){if(void 0===c&&1===a.nodeType){var d="data-"+b.replace(N,"-$1").toLowerCase();if(c=a.getAttribute(d),"string"==typeof c){try{c="true"===c?!0:"false"===c?!1:"null"===c?null:+c+""===c?+c:M.test(c)?m.parseJSON(c):c}catch(e){}m.data(a,b,c)}else c=void 0}return c}function P(a){var b;for(b in a)if(("data"!==b||!m.isEmptyObject(a[b]))&&"toJSON"!==b)return!1;
@@ -378,29 +378,26 @@ $(document).ready(function () {
 
 
 <center>
-<div id="cytofpipe-v1.3" class="section level1">
-<h1>Cytofpipe v1.3</h1>
+<div id="cytofpipe-v2.0" class="section level1">
+<h1>Cytofpipe v2.0</h1>
 <hr />
 </center>
-<p>This pipeline was developed to by Lucia Conde at the BLIC - UCL Cancer Institute, in collaboration with Jake Henry from the Immune Regulation and Tumour Immunotherapy Research Group, for the automatic analysis of flow and mass cytometry data in the UCL cluster <strong>Legion</strong>. Any UCL researcher can access the pipeline via legion. Researchers from other institutions can download the stand-alone version of Cytofpipe and run it directly in their personal computers. An external script developed by Heng Li (<a href="https://github.com/lh3/asub" class="uri">https://github.com/lh3/asub</a>) is also provided so that users can easily submit Cytofpipe to their cluster queue system (LSF, SGE/UGE, SLURM) if desired.</p>
-<p>Cytofpipe v1.3 can be used 1) to run standard cytometry data analysis for subset identification, 2) for comparison of groups of samples, and 3) to construct scaffold maps for visualizing complex relationships between samples. The methods underneath Cytofpipe v1.3 are based on publicly available R packages for flow/cytof data analysis</p>
-<ul>
-<li><p>Cytofpipe <strong>–clustering</strong> is based mainly on cytofkit (<a href="https://bioconductor.org/packages/release/bioc/html/cytofkit.html" class="uri">https://bioconductor.org/packages/release/bioc/html/cytofkit.html</a>), which is used for preprocessing/clustering, and openCyto (<a href="https://www.bioconductor.org/packages/release/bioc/html/openCyto.html" class="uri">https://www.bioconductor.org/packages/release/bioc/html/openCyto.html</a>), for basic automated gating.</p></li>
-<li><p>Cytofpipe <strong>–scaffold</strong> is based on scaffold (<a href="https://github.com/nolanlab/scaffold" class="uri">https://github.com/nolanlab/scaffold</a>)</p></li>
-<li><p>Cytofpipe <strong>–citrus</strong> is based on citrus (<a href="https://github.com/nolanlab/citrus" class="uri">https://github.com/nolanlab/citrus</a>)</p></li>
-</ul>
+<p>This pipeline was developed by Lucia Conde at the BLIC - UCL Cancer Institute, in collaboration with Jake Henry from the Immune Regulation and Tumour Immunotherapy Research Group, for the automatic analysis of flow and mass cytometry data in the UCL clusters <strong>legion</strong> and <strong>myriad</strong>. Any UCL researcher can access the pipeline via legion or myriad. Researchers from other institutions can download the stand-alone version of Cytofpipe and run it directly in their personal computers.</p>
+<p>Cytofpipe v2.0 is based mainly on cytofkit2 (<a href="https://bioconductor.org/packages/release/bioc/html/cytofkit2.html" class="uri">https://bioconductor.org/packages/release/bioc/html/cytofkit2.html</a>)</p>
 <p><br /></p>
 <div align="center">
-<h1 id="how-to-run-cytofpipe-v1.3">How to run Cytofpipe v1.3</h1>
+<h1 id="how-to-run-cytofpipe-v2.0">How to run Cytofpipe v2.0</h1>
 </div>
 <p><br></p>
 <div id="section" class="section level2 tabset">
 <h2></h2>
-<div id="using-the-ucl-cluster" class="section level3">
-<h3>1. Using the UCL cluster</h3>
+<div id="ucl-clusters" class="section level3">
+<h3>1. UCL clusters</h3>
 <p><br /></p>
+<p><em>Note: If you are using myriad, follow the same instructions and just change “legion” for “myriad”</em></p>
+<p><br></p>
 <p><strong>1.- Connect to legion and bring inputfiles:</strong></p>
-<p>You will need to connect to legion (apply for an account here: <a href="https://wiki.rc.ucl.ac.uk/wiki/Account_Services" class="uri">https://wiki.rc.ucl.ac.uk/wiki/Account_Services</a>), and transfer there the inputfiles. for example if you are doing clustering, that would be a folder with the input FCS files, a file with the list of clustering markers and optionally a config file.</p>
+<p>You will need to connect to legion (apply for an account here: <a href="https://wiki.rc.ucl.ac.uk/wiki/Account_Services" class="uri">https://wiki.rc.ucl.ac.uk/wiki/Account_Services</a>), and transfer there the inputfiles, i.e., a folder with the input FCS files, a file with the list of clustering markers and optionally a config file.</p>
 <p>To connect to legion, you can use Putty if you have Windows (check this UCL link: <a href="https://wiki.rc.ucl.ac.uk/wiki/Accessing_RC_Systems" class="uri">https://wiki.rc.ucl.ac.uk/wiki/Accessing_RC_Systems</a>) or use SSH from your Mac terminal:</p>
 <p><code>$ ssh UCL_ID@legion.rc.ucl.ac.uk</code></p>
 <p>To transfer the files to legion, you can either use SCP from your laptop:</p>
@@ -409,35 +406,27 @@ $(document).ready(function () {
 <p><strong>2. Load modules:</strong></p>
 <p>Once you are in legion, you will need to load the modules necessary for the pipeline to work.</p>
 <p><code>$ module load blic-modules</code></p>
-<p><code>$ module load cytofpipe/v1.3</code></p>
+<p><code>$ module load cytofpipe/v2.0</code></p>
 <p><strong>3.- Submit the job:</strong></p>
-<p>Let’s say you have a folder called ‘cytof_data’ in your home in legion that contains a directory with the FCS files, a file that contains the markers that you want to use for clustering, a file listing which samples belong toeach condition, and perhaps a config file, for example:</p>
+<p>Let’s say you have a folder called ‘cytof_data’ in your home in legion that contains a directory with the FCS files, a file that contains the markers that you want to use for clustering, a file listing which samples belong to each condition, and perhaps a config file, for example:</p>
 <pre><code>/home/user/Scratch/cytof_data/
 /home/user/Scratch/cytof_data/inputfiles/
 /home/user/Scratch/cytof_data/inputfiles/file1.fcs
 /home/user/Scratch/cytof_data/inputfiles/file2.fcs
 /home/user/Scratch/cytof_data/inputfiles/file3.fcs
-/home/user/Scratch/cytof_data/inputfiles/gated/file1_cellType1.fcs
-/home/user/Scratch/cytof_data/inputfiles/gated/file1_cellType2.fcs
-/home/user/Scratch/cytof_data/inputfiles/gated/file1_cellType3.fcs
-/home/user/Scratch/cytof_data/inputfiles/gated/file1_cellType4.fcs
 /home/user/Scratch/cytof_data/markers.txt
 /home/user/Scratch/cytof_data/conditions.txt
 /home/user/Scratch/cytof_data/config.txt</code></pre>
-<p>To run the pipeline in “clustering” mode with default parameters, just go to the ‘cytof_data’ folder and run:</p>
-<p><code>$ cytofpipe --clustering -i inputfiles -o results -m markers.txt</code></p>
+<p>To run the pipeline with default parameters, just go to the ‘cytof_data’ folder and run:</p>
+<p><code>$ cytofpipe -i inputfiles -o results -m markers.txt</code></p>
 <p>That will crate a new folder called “results” that will contain all the results of the analysis.</p>
-<p>Similarly, to run the pipeline in “scaffold” mode with default parameters:</p>
-<p><code>$ cytofpipe --scaffold -i inputfiles --ref file1.fcs -o results -m markers.txt</code></p>
-<p>Finally, to run the pipeline in “citrus” mode with default parameters:</p>
-<p><code>$ cytofpipe --citrus -i inputfiles --cond conditions.txt -o results -m markers.txt</code></p>
 <p><strong>4.- Errors before running</strong></p>
-<p>When you submit the job, before it actually runs, there is a JSV script that checks that everything is in order. For example, that the inputfiles folder exists, that there is not a results folder already there (so that nothing is overwritten), that if a config.txt file is inputed it has the appropriate format, etc… Only if everything looks fine, the job will be submitted. Otherwise, an error message will appear that will tell you that there is a problem. For example:</p>
-<pre><code>Program: Cytofpipe --clustering
-Version: 1.3
+<p>When you submit the job, before it actually runs, a JSV script checks that everything is in order. For example, that the inputfiles folder exists, that there is not a results folder already there (so that nothing is overwritten), that if a config.txt file is inputed it has the appropriate format, etc… Only if everything looks fine, the job will be submitted. Otherwise, an error message will appear that will tell you that there is a problem. For example:</p>
+<pre><code>Program: Cytofpipe
+Version: 2.0
 Contact: Lucia Conde &lt;l.conde\@ucl.ac.uk&gt;
 
-Usage:   cytofpipe --clustering -i DIR -o DIR -m FILE [options]
+Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
 
 Required: -i DIR       Input directory with the FCS files
           -o DIR       Output directory where results will be generated
@@ -446,8 +435,8 @@ Options: --config FILE            Configuration file to customize the analysis
          --flow|--cyto            Use autoLgcl (flow) or cytofAsinh (cytof) transformation [--cytof]
          --all|--downsample NUM   Use all events or downsample each FCS to NUM [--downsample 10000]
          --displayAll             Display all markers in output files [NULL]
-         --groups FILE          File listing the group each sample belongs to
-           --randomSampleSeed      Use a random sampling seed instead of default seed used for
+         --groups FILE            File listing the group each sample belongs to
+     --randomSampleSeed      Use a random sampling seed instead of default seed used for
                                 reproducible expression matrix merging
          --randomTsneSeed        Use a random tSNE seed instead of default seed used for
                                   reproducible tSNE results
@@ -464,33 +453,29 @@ Exiting.
 -----------------------------------------------------------------------------------------------------------------
 2739095 3.50000 cytof-raw_ regmond      r     04/03/2017 10:52:31 Yorick@node-z00a-011          1        
 2739177 0.00000 cytof-gate regmond      qw    04/03/2017 10:59:51                               1        </code></pre>
-<p>In the above example I have one job (with ID 2739095) that is already running (state = r), and a second job (with ID 2739177) that is in queue (state = q).</p>
+<p>In the above example I have one job (with ID 2739095) that is already running (state = r), and a second job (with ID 2739177) that is in queue (state = qw).</p>
 <p>If you submit a job, and later on it does not show when you do qstat, that means that it finished. You should then be able to see a new folder that has the results of the analysis.</p>
 <p><br /></p>
 </div>
-<div id="using-a-machine-mac-linux-without-queue-system" class="section level3">
-<h3>2. Using a machine (mac, linux) without queue system</h3>
+<div id="stand-alone-version-with-singularity" class="section level3">
+<h3>2. Stand-alone version with singularity</h3>
 <p><br /></p>
 <p><strong>1.- Installation</strong></p>
-<p>Download cytofpipe from <a href="https://github.com/UCL-BLIC/cytofpipe/archive/v1.3.tar.gz" class="uri">https://github.com/UCL-BLIC/cytofpipe/archive/v1.3.tar.gz</a> and uncompress it using tar:</p>
-<p><code>$ tar -xvf cytofpipe_1.3.tar.gz</code></p>
-<p>That will create a ‘cytofpipe_1.3’ masters folder that contains the code almost ready to use. You will just need to tell cytofpipe where you have downloaded the code. For that, open the cytofpipe_1.3/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so that it points to the master folder:</p>
-<pre><code>$ENV{CYTOFPIPE_HOME}=&quot;/path/where/your/have/cytofpipe_1.3&quot;</code></pre>
+<p>Download the cytofpipe singularity image from <a href="https://XXXX" class="uri">https://XXXX</a> and save it somewhere in your computer.</p>
 <p><strong>2.- Dependencies</strong></p>
-<p>You will need to have R installed and in your path (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>), as well as Pandoc (<a href="https://pandoc.org/" class="uri">https://pandoc.org/</a>). Pandoc is simply used to generate a summary PDF after each run. If you don’t have pandoc installed is not a big issue: the summary PDF will not be generated and you will see an error in the terminal regarding this, but cytofpipe will run anyway and you should be able to see all the other output files.</p>
-Cytofpipe depends on several R packages, mainly:
-<ul>
-<li>
-cytofkit (<a href="https://bioconductor.org/packages/release/bioc/html/cytofkit.html" class="uri">https://bioconductor.org/packages/release/bioc/html/cytofkit.html</a>)
-</li>
-<li>
-scaffold (<a href="https://github.com/nolanlab/scaffold" class="uri">https://github.com/nolanlab/scaffold</a>)
-</li>
-<li>
-citrus (<a href="https://github.com/nolanlab/citrus" class="uri">https://github.com/nolanlab/citrus</a>)
-</li>
-</ul>
-<p>Please make sure that these packages are installed, ad well as ‘ini’, ‘hash’, and OpenCyto (if you are planning to do automatic gating). Cytofpipe_v1.3 has been tested in R.3.4.2 with cytofkit 1.10.0 (available from bioconductor 3.5), scaffold 1.0, and citrus 0.08, and therefore we recommend that you install these specific versions to avoid potential clashes with older/newer versions.</p>
+<p>The cytofpipe singularity image contains all the software needed to run cytofpipe (R, pandoc, cytofpipe itself…) so as long as you have singularity, you don’t need to install anything else.</p>
+<p>To install singularity in Mac, download the Singularity Desktop fo macOS (.dmg file) as instructed here: <a href="https://www.sylabs.io/singularity-desktop-macos" class="uri">https://www.sylabs.io/singularity-desktop-macos</a>.</p>
+<p>For Ubuntu, type the below code as instructed here: <a href="https://www.sylabs.io/guides/3.0/user-guide/installation.html#install-the-debian-ubuntu-package-using-apt" class="uri">https://www.sylabs.io/guides/3.0/user-guide/installation.html#install-the-debian-ubuntu-package-using-apt</a></p>
+<pre><code>sudo wget -O- http://neuro.debian.net/lists/xenial.us-ca.full | \
+    sudo tee /etc/apt/sources.list.dneurodebian.sources.list &amp;&amp; \
+    sudo apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9 &amp;&amp; \
+    sudo apt-get update
+
+sudo apt-get install -y singularity-container
+
+# check it works 
+singularity --version </code></pre>
+<p>The full documentation for singularity can be found at <a href="https://singularity.lbl.gov" class="uri">https://singularity.lbl.gov</a></p>
 <p><strong>3.- Submit the job:</strong></p>
 <p>Let’s say you have a folder called ‘cytof_data’ that contains a directory with the FCS files, a file that contains the markers that you want to use for clustering, a file listing which samples belong to each condition, and perhaps a config file, for example:</p>
 <pre><code>/home/user/Scratch/cytof_data/
@@ -498,26 +483,18 @@ citrus (<a href="https://github.com/nolanlab/citrus" class="uri">https://github.
 /home/user/Scratch/cytof_data/inputfiles/file1.fcs
 /home/user/Scratch/cytof_data/inputfiles/file2.fcs
 /home/user/Scratch/cytof_data/inputfiles/file3.fcs
-/home/user/Scratch/cytof_data/inputfiles/gated/file1_cellType1.fcs
-/home/user/Scratch/cytof_data/inputfiles/gated/file1_cellType2.fcs
-/home/user/Scratch/cytof_data/inputfiles/gated/file1_cellType3.fcs
-/home/user/Scratch/cytof_data/inputfiles/gated/file1_cellType4.fcs
 /home/user/Scratch/cytof_data/markers.txt
 /home/user/Scratch/cytof_data/conditions.txt
 /home/user/Scratch/cytof_data/config.txt</code></pre>
-<p>To run the pipeline in “clustering” mode with default parameters, just run the “cytofpipe.pl” perl script located in the masters cytofpipe_v1.3 folder:</p>
-<p><code>$ /path/to/cytofpipe_v1.3/cytofpipe.pl --clustering -i inputfiles -o results -m markers.txt</code></p>
+<p>To run the pipeline mode with default parameters, just type:</p>
+<p><code>$ singularity exec -B ${PWD} cytofpipe.pl -i inputfiles -o results -m markers.txt</code></p>
 <p>That will crate a new folder called “results” that will contain all the results of the analysis.</p>
-<p>Similarly, to run the pipeline in “scaffold” mode with default parameters:</p>
-<p><code>$ /path/to/cytofpipe_v1.3/cytofpipe.pl --scaffold -i inputfiles --ref file1.fcs -o results -m markers.txt</code></p>
-<p>Finally, to run the pipeline in “citrus” mode with default parameters:</p>
-<p><code>$ /path/to/cytofpipe_v1.3/cytofpipe.pl --citrus -i inputfiles --cond conditions.txt -o results -m  markers.txt</code></p>
 <p>Cytofpipe will first check that everything is in order. For example, that the inputfiles folder exists, that there is not a results folder already there (so that nothing is overwritten), that if a config.txt file is inputed it has the appropriate format, etc… Only if everything looks fine, the job will be submitted. Otherwise, an error message will appear that will tell you that there is a problem. For example:</p>
-<pre><code>Program: Cytofpipe --clustering
-Version: 1.3
+<pre><code>Program: Cytofpipe
+Version: 2.0
 Contact: Lucia Conde &lt;l.conde\@ucl.ac.uk&gt;
 
-Usage:   cytofpipe --clustering -i DIR -o DIR -m FILE [options]
+Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
 
 Required: -i DIR       Input directory with the FCS files
           -o DIR       Output directory where results will be generated
@@ -526,7 +503,7 @@ Options: --config FILE            Configuration file to customize the analysis
          --flow|--cyto            Use autoLgcl (flow) or cytofAsinh (cytof) transformation [--cytof]
          --all|--downsample NUM   Use all events or downsample each FCS to NUM [--downsample 10000]
          --displayAll             Display all markers in output files [NULL]
-         --groups FILE          File listing the group each sample belongs to
+         --groups FILE           File listing the group each sample belongs to
          --randomSampleSeed      Use a random sampling seed instead of default seed used for
                                 reproducible expression matrix merging
          --randomTsneSeed        Use a random tSNE seed instead of default seed used for
@@ -537,45 +514,49 @@ Options: --config FILE            Configuration file to customize the analysis
 Unable to run job: Please check that you are providing a inputdir (-i), outputdir (-o) and markersfile (-m)
 Exiting.
 </code></pre>
-<p><br></p>
-</div>
-<div id="using-a-cluster-with-queue-system" class="section level3">
-<h3>3. Using a cluster with queue system</h3>
-<p><br /></p>
-<p><strong>1.- asub:</strong></p>
-<p>While we have a Cytofpipe version that runs in the UCL cluster using its queue system, we don’t provide a version that will take advantage of the queue system in other clusters outside UCL. However, this is easily accomplished by using the ‘asub’ script developed by Heng Li at the Braod Institute (<a href="https://github.com/lh3/asub" class="uri">https://github.com/lh3/asub</a>), and that we provide in the Cytofpipe_v1.3 masters folder for convenience.</p>
-<p>The only difference in running the script directly or via asub, is that if you use asub, the command line needs to be written into a file, and then that file is called with asub. For example, to submit a job directly you would do:</p>
-<p><code>$ /path/cytofpipe.pl --clustering -i inputfiles -o results -m markers.txt</code></p>
-<p>The same job submited via asub would require you to write the above line into a file, and then call asub on the file:</p>
-<p><code>$ echo &quot;/path/cytofpipe.pl --clustering -i inputfiles -o results -m markers.txt&quot; &gt; cmd.txt</code></p>
-<p><code>$ /path/asub cmd.txt</code></p>
-<p>Every time you run a jub via asub, asub will generate two folders and a file with names that start with ‘asub_XXXXX’, where XXXXX is a random number. These are just STDOUT and STDERR folders that can give clues if something went wrong with the job, but that can be ignored otherwise.</p>
-<p><br> The advantage of using asub is that it makes possible to run Cytofpipe in the user’s cluster regardless of their platform and queuing systems (LSF, GSE, SLURM). Additionally, it facilitates the submission of array jobs. For example, if you want to run several Cytofpipe jobs in parallel you could write a cmd.txt file that contains all your jobs, one per line, and all these jobs will be submitted as an array job and will be run in parallel. For example if you want to run a –clustering job using different configurations, you cna write a cmd.txt file like this:</p>
-<pre><code>/path/cytofpipe.pl --clustering -i inputfiles -o results_A -m markers.txt --config config_A.txt
-/path/cytofpipe.pl --clustering -i inputfiles -o results_B -m markers.txt --config config_B.txt
-/path/cytofpipe.pl --clustering -i inputfiles -o results_C -m markers.txt --config config_C.txt</code></pre>
+<p><strong>4.- If your cluster has a queue system:</strong></p>
+<p>Just submit it as any other job. Depending on your platform and queue sytem (LSF, SGE, SLURM..) this will vary slightly. For example, to submit cytofpipe v2.0 in a SGE platform, you can create a ‘submit_cytofpipe.qsub’ script like this:</p>
+<pre><code>#!/bin/bash -l
+
+#$ -S /bin/bash
+#$ -l h_rt=2:0:0
+#$ -l mem=2G
+#$ -l tmpfs=2G
+
+#$ -pe smp 1
+
+#$ -N cytofpipe_run
+#$ -cwd 
+
+singularity exec -B ${PWD} /path/to/cytofpipe.img cytofpipe.pl -i input -m markers.txt -o results</code></pre>
+<p>that can be then submitted with:</p>
+<p><code>$ qsub submit_cytofpipe.qsub</code></p>
+<p>Alternatively, you can use the ‘asub’ script developed by Heng Li at the Braod Institute, and that cna be downloaded from <a href="https://github.com/lh3/asub" class="uri">https://github.com/lh3/asub</a>. Just write the command line into a file and submit it with asub:</p>
+<p><code>$ echo &quot;singularity exec -B ${PWD} /path/to/cytofpipe.img cytofpipe.pl -i input -o results -m markers.txt&quot; &gt; cmd.txt</code></p>
+<p><code>$ /path/to/asub cmd.txt</code></p>
+<p><br> The advantage of using asub is that it makes possible to run Cytofpipe in the user’s cluster regardless of their platform and queuing systems (LSF, GSE, SLURM). Additionally, it facilitates the submission of array jobs. For example, if you want to run several Cytofpipe jobs in parallel you could write a cmd.txt file that contains all your jobs, one per line, and all these jobs will be submitted as an array job and will be run in parallel. For example if you want to run a job using different configurations, you cna write a cmd.txt file like this:</p>
+<pre><code>singularity exec -B ${PWD} /path/to/cytofpipe.img cytofpipe.pl -i inputfiles -o results_A -m markers.txt --config config_A.txt
+singularity exec -B ${PWD} /path/to/cytofpipe.img cytofpipe.pl -i inputfiles -o results_B -m markers.txt --config config_B.txt
+singularity exec -B ${PWD} /path/to/cytofpipe.img cytofpipe.pl -i inputfiles -o results_C -m markers.txt --config config_C.txt</code></pre>
 <p>and then run it like this:</p>
-<p><code>$ /path/asub cmd.txt</code></p>
-<p>Additionally, the user can specify different directrices for the queue scheduler via asub. For example, to run the above job but requesting 6 hours of running time and 10Gb of RMA per job, you would do:</p>
-<p><code>$ /path/asub -M 10 -W 2:0:0 cmd.txt</code></p>
+<p><code>$ /path/to/asub cmd.txt</code></p>
+<p>As with the qsub script above, asub can specify different directrices for the queue scheduler. For example, to run the above job but requesting 6 hours of running time and 10Gb of RAM per job, you would do:</p>
+<p><code>$ /path/to/asub -M 10 -W 2:0:0 cmd.txt</code></p>
 <p>All the asub options can be found in Heng Li’s github page (<a href="https://github.com/lh3/asub" class="uri">https://github.com/lh3/asub</a>) or by running asub without arguments:</p>
-<p><code>$ /path/asub</code></p>
-<p><br></p>
-<p><strong>2.- Check submission</strong></p>
+<p><code>$ /path/to/asub</code></p>
+<p><em>NOTE: check submission</em></p>
 <p>Sometimes, particularly when the user requests a lot of time, memory, nodes, or simply when the cluster is busy, the job might be queued for a long time before ir runs. And one frustrating thing is to find out that, after being in queue for perhaps hours, the job finally starts running but immediately stops because for example one of the arguments given by the user was invalid, a required R package is not installed, or one if the input files was mispelled.</p>
-<p>To avoid this, cytofpipe also contains a script in the masters folder called “check_submission.pl”, that do some checkings of the arguments passed to cytofpipe.pl. In reality, this script is just an almost identical copy of cytofpipe.pl, which checks that everything is in order before doing any analysis. To use it, first change the variable CYTOFPIPE_HOME so that it points to the master folder:</p>
-<pre><code>$ENV{CYTOFPIPE_HOME}=&quot;/path/where/your/have/cytofpipe_1.3&quot;</code></pre>
-<p>and then simply run it with the same arguments that you want to pass to cytofpipe.pl.</p>
+<p>To avoid this, cytofpipe also contains a script called “check_submission.pl”, that do some checkings of the arguments passed to cytofpipe.pl. In reality, this script is just an almost identical copy of cytofpipe.pl, which checks that everything is in order before doing any analysis. To use it, simply run it with the same arguments that you want to pass to cytofpipe.pl.</p>
 <p>For example, if your cmd.txt file is</p>
-<pre><code>/path/cytofpipe.pl --clustering -i inputfiles -o results -m markers.txt</code></pre>
+<pre><code>singularity exec -B ${PWD} /path/to/cytofpipe.img cytofpipe.pl -i input -o results -m markers.txt</code></pre>
 <p>you can check that the job will run fine when submitted via asub if you first type:</p>
-<p><code>$ /path/checkSubmission.pl --clustering -i inputfiles -o results -m markers.txt</code></p>
+<p><code>$ singularity exec -B ${PWD} /path/to/cytofpipe.img checkSubmission.pl -i inputfiles -o results -m markers.txt</code></p>
 <p>checkSubmission.pl will check that you indeed have a folder called ‘inputfiles’ and a filed called ‘markers.txt’, that there is not a folder called ‘results’ already there (so that nothing is overwritten), or if you also use a config file, it will check that it has the appropiate format. If everything seems correct, you will see a “No issues detected” message, otherwise an error message will appear that will tell you that there is a problem. For example:</p>
-<pre><code>Program: Cytofpipe --clustering
-Version: 1.3
+<pre><code>Program: Cytofpipe
+Version: 2.0
 Contact: Lucia Conde &lt;l.conde\@ucl.ac.uk&gt;
 
-Usage:   cytofpipe --clustering -i DIR -o DIR -m FILE [options]
+Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
 
 Required: -i DIR       Input directory with the FCS files
           -o DIR       Output directory where results will be generated
@@ -584,7 +565,7 @@ Options: --config FILE            Configuration file to customize the analysis
          --flow|--cyto            Use autoLgcl (flow) or cytofAsinh (cytof) transformation [--cytof]
          --all|--downsample NUM   Use all events or downsample each FCS to NUM [--downsample 10000]
          --displayAll             Display all markers in output files [NULL]
-         --groups FILE          File listing the group each sample belongs to
+         --groups FILE           File listing the group each sample belongs to
          --randomSampleSeed      Use a random sampling seed instead of default seed used for
                                 reproducible expression matrix merging
          --randomTsneSeed        Use a random tSNE seed instead of default seed used for
@@ -595,33 +576,140 @@ Options: --config FILE            Configuration file to customize the analysis
 ERROR: Can&#39;t find markers file &lt;markers.tx&gt;
 </code></pre>
 <p>However, please note that checkSubmission.pl will only do some inital basic checking. It will check that all the arguments given to Cytofpipe are valid, but <strong>will not examine throughly every single aspect that could go wrong with your job</strong>. For example, it will not check whether the markers listed in the markers file indeed exist in the FCS files, or if the FCS files are corrupted.</p>
-<p>In any case, to avoid finding out about a mispelled markers filename after being waiting in queue for hours, we recommend that you use checkSubmission.pl in your command line before submitting it with asub (if you don’t use asub, this is not necessary, because cytofpipe.pl will do the checkings anyway as soon as you submit it)</p>
+<p>In any case, to avoid finding out about a mispelled markers filename after being waiting in queue for hours, we recommend that you use checkSubmission.pl in your command line before submitting it to a queue (if you are not using a queue system, this is not necessary, because cytofpipe.pl will do the checkings anyway as soon as you submit it)</p>
+<p><br></p>
+</div>
+<div id="stand-alone-version-without-singularity" class="section level3">
+<h3>3. Stand-alone version without singularity</h3>
+<p><br /></p>
+<p><strong>1.- Installation and dependencies</strong></p>
+<p>If you don’t want or are not allowed to install singularity in your computer/cluster, you can still run cytofpipe by downloading the code from github, and by making sure that all the dependencies are met.</p>
+<p>First, download cytofpipe from <a href="https://github.com/UCL-BLIC/cytofpipe/archive/v2.0.tar.gz" class="uri">https://github.com/UCL-BLIC/cytofpipe/archive/v2.0.tar.gz</a> and uncompress it using tar:</p>
+<p>$ tar -xvf cytofpipe_v2.0.tar.gz</p>
+<p>That will create a ‘cytofpipe_v2.0’ masters folder that contains the code almost ready to use. You will just need to tell cytofpipe where you have downloaded the code. For that, open the cytofpipe_v2.0/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so that it points to the master folder:</p>
+<pre><code>$ENV{CYTOFPIPE_HOME}=&quot;/path/where/your/have/cytofpipe_v2.0&quot;</code></pre>
+<p>Second, you will need to have R installed and in your path (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>), as well as Pandoc (<a href="https://pandoc.org/" class="uri">https://pandoc.org/</a>). Pandoc is simply used to generate a summary PDF after each run. If you don’t have pandoc installed is not a big issue: the summary PDF will not be generated and you will see an error in the terminal regarding this, but cytofpipe will run anyway and you should be able to see all the other output files.</p>
+<p>Cytofpipe depends on several R packages, mainly cytofkit2 (<a href="https://github.com/JinmiaoChenLab/cytofkit2" class="uri">https://github.com/JinmiaoChenLab/cytofkit2</a>), so you will have to have this installed, as well as the ‘ini’ and ‘hash’ packages. Cytofpipe_v2.0 has been tested in R.3.6 and therefore we suggest that you use the same R version.</p>
+<p><strong>2.- Submit the job:</strong></p>
+<p>Let’s say you have a folder called ‘cytof_data’ that contains a directory with the FCS files, a file that contains the markers that you want to use for clustering, a file listing which samples belong to each condition, and perhaps a config file, for example:</p>
+<pre><code>/home/user/Scratch/cytof_data/
+/home/user/Scratch/cytof_data/inputfiles/
+/home/user/Scratch/cytof_data/inputfiles/file1.fcs
+/home/user/Scratch/cytof_data/inputfiles/file2.fcs
+/home/user/Scratch/cytof_data/inputfiles/file3.fcs
+/home/user/Scratch/cytof_data/markers.txt
+/home/user/Scratch/cytof_data/conditions.txt
+/home/user/Scratch/cytof_data/config.txt</code></pre>
+<p>To run the pipeline default parameters, just run the “cytofpipe.pl” perl script located in the masters cytofpipe_v2.0 folder:</p>
+<p><code>$ /path/to/cytofpipe_v2.0/cytofpipe.pl -i inputfiles -o results -m markers.txt</code></p>
+<p>That will crate a new folder called “results” that will contain all the results of the analysis.</p>
+<p>Cytofpipe will first check that everything is in order. For example, that the inputfiles folder exists, that there is not a results folder already there (so that nothing is overwritten), that if a config.txt file is inputed it has the appropriate format, etc… Only if everything looks fine, the job will be submitted. Otherwise, an error message will appear that will tell you that there is a problem. For example:</p>
+<pre><code>Program: Cytofpipe
+Version: 2.0
+Contact: Lucia Conde &lt;l.conde\@ucl.ac.uk&gt;
+
+Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
+
+Required: -i DIR       Input directory with the FCS files
+          -o DIR       Output directory where results will be generated
+          -m FILE      File with markers that will be selected for clustering
+Options: --config FILE            Configuration file to customize the analysis
+         --flow|--cyto            Use autoLgcl (flow) or cytofAsinh (cytof) transformation [--cytof]
+         --all|--downsample NUM   Use all events or downsample each FCS to NUM [--downsample 10000]
+         --displayAll             Display all markers in output files [NULL]
+         --groups FILE           File listing the group each sample belongs to
+         --randomSampleSeed      Use a random sampling seed instead of default seed used for
+                                reproducible expression matrix merging
+         --randomTsneSeed        Use a random tSNE seed instead of default seed used for
+                                reproducible tSNE results
+         --randomFlowSeed   Use a random flowSOM seed instead of default seed used for
+                            reproducible flowSOM results
+
+Unable to run job: Please check that you are providing a inputdir (-i), outputdir (-o) and markersfile (-m)
+Exiting.
+</code></pre>
+<p><strong>3.- If your cluster has a queue system:</strong></p>
+<p>Just submit it as any other job. Depending on your platform and queue sytem (LSF, SGE, SLURM..) this will vary slightly. For example, to submit cytofpipe v2.0 in a SGE platform, you can create a ‘submit_cytofpipe.qsub’ script like this:</p>
+<pre><code>#!/bin/bash -l
+
+#$ -S /bin/bash
+#$ -l h_rt=2:0:0
+#$ -l mem=2G
+#$ -l tmpfs=2G
+
+#$ -pe smp 1
+
+#$ -N cytofpipe_run
+#$ -cwd 
+
+/path/to/cytofpipe.pl -i input -m markers.txt -o results</code></pre>
+<p>that can be then submitted with:</p>
+<p><code>$ qsub submit_cytofpipe.qsub</code></p>
+<p>Alternatively, you can use the ‘asub’ script developed by Heng Li at the Braod Institute, and that cna be downloaded from <a href="https://github.com/lh3/asub" class="uri">https://github.com/lh3/asub</a>). Just wqrite the command line into a file and submit it with asub:</p>
+<p><code>$ echo &quot;/path/to/cytofpipe.pl -i input -o results -m markers.txt&quot; &gt; cmd.txt</code></p>
+<p><code>$ /path/to/asub cmd.txt</code></p>
+<p><br> The advantage of using asub is that it makes possible to run Cytofpipe in the user’s cluster regardless of their platform and queuing systems (LSF, GSE, SLURM). Additionally, it facilitates the submission of array jobs. For example, if you want to run several Cytofpipe jobs in parallel you could write a cmd.txt file that contains all your jobs, one per line, and all these jobs will be submitted as an array job and will be run in parallel. For example if you want to run a job using different configurations, you cna write a cmd.txt file like this:</p>
+<pre><code>/path/to/cytofpipe.pl -i inputfiles -o results_A -m markers.txt --config config_A.txt
+/path/to/cytofpipe.pl -i inputfiles -o results_B -m markers.txt --config config_B.txt
+/path/to/cytofpipe.pl -i inputfiles -o results_C -m markers.txt --config config_C.txt</code></pre>
+<p>and then run it like this:</p>
+<p><code>$ /path/to/asub cmd.txt</code></p>
+<p>As with the qsub script above, asub can specify different directrices for the queue scheduler. For example, to run the above job but requesting 6 hours of running time and 10Gb of RAM per job, you would do:</p>
+<p><code>$ /path/to/asub -M 10 -W 2:0:0 cmd.txt</code></p>
+<p>All the asub options can be found in Heng Li’s github page (<a href="https://github.com/lh3/asub" class="uri">https://github.com/lh3/asub</a>) or by running asub without arguments:</p>
+<p><code>$ /path/to/asub</code></p>
+<p><em>NOTE: Check submission</em></p>
+<p>Sometimes, particularly when the user requests a lot of time, memory, nodes, or simply when the cluster is busy, the job might be queued for a long time before ir runs. And one frustrating thing is to find out that, after being in queue for perhaps hours, the job finally starts running but immediately stops because for example one of the arguments given by the user was invalid, a required R package is not installed, or one if the input files was mispelled.</p>
+<p>To avoid this, cytofpipe also contains a script called “check_submission.pl”, that do some checkings of the arguments passed to cytofpipe.pl. In reality, this script is just an almost identical copy of cytofpipe.pl, which checks that everything is in order before doing any analysis. To use it, simply run it with the same arguments that you want to pass to cytofpipe.pl.</p>
+<p>For example, if your cmd.txt file is</p>
+<pre><code>/path/to/cytofpipe.pl -i input -o results -m markers.txt</code></pre>
+<p>you can check that the job will run fine when submitted via asub if you first type:</p>
+<p><code>$ /path/to/checkSubmission.pl -i inputfiles -o results -m markers.txt</code></p>
+<p>checkSubmission.pl will check that you indeed have a folder called ‘inputfiles’ and a filed called ‘markers.txt’, that there is not a folder called ‘results’ already there (so that nothing is overwritten), or if you also use a config file, it will check that it has the appropiate format. If everything seems correct, you will see a “No issues detected” message, otherwise an error message will appear that will tell you that there is a problem. For example:</p>
+<pre><code>Program: Cytofpipe
+Version: 2.0
+Contact: Lucia Conde &lt;l.conde\@ucl.ac.uk&gt;
+
+Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
+
+Required: -i DIR       Input directory with the FCS files
+          -o DIR       Output directory where results will be generated
+          -m FILE      File with markers that will be selected for clustering
+Options: --config FILE            Configuration file to customize the analysis
+         --flow|--cyto            Use autoLgcl (flow) or cytofAsinh (cytof) transformation [--cytof]
+         --all|--downsample NUM   Use all events or downsample each FCS to NUM [--downsample 10000]
+         --displayAll             Display all markers in output files [NULL]
+         --groups FILE           File listing the group each sample belongs to
+         --randomSampleSeed      Use a random sampling seed instead of default seed used for
+                                reproducible expression matrix merging
+         --randomTsneSeed        Use a random tSNE seed instead of default seed used for
+                                reproducible tSNE results
+         --randomFlowSeed   Use a random flowSOM seed instead of default seed used for
+                            reproducible flowSOM results
+
+ERROR: Can&#39;t find markers file &lt;markers.tx&gt;
+</code></pre>
+<p>However, please note that checkSubmission.pl will only do some inital basic checking. It will check that all the arguments given to Cytofpipe are valid, but <strong>will not examine throughly every single aspect that could go wrong with your job</strong>. For example, it will not check whether the markers listed in the markers file indeed exist in the FCS files, or if the FCS files are corrupted.</p>
+<p>In any case, to avoid finding out about a mispelled markers filename after being waiting in queue for hours, we recommend that you use checkSubmission.pl in your command line before submitting it to a queue (if you are not using a queue system, this is not necessary, because cytofpipe.pl will do the checkings anyway as soon as you submit it)</p>
 <p><br></p>
 </div>
 </div>
 <div id="section-1" class="section level2 tabset">
 <h2></h2>
 <div align="center">
-<h1 id="cytofpipe-v1.3-commands">Cytofpipe v1.3 commands</h1>
+<h1 id="cytofpipe-v2.0-commands">Cytofpipe v2.0 commands</h1>
 </div>
 <p><br></p>
-<div id="clustering" class="section level3">
-<h3>–clustering</h3>
+<pre><code>Usage: cytofpipe -i DIR -o DIR -m FILE [options]</code></pre>
 <p><br /></p>
-<pre><code>Usage: cytofpipe --clustering -i DIR -o DIR -m FILE [options]</code></pre>
-<p><br /></p>
-<p>Cytofpipe <strong>–clustering</strong> can be used to analyze data from multiple FCS files. <br /></p>
+<p>Cytofpipe can be used to analyze data from multiple FCS files. <br /></p>
 <p>First, FCS files will be merged, expression data for selected markers will be transformed, and data will be downsampled according to the user’s specifications. Then, clustering will be performed to detect cell types. Finally, the high dimensional flow/mass cytometry data will be visualized into a two-dimensional map with colors representing cell type, and heatmaps to visualize the median expression for each marker in each cell type will be generated.</p>
 <ul>
-<li><em>Note 1</em>: The markers uploaded by the user should be the ones provided in the “Description” filed of the FCS. This will usually be a longer format (141Pr_CD38) in cytof data and a shorter format (CD38) in Flow data. However, the shorter version can be used when uploading cytod data.</li>
+<li><em>Note 1</em>: The markers uploaded by the user should be the ones provided in the “Description” file of the FCS. This will usually be a longer format (141Pr_CD38) in cytof data and a shorter format (CD38) in Flow data. However, the shorter version can be used when uploading cytof data.</li>
 <li><em>Note 2</em>: Markers uploaded by the user are used for clustering and dimensional reduction, and by default they are the only ones displayed in the results (heatmaps, etc..). Using the <strong>–displayAll</strong> option will override this and all the markers (with exception of Time, Event, viability and FSC/SSC channels) will be included in the output plots and files. All markers are transformed to the user’s specifications with exception of FSC/SSC that are linearly transformed.</li>
-<li><em>Note 3</em>: Cytofpipe v1.3 runs cytofkit_1_10_0 <br /></li>
+<li><em>Note 3</em>: Cytofpipe v2.0 runs cytofkit2 <br /></li>
 </ul>
-<p>Cytofpipe assumes that the data has been properly preprocessed beforehand, i.e., that normalisation, debarcoding and compensation (if flow) were done properly, and that all the debris, doublets, and live_neg events were removed before analysis. However, if manual gating has not been done, automatic gating of live events can be done by setting the “Gating” option in the config file to “YES”. But importantly, the default Cytofpipe gating strategy (shown below) is based on the manual gating example provided by Jake. <strong>The gating will not work properly on datasets coming from other sources where the staining panel, instrument, or other factors are different than the ones used by Jake at the Cancer Institute.</strong></p>
-<p align="center">
-Root —&gt; BeadNeg —&gt; Cells —&gt; Live
-</p>
-<p>Automated gating can be performed for more complex assays, however, a proper gating template needs to be created before using the pipeline for gating these dtasets. Any type of dataset can be used with the current pipeline if gating is not needed.</p>
+<p>Cytofpipe assumes that the data has been properly preprocessed beforehand, i.e., that normalisation, debarcoding and compensation (if flow) were done properly, and that all the debris, doublets, and live_neg events were removed before analysis.</p>
 <p><br /></p>
 <div id="command-arguments" class="section level4">
 <h4><strong>Command arguments</strong></h4>
@@ -649,18 +737,11 @@ HLA-DR</code></pre>
 <ul>
 <li>
 <p><strong>–config FILE</strong>: The config file is not mandatory. If is not provided, the pipeline will use a default config.txt file, which has GATING = no, TRANSFORM = cytofAsinh, MERGE = ceil (n = 10,000), PHENOGRAPH = yes (other clustering methods = no), DISAPLAY_ALL = no, TSNE parameters: perplexity = 30, theta = 0.5, max_iter = 1000. If provided, it has to have the following format:</p>
-<pre><code>[ clustering ]              #-- MANDATORY FIELD, IT SHOULD BE THE FIRST LINE OF THE CONFIG FILE
-
-GATING = yes|no             #-- MANDATORY FIELD:
+<pre><code>[ cytofpipe ]               #-- MANDATORY FIELD, IT SHOULD BE THE FIRST LINE OF THE CONFIG FILE
 
 TRANSFORM = autoLgcl, cytofAsinh, logicle, arcsinh or none  #-- MANDATORY FIELD
 MERGE = ceil, all, min, or fixed                            #-- MANDATORY FIELD
 DOWNSAMPLE = number between 500 and 100000                  #-- MANDATORY FIELD if MERGE = fixed/ceil
-
-#- DimRed method (tSNE) parameters:
-PERPLEXITY = 30
-THETA = 0.5
-MAX_ITER = 1000
 
 #- Clustering methods:
 PHENOGRAPH = yes|no
@@ -670,8 +751,14 @@ FLOWSOM = yes|no
 FLOWSOM_K = number between 2 and 50                   #-- MANDATORY FIELD if FLOWSOM = YES:
 
 #- Additional visualization methods:
+TSNE = yes|no
 PCA = yes|no
 ISOMAP = yes|no
+
+#- tSNE parameters:
+PERPLEXITY = 30
+THETA = 0.5
+MAX_ITER = 1000
 
 #- Other:
 DISPLAY_ALL = yes|no
@@ -718,9 +805,6 @@ Patient8_Ref.fcs    Control</code></pre>
 <strong>Rphenograph</strong>: Contains the data/plots from the clustering. i.e., the markers average values per cluster, cell percentages in each cluster per FCS file, heatmaps… If more than one clustering method was selected, then there will be several folders, one per clustering method (i.e., one Rphenograph folder, one clusterX folder, etc..)
 </li>
 <li>
-<strong>Gating</strong>: If GATING was selected, there will be folder with plots that show the gating applied to each FCS file, a plot that shows the gating scheme, and a folder called “gating_fs_live” that will have the FCS files for the live population.
-</li>
-<li>
 <strong>cytofpipe_analyzedFCS</strong>: The original FCS files (i.e., the original files if gating = YES, or the “gating_fs_live” files if gating = NO), with the clutering and tSNE added information.
 </li>
 <li>
@@ -733,7 +817,7 @@ Patient8_Ref.fcs    Control</code></pre>
 <strong>Marker_level_plots_by_group</strong>: Marker level plots separated by groups (if –groups was used)
 </li>
 <li>
-<strong>cytofpipe_tsne_dimension_reduced_data.csv</strong>: tSNE data (tSNE1 and tSNE2 values per event)
+<strong>cytofpipe_umap_dimension_reduced_data.csv</strong>: UMAP data (umap1 and umap2 values per event)
 </li>
 <li>
 <strong>cytofpipe_markerFiltered_transformed_merged_exprssion_data.csv</strong>: Expression data (expression of each marker per event)
@@ -751,203 +835,6 @@ Patient8_Ref.fcs    Control</code></pre>
 <p><br /></p>
 </div>
 </div>
-<div id="scaffold" class="section level3">
-<h3>–scaffold</h3>
-<p><br /></p>
-<pre><code>Usage: cytofpipe --scaffold -i DIR -o DIR -m FILE --ref FILE [options]</code></pre>
-<p><br /></p>
-<p>Cytofpipe <strong>–scaffold</strong> can be used to generate scaffold maps to compare cell population networks across different conditions. <br /></p>
-<p>Cytofpipe clusters each FCS sample file independently (currently set up to 200 clusters) using the clara function in R, as implemented in <a href="https://github.com/nolanlab/scaffold">scaffold</a>. A graph is then constructed connecting the nodes fom the manually gated populations and the clusters from the reference FCS file, with edge weights defined as the cosine similarity between the vectors of median marker values of each cluster. Edges of low weight are filtered out and the graph is then laid out (shaped) using a ForceAtlas2 algorithm implemented in <a href="https://github.com/nolanlab/scaffold">scaffold</a>. Graphs are generated for every FCS file, where the position of the landmark nodes stay constant, providing a visual reference that allows the comparison of the different datasets.</p>
-<ul>
-<li><em>Note 1</em>: Because the clustering is very computationally intensive, by default cytofpipe downsamples the original FCS files to 10,000 events (with NO replacement if the total number of cell in the file is less than 10,000), and then <strong>all the clustering and construction of maps are done on these downsampled files</strong> to be able to run the jobs in a timely fashion. This can be changed with the <strong>–all</strong> and <strong>–downsample NUM</strong> arguments.</li>
-<li><em>Note 2</em>: Cytofpipe v1.3 is running scaffold_0.1</li>
-</ul>
-<p>Cytofpipe assumes that the FCS data has been properly preprocessed beforehand, i.e., that normalisation, debarcoding and compensation (if flow) were done properly, and that all the debris, doublets, and live_negevents were removed before analysis. With regards to compensation, please note that the software will try to apply a compensation matrix if one is found in the FCS file. So if the data in the file is already compensated, it will be erroneously compensated again. If your data needs compensation make sure that the FCS file has a spillover matrix embedded and the data is uncompensated.</p>
-<p><br /></p>
-<div id="command-arguments-1" class="section level4">
-<h4><strong>Command arguments</strong></h4>
-<p><strong>Mandatory arguments</strong></p>
-<ul>
-<li>
-<strong>-i DIR</strong>: Folder with FCS files. It should also contain a “gated” subfolder with the manually gated populations (see below).
-</li>
-<li>
-<strong>–ref FILE</strong>: The FCS file that will be used for the construction of the reference map together with the landmark (manually gated) populations. It should be one of the FCS files inside INPUTDIR
-</li>
-<li>
-<strong>-o DIR</strong>: Name for the folder where you want to output the results. It can not be an existing folder.
-</li>
-<li>
-<p><strong>-m FILE</strong>: A text file with the names of the markers that will be used in the clustering step, one per line. For example:</p>
-<pre><code>CD3
-CD4
-CD8
-FOXP3
-TCRgd
-CD11b
-CD56
-HLA-DR</code></pre>
-</li>
-</ul>
-<p>The landmark populations have to be provided as single FCS files (one for each population) that need to be located in a subdirectory called “gated” of the INPUTDIR directory. The program will split the name of the FCS file using &quot;_&quot; as separator and the last field will be used as the population name. For instance if you want an FCS file to define your “B cells” population you have to use the following naming scheme: XXXX_B cells.fcs</p>
-<p><strong>Optional arguments</strong></p>
-<ul>
-<li>
-<strong>–flow</strong>, <strong>–cytof</strong>: Shorcut to let cytofpipe know if the user is analyzing flow or cytof data, without having to provide a config file. If <strong>–flow</strong> is selected, arcsinh transformation will be used with asinh_cofactor = 150. If <strong>–cytof</strong> is selected, arcsinh transformation will be used with asinh_cofactor = 5. <strong>–flow</strong> and <strong>–cytof</strong> cannot be used at the same time
-</li>
-<li>
-<strong>–all</strong>, <strong>–downsample NUM</strong>: Shorcut to let cytofpipe know if we want to use all the events/downsample the data, without having to provide a config file. <strong>–all</strong> and <strong>–downsample NUM</strong> cannot be used at the same time.
-</li>
-</ul>
-<p><br /></p>
-</div>
-<div id="outputfiles-1" class="section level4">
-<h4>Outputfiles</h4>
-<ul>
-<li>
-<strong>Clustering</strong>: Contains the files created after the clustering step. For each FCS files two files will be created:
-<ul>
-<li>
-*.clustered.txt: this file contains the marker medians for each cluster
-</li>
-<li>
-*.clustered.all_events.RData: this file is an RData object which contains all the events in the original FCS file but with an added column that specifies the cluster membership. The data in this file is arcsinh transformed
-</li>
-</ul>
-</li>
-<li>
-<strong>downsampled_X</strong>: If downsampling, this folder will contain the FCS files created after downsampling the original FCS files to the selected number of events. <strong>If downsampling, these would the FCS files that are actually analised</strong>.
-</li>
-<li>
-<strong>scaffold_map_XXX.pdf</strong>: These are the PDFs with the scaffold maps, one for each input dataset. By default, landmark nodes are coloured in red and population clusters in blue.
-</li>
-<li>
-<strong>XXX.scaffold</strong>: A .scaffold file with the same name of the dataset that you have used as reference. This is a single self-contained bundle that contains everything you need to browse the data. It can be loaded into the original scaffold software for further exploration of the results.
-</li>
-<li>
-<strong>summary_scaffold.pdf</strong>: This is a PDF with a summary of the analysis. It describes what files, markers and config options were used, and shows the scaffold maps in reduced size.
-</li>
-<li>
-<strong>log_R.txt</strong>: Log file from the R script, just so that the user can see what R commands were run when doing the analysis. It will help me figure out what the problem is if the job finishes with an error.
-</li>
-</ul>
-<p><br /></p>
-</div>
-</div>
-<div id="citrus" class="section level3">
-<h3>–citrus</h3>
-<p><br /></p>
-<pre><code>Usage: cytofpipe --citrus -i DIR -o DIR -m FILE --cond FILE [options]</code></pre>
-<p><br /></p>
-<p>Cytofpipe <strong>–citrus</strong> can be used to identify cell populations associated with an experimental or clinical endpoint in flow and cytof data. <br /></p>
-<p>After indicating which samples belong to each condition, expression data are transformed (using the arcsin hyperbolic transform) and scaled, and cell populations are indentified in every sample using hierarchical clustering based on selected markers. Sample features are calculated (either abundance of cell populations in each sample [default], or median expression of specific markers in a cluster), and these are used to identify the features (cell populations or markers) that are likely to be predictive (pamr, glmnet) or correlated (sam) with the experimental/clinical endpoint. Briefly, predictive models identify the fewest number of markers needed to predict the experimental endpoint. Correlative models detect all the markers that are correlated with the experimental endpoint but that are not necessarily accurate predictors of an experimental outcome. Among the predictive models, ‘pamr’ can be used with 2 or more groups, whereas ‘glmnet’ can only deal with 2 groups or continuous endpoint measures.</p>
-<ul>
-<li><em>Note 1</em>: Citrus requires 8 or more samples in each experimental group. Running Citrus with fewer than 8 samples per group will likely produce spurious results.</li>
-<li><em>Note 2</em>: To ensure that each sample is equally represented in the clustering, by default Citrus selects an equal number of events from each sample (10,000) that are combined and clustered together. This can be changed with the <strong>–all</strong> and <strong>–downsample NUM</strong> arguments.</li>
-<li><em>Note 3</em>: By default, cytofpipe –citrus runs in “abundances” mode. You can change to “medians” mode using the <strong>–medians FILE</strong> parameter by supplying a list of amrkers used for median calculation. <em>Markers that were selected for clustering should not be selected again for statistics (for example, you might want to use surface markers for clustering and functional markers for median level expression calculation).</em></li>
-<li><em>Note 4</em>: By default, clusters (cell populations) of size lower than 5% of the total number of clustered events will be ignored. If you wish to change the minimum cluster size threshold please contact me.</li>
-<li><em>Note 5</em>: Parameters must be measured on the same channels in each file, the same parameters must be measured in all FCS files (no extras or missing parameters in any FCS file) and measured parameters and channels must appear in the same order in each FCS file.</li>
-<li><em>Note 6</em>: Due to the stochastic nature of the citrus algorithm, is recommended to run (repeat) the analysis at least 3 times to make sure the results are not false positives.</li>
-<li><em>Note 7</em>: Cytofpipe v1.3 runs citrus_0.08</li>
-</ul>
-<p>Cytofpipe assumes that the data have been properly preprocessed beforehand, i.e., that normalisation, debarcoding and compensation (if flow) were done properly, and that all the debris, doublets, and live_neg events were removed before analysis. For flow cytometry data, raw FCS file data must be compensated. Compensation matrices stored in FCS files will not be applied when running Cytofpipe in –citrus mode.</p>
-<p><br /></p>
-<div id="command-arguments-2" class="section level4">
-<h4><strong>Command arguments</strong></h4>
-<p><strong>Mandatory arguments</strong></p>
-<ul>
-<li>
-<strong>-i DIR</strong>: Folder with FCS files.
-</li>
-<li>
-<p><strong>–cond FILE</strong>: A text file that tells Citrus which samples belong to each condition/group, one sample per line. For example:</p>
-<pre><code>Patient1_FL2.fcs    Case
-Patient2_FL2.fcs    Case
-Patient3_FL2.fcs    Case
-Patient4_FL2.fcs    Case
-Patient5_Ref.fcs    Control
-Patient6_Ref.fcs    Control
-Patient7_Ref.fcs    Control
-Patient8_Ref.fcs    Control</code></pre>
-<li>
-<strong>-o DIR</strong>: Name for the folder where you want to output the results. It can not be an existing folder.
-</li>
-<li>
-<p><strong>-m FILE</strong>: A text file with the names of the markers that will be used in the clustering step, one per line. For example:</p>
-<pre><code>CD3
-CD4
-CD8
-FOXP3
-TCRgd
-CD11b
-CD56
-HLA-DR</code></pre>
-</li>
-</ul>
-<p><strong>Optional arguments</strong></p>
-<ul>
-<li>
-<p><strong>-medians FILE</strong>: A text file with the names of the markers that will be used as features, one per line. For example:</p>
-<pre><code>p-NFkB
-p-S6
-p-PI3K
-p-STAT5</code></pre>
-</li>
-<li>
-<strong>–flow</strong>, <strong>–cytof</strong>: Shorcut to let cytofpipe know if the user is analyzing flow or cytof data, without having to provide a config file. If <strong>–flow</strong> is selected, arcsin hyperbolic transformation will be used with asinh_cofactor = 150. If <strong>–cytof</strong> is selected, arcsin hyperbolic transformation will be used with asinh_cofactor = 5. <strong>–flow</strong> and <strong>–cytof</strong> cannot be used at the same time
-</li>
-<li>
-<strong>–all</strong>, <strong>–downsample NUM</strong>: Shorcut to let cytofpipe know if we want to use all the events/downsample the data, without having to provide a config file. <strong>–all</strong> and <strong>–downsample NUM</strong> cannot be used at the same time.
-</li>
-</ul>
-<p><br /></p>
-</div>
-<div id="outputfiles-2" class="section level4">
-<h4>Outputfiles</h4>
-<ul>
-<li>
-<strong>MarkerPlots.pdf</strong>: Plots of the clustering hierarchy, one marker per pdf. Helpful for determining the phenotype of identified clusters.
-</li>
-<li>
-<strong>MarkerPlotsAll.pdf</strong>: Same content as MarkerPlots.pdf in a single PDF instead of many.
-</li>
-<li>
-<strong>sam_/pamr_/glmnet_results</strong>: A directory containing results from model analysis. There will be one result for each model used to analyze the data. All models operate on the same clustering result. Within a mode result directory you will find:
-</li>
-<ul>
-<li>
-<strong>clusters-{threshold}.pdf</strong>: Shows phenotype of stratifying clusters at specified significance threshold.
-</li>
-<li>
-<strong>features-{threshold}.pdf</strong>: Plot showing values stratifying features at specified significance threshold.
-</li>
-<li>
-<strong>features-{threshold}.csv</strong>: Raw values of stratifying features at specified significance threshold.
-</li>
-<li>
-<strong>featurePlots-{thresholds}.pdf</strong>: Shows the the location and relatedness of identified stratifying clusters in the clustering hierarchy. There will be a separate plot for each tested feature.
-</li>
-<li>
-<strong>ModelErrorRate.pdf</strong>: Used to determine the accuracy of the constructed model. For predictive models only (PAMR and GLMNET).
-</li>
-</ul>
-<li>
-<strong>exportedClusters</strong>: Folder that contains data (FCS files) exported from each cluster, useful for further analysis on the clusters of interest.
-</li>
-<li>
-<strong>summary_citrus.pdf</strong>: This is a PDF with a summary of the analysis. It describes what files, markers and config options were used, as well as the MarkerPlotsAll plot.
-</li>
-<li>
-<strong>cytofpipe_citrusClustering.rData</strong>: Saved version of the clustered data that was computed during the citrus analysis, which can be loaded in R for further exploration of the results.
-</li>
-<li>
-<strong>log_R.txt</strong>: This is just the log file from the R script, just so that the user can see what R commands were run when doing the analysis. It will help me figure out what the problem is if the job finishes with an error.
-</li>
-</ul>
-<p><br /></p>
-</div>
-</div>
-</div>
 <div id="section-2" class="section level2 tabset">
 <h2></h2>
 <div align="center">
@@ -956,6 +843,25 @@ p-STAT5</code></pre>
 </div>
 <p><br></p>
 <ul>
+<li>
+<b>v2.0</b>
+<ul>
+<li>
+Removed scaffold and citrus functionalities
+</li>
+<li>
+Remove support for automatic gating
+</li>
+<li>
+Moved from cytofkit to cytofkit2, which supports UMAP
+</li>
+<li>
+Changed tSNE for UMAP as the default multidimensionality reduction method
+</li>
+<li>
+Code containerized and released as a singularity image for increased portability
+</li>
+</ul>
 <li>
 <b>v1.3</b>
 <ul>
@@ -1050,7 +956,7 @@ Major changes to adapt cytofpipe to updated cytofkit 1.8.3
 <hr />
 </div>
 <p><br></p>
-<p>Email me <a href="mailto:l.conde@ucl.ac.uk?">here</a>. <br>Last modified May 2019.</p>
+<p>Email me <a href="mailto:l.conde@ucl.ac.uk?">here</a>. <br>Last modified June 2019.</p>
 <p><br /></p>
 </div>
 </div>
