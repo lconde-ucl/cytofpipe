@@ -461,7 +461,8 @@ Exiting.
 <h3>2. Stand-alone version with singularity</h3>
 <p><br /></p>
 <p><strong>1.- Installation</strong></p>
-<p>Download the cytofpipe singularity image from <a href="https://XXXX" class="uri">https://XXXX</a> and save it somewhere in your computer.</p>
+<p>Download the cytofpipe singularity image from SingularityHub and save it somewhere in your computer:</p>
+<pre><code>singularity pull --name cytofpipe.img shub://UCL-BLIC/singularity_recipes:cytofpipe</code></pre>
 <p><strong>2.- Dependencies</strong></p>
 <p>The cytofpipe singularity image contains all the software needed to run cytofpipe (R, pandoc, cytofpipe itself…) so as long as you have singularity, you don’t need to install anything else.</p>
 <p>To install singularity in Mac, download the Singularity Desktop fo macOS (.dmg file) as instructed here: <a href="https://www.sylabs.io/singularity-desktop-macos" class="uri">https://www.sylabs.io/singularity-desktop-macos</a>.</p>
@@ -487,7 +488,7 @@ singularity --version </code></pre>
 /home/user/Scratch/cytof_data/conditions.txt
 /home/user/Scratch/cytof_data/config.txt</code></pre>
 <p>To run the pipeline mode with default parameters, just type:</p>
-<p><code>$ singularity exec -B ${PWD} cytofpipe.pl -i inputfiles -o results -m markers.txt</code></p>
+<p><code>$ singularity exec -B ${PWD} path/to/cytofpipe.img cytofpipe.pl -i inputfiles -o results -m markers.txt</code></p>
 <p>That will crate a new folder called “results” that will contain all the results of the analysis.</p>
 <p>Cytofpipe will first check that everything is in order. For example, that the inputfiles folder exists, that there is not a results folder already there (so that nothing is overwritten), that if a config.txt file is inputed it has the appropriate format, etc… Only if everything looks fine, the job will be submitted. Otherwise, an error message will appear that will tell you that there is a problem. For example:</p>
 <pre><code>Program: Cytofpipe
@@ -586,9 +587,9 @@ ERROR: Can&#39;t find markers file &lt;markers.tx&gt;
 <p><strong>1.- Installation and dependencies</strong></p>
 <p>If you don’t want or are not allowed to install singularity in your computer/cluster, you can still run cytofpipe by downloading the code from github, and by making sure that all the dependencies are met.</p>
 <p>First, download cytofpipe from <a href="https://github.com/UCL-BLIC/cytofpipe/archive/v2.0.tar.gz" class="uri">https://github.com/UCL-BLIC/cytofpipe/archive/v2.0.tar.gz</a> and uncompress it using tar:</p>
-<p>$ tar -xvf cytofpipe_v2.0.tar.gz</p>
-<p>That will create a ‘cytofpipe_v2.0’ masters folder that contains the code almost ready to use. You will just need to tell cytofpipe where you have downloaded the code. For that, open the cytofpipe_v2.0/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so that it points to the master folder:</p>
-<pre><code>$ENV{CYTOFPIPE_HOME}=&quot;/path/where/your/have/cytofpipe_v2.0&quot;</code></pre>
+<p>$ tar -xvf v2.0.tar.gz</p>
+<p>That will create a ‘cytofpipe-2.0’ masters folder that contains the code almost ready to use. You will just need to tell cytofpipe where you have downloaded the code. For that, open the cytofpipe-2.0/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so that it points to the master folder:</p>
+<pre><code>$ENV{CYTOFPIPE_HOME}=&quot;/path/where/your/have/cytofpipe-2.0&quot;</code></pre>
 <p>Second, you will need to have R installed and in your path (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>), as well as Pandoc (<a href="https://pandoc.org/" class="uri">https://pandoc.org/</a>). Pandoc is simply used to generate a summary PDF after each run. If you don’t have pandoc installed is not a big issue: the summary PDF will not be generated and you will see an error in the terminal regarding this, but cytofpipe will run anyway and you should be able to see all the other output files.</p>
 <p>Cytofpipe depends on several R packages, mainly cytofkit2 (<a href="https://github.com/JinmiaoChenLab/cytofkit2" class="uri">https://github.com/JinmiaoChenLab/cytofkit2</a>), so you will have to have this installed, as well as the ‘ini’ and ‘hash’ packages. Cytofpipe_v2.0 has been tested in R.3.6 and therefore we suggest that you use the same R version.</p>
 <p><strong>2.- Submit the job:</strong></p>
@@ -601,8 +602,8 @@ ERROR: Can&#39;t find markers file &lt;markers.tx&gt;
 /home/user/Scratch/cytof_data/markers.txt
 /home/user/Scratch/cytof_data/conditions.txt
 /home/user/Scratch/cytof_data/config.txt</code></pre>
-<p>To run the pipeline default parameters, just run the “cytofpipe.pl” perl script located in the masters cytofpipe_v2.0 folder:</p>
-<p><code>$ /path/to/cytofpipe_v2.0/cytofpipe.pl -i inputfiles -o results -m markers.txt</code></p>
+<p>To run the pipeline default parameters, just run the “cytofpipe.pl” perl script located in the masters cytofpipe-2.0 folder:</p>
+<p><code>$ /path/to/cytofpipe-2.0/cytofpipe.pl -i inputfiles -o results -m markers.txt</code></p>
 <p>That will crate a new folder called “results” that will contain all the results of the analysis.</p>
 <p>Cytofpipe will first check that everything is in order. For example, that the inputfiles folder exists, that there is not a results folder already there (so that nothing is overwritten), that if a config.txt file is inputed it has the appropriate format, etc… Only if everything looks fine, the job will be submitted. Otherwise, an error message will appear that will tell you that there is a problem. For example:</p>
 <pre><code>Program: Cytofpipe

@@ -142,8 +142,12 @@ If you submit a job, and later on it does not show when you do qstat, that means
 
 **1.- Installation**
 
-Download the cytofpipe singularity image from https://XXXX and save it somewhere in your computer. 
+Download the cytofpipe singularity image from SingularityHub and save it somewhere in your 
+computer:
 
+```
+singularity pull --name cytofpipe.img shub://UCL-BLIC/singularity_recipes:cytofpipe
+```
 
 
 **2.- Dependencies**
@@ -188,7 +192,7 @@ Let’s say you have a folder called 'cytof_data' that contains a directory with
 
 To run the pipeline mode with default parameters, just type:
 
-`$ singularity exec -B ${PWD} cytofpipe.pl -i inputfiles -o results -m markers.txt`
+`$ singularity exec -B ${PWD} path/to/cytofpipe.img cytofpipe.pl -i inputfiles -o results -m markers.txt`
 
 That will crate a new folder called “results” that will contain all the results of the analysis.
 
@@ -356,14 +360,15 @@ the code from github, and by making sure that all the dependencies are met.
 
 First, download cytofpipe from https://github.com/UCL-BLIC/cytofpipe/archive/v2.0.tar.gz and uncompress it using tar:
 
-$ tar -xvf cytofpipe_v2.0.tar.gz
+$ tar -xvf v2.0.tar.gz
 
-That will create a ‘cytofpipe_v2.0’ masters folder that contains the code almost ready to use. You will just need to tell cytofpipe
-where you have downloaded the code. For that, open the cytofpipe_v2.0/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so
+That will create a ‘cytofpipe-2.0’ masters folder that contains the code almost ready to use. 
+You will just need to tell cytofpipe where you have downloaded the code. For that, open the 
+cytofpipe-2.0/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so
 that it points to the master folder:
 
 ```
-$ENV{CYTOFPIPE_HOME}="/path/where/your/have/cytofpipe_v2.0"
+$ENV{CYTOFPIPE_HOME}="/path/where/your/have/cytofpipe-2.0"
 ```
 
 Second, you will need to have R installed and in your path (https://www.r-project.org/), as well as Pandoc (https://pandoc.org/).
@@ -392,9 +397,9 @@ Let’s say you have a folder called 'cytof_data' that contains a directory with
 ```
 
 To run the pipeline default parameters, just run the "cytofpipe.pl" perl script 
-located in the masters cytofpipe_v2.0 folder:
+located in the masters cytofpipe-2.0 folder:
 
-`$ /path/to/cytofpipe_v2.0/cytofpipe.pl -i inputfiles -o results -m markers.txt`
+`$ /path/to/cytofpipe-2.0/cytofpipe.pl -i inputfiles -o results -m markers.txt`
 
 That will crate a new folder called “results” that will contain all the results of the analysis.
 
