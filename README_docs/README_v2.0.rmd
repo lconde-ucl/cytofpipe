@@ -500,7 +500,13 @@ a required R package is not installed, or one if the input files was mispelled.
 
 To avoid this, cytofpipe also contains a script called "check_submission.pl", that do some checkings of the arguments passed
 to cytofpipe.pl. In reality, this script is just an almost identical copy of cytofpipe.pl, which checks that everything
-is in order before doing any analysis. To use it, simply run it with the same arguments that you want to pass to cytofpipe.pl.
+is in order before doing any analysis.  To use it, first change the variable CYTOFPIPE_HOME so that it points to the master folder:
+
+```
+$ENV{CYTOFPIPE_HOME}="/path/where/your/have/cytofpipe_1.3"
+```
+
+and then simply run it with the same arguments that you want to pass to cytofpipe.pl.
 
 For example, if your cmd.txt file is 
 ```
