@@ -278,7 +278,7 @@ if(transformMethod == '-'){transformMethod = config$cytofpipe$TRANSFORM}
 if(mergeMethod == '-'){mergeMethod = config$cytofpipe$MERGE}
 if(fixedNum == '-'){
 	if(is.null(config$cytofpipe$DOWNSAMPLE)){
-		fixedNum = 100
+		fixedNum = 10000
 	}else{
 		fixedNum = config$cytofpipe$DOWNSAMPLE
 	}
