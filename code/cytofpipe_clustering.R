@@ -4,6 +4,7 @@ library(cytofkit2)
 library(flowCore)
 library(ini)
 library(hash)
+library(gplots)
 require(reshape2)
 
 #------------------------------------------------------------------
