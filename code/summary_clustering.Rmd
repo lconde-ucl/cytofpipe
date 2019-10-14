@@ -1,5 +1,5 @@
 ---
-title: "Cytofpipe v2.0 Summary" 
+title: "Cytofpipe v2.1 Summary" 
 date: "`r format(Sys.time(), '%d %B, %Y')`" 
 output: pdf_document 
 params:

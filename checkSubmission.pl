@@ -14,7 +14,7 @@ use File::Basename;
 ##   Modify CYTOFPIPE_HOME to point to cytofpipe master directory    ##
 #######################################################################
 
-$ENV{'CYTOFPIPE_HOME'} = '/cytofpipe_v2.0';
+$ENV{'CYTOFPIPE_HOME'} = '/cytofpipe_v2.1';
 
 
 $ENV{'R_MAX_NUM_DLLS'} = 153;
@@ -127,7 +127,7 @@ sub success {
 
 	my $usage0="";
 	my $usage1="Program: Cytofpipe";
-	my $usage2 = "Version: 2.0";
+	my $usage2 = "Version: 2.1";
 	my $usage3 = "Contact: Lucia Conde <l.conde\@ucl.ac.uk>";
 	my $usage4="";
 	my $usage5="Usage:   cytofpipe -i DIR -o DIR -m FILE [options]";
@@ -144,7 +144,7 @@ sub print_clustering {
 
 	my $usage0="";
 	my $usage1="Program: Cytofpipe";
-	my $usage2 = "Version: 2.0";
+	my $usage2 = "Version: 2.1";
 	my $usage3 = "Contact: Lucia Conde <l.conde\@ucl.ac.uk>";
 	my $usage4="";
 	my $usage5="Usage:   cytofpipe -i DIR -o DIR -m FILE [options]";
@@ -176,7 +176,7 @@ sub usage_clustering {
   my $error=shift;
   die qq(
 Program: Cytofpipe
-Version: 2.0
+Version: 2.1
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
@@ -202,7 +202,7 @@ sub usage_clustering_config {
   my $error=shift;
   die qq(
 Program: Cytofpipe
-Version: 2.0
+Version: 2.1
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 ------------------

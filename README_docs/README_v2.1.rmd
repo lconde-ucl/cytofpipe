@@ -7,7 +7,7 @@ output:
 
 
 <center> 
-# Cytofpipe v2.0 
+# Cytofpipe v2.1 
 _________________
 </center>
 
@@ -15,12 +15,12 @@ This pipeline was developed by Lucia Conde at the BLIC - UCL Cancer Institute, i
 for the automatic analysis of flow and mass cytometry data in the UCL clusters __legion__ and __myriad__. Any UCL researcher can access the pipeline via legion or myriad.
 Researchers from other institutions can download the stand-alone version of Cytofpipe and run it directly in their personal computers.
 
-Cytofpipe v2.0 is based mainly on cytofkit2 (https://bioconductor.org/packages/release/bioc/html/cytofkit2.html)
+Cytofpipe v2.1 is based mainly on cytofkit2 (https://bioconductor.org/packages/release/bioc/html/cytofkit2.html)
 
 <br />
 
 <div align=center>
-# How to run Cytofpipe v2.0
+# How to run Cytofpipe v2.1
 </div>
 
 <br>
@@ -59,7 +59,7 @@ Once you are in legion, you will need to load the modules necessary for the pipe
 
 `$ module load blic-modules`
 
-`$ module load cytofpipe/v2.0`
+`$ module load cytofpipe/v2.1`
 
 
 **3.- Submit the job:**
@@ -92,7 +92,7 @@ will be submitted. Otherwise, an error message will appear that will tell you th
 
 ```
 Program: Cytofpipe
-Version: 2.0
+Version: 2.1
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
@@ -201,7 +201,7 @@ Only if everything looks fine, the job will be submitted. Otherwise, an error me
 
 ```
 Program: Cytofpipe
-Version: 2.0
+Version: 2.1
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
@@ -231,7 +231,7 @@ Exiting.
 **4.- If your cluster has a queue system:**
 
 Just submit it as any other job. Depending on your platform and queue sytem (LSF, SGE, SLURM..) this will vary slightly. For example, to submit 
-cytofpipe v2.0 in a SGE platform, you can create a 'submit_cytofpipe.qsub' script like this:
+cytofpipe v2.1 in a SGE platform, you can create a 'submit_cytofpipe.qsub' script like this:
 
 ```
 #!/bin/bash -l
@@ -314,7 +314,7 @@ issues detected" message, otherwise an error message will appear that will tell 
 
 ```
 Program: Cytofpipe
-Version: 2.0
+Version: 2.1
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
@@ -358,17 +358,17 @@ necessary, because cytofpipe.pl will do the checkings anyway as soon as you subm
 If you don't want or are not allowed to install singularity in your computer/cluster, you can still run cytofpipe by downloading
 the code from github, and by making sure that all the dependencies are met.
 
-First, download cytofpipe from https://github.com/UCL-BLIC/cytofpipe/archive/v2.0.tar.gz and uncompress it using tar:
+First, download cytofpipe from https://github.com/UCL-BLIC/cytofpipe/archive/v2.1.tar.gz and uncompress it using tar:
 
-$ tar -xvf v2.0.tar.gz
+$ tar -xvf v2.1.tar.gz
 
-That will create a ‘cytofpipe-2.0’ masters folder that contains the code almost ready to use. 
+That will create a ‘cytofpipe-2.1’ masters folder that contains the code almost ready to use. 
 You will just need to tell cytofpipe where you have downloaded the code. For that, open the 
-cytofpipe-2.0/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so
+cytofpipe-2.1/cytofpipe.pl perl script and change the variable CYTOFPIPE_HOME so
 that it points to the master folder:
 
 ```
-$ENV{CYTOFPIPE_HOME}="/path/where/your/have/cytofpipe-2.0"
+$ENV{CYTOFPIPE_HOME}="/path/where/your/have/cytofpipe-2.1"
 ```
 
 Second, you will need to have R installed and in your path (https://www.r-project.org/), as well as Pandoc (https://pandoc.org/).
@@ -377,7 +377,7 @@ will not be generated and you will see an error in the terminal regarding this, 
 to see all the other output files.
 
 Cytofpipe depends on several R packages, mainly cytofkit2 (https://github.com/JinmiaoChenLab/cytofkit2), so you will have to have this
-installed, as well as the ‘ini’ and ‘hash’ packages. Cytofpipe_v2.0 has been tested in R.3.6 and therefore we suggest that you use the
+installed, as well as the ‘ini’ and ‘hash’ packages. Cytofpipe_v2.1 has been tested in R.3.6 and therefore we suggest that you use the
 same R version.
 
 
@@ -397,9 +397,9 @@ Let’s say you have a folder called 'cytof_data' that contains a directory with
 ```
 
 To run the pipeline default parameters, just run the "cytofpipe.pl" perl script 
-located in the masters cytofpipe-2.0 folder:
+located in the masters cytofpipe-2.1 folder:
 
-`$ /path/to/cytofpipe-2.0/cytofpipe.pl -i inputfiles -o results -m markers.txt`
+`$ /path/to/cytofpipe-2.1/cytofpipe.pl -i inputfiles -o results -m markers.txt`
 
 That will crate a new folder called “results” that will contain all the results of the analysis.
 
@@ -410,7 +410,7 @@ Only if everything looks fine, the job will be submitted. Otherwise, an error me
 
 ```
 Program: Cytofpipe
-Version: 2.0
+Version: 2.1
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
@@ -439,7 +439,7 @@ Exiting.
 **3.- If your cluster has a queue system:**
 
 Just submit it as any other job. Depending on your platform and queue sytem (LSF, SGE, SLURM..) this will vary slightly. For example, to submit 
-cytofpipe v2.0 in a SGE platform, you can create a 'submit_cytofpipe.qsub' script like this:
+cytofpipe v2.1 in a SGE platform, you can create a 'submit_cytofpipe.qsub' script like this:
 
 ```
 #!/bin/bash -l
@@ -528,7 +528,7 @@ issues detected" message, otherwise an error message will appear that will tell 
 
 ```
 Program: Cytofpipe
-Version: 2.0
+Version: 2.1
 Contact: Lucia Conde <l.conde\@ucl.ac.uk>
 
 Usage:   cytofpipe -i DIR -o DIR -m FILE [options]
@@ -566,7 +566,7 @@ necessary, because cytofpipe.pl will do the checkings anyway as soon as you subm
 ##  {.tabset}
 
 <div align=center>
-# Cytofpipe v2.0 commands
+# Cytofpipe v2.1 commands
 </div>
 
 <br>
@@ -589,7 +589,7 @@ used when uploading cytof data.
 ones displayed in the results (heatmaps, etc..). Using the **--displayAll** option will override this and all the markers
 (with exception of Time, Event, viability and FSC/SSC channels) will be included in the output plots and files.
 All markers are transformed to the user's specifications with exception of FSC/SSC that are linearly transformed. 
-- *Note 3*: Cytofpipe v2.0 runs cytofkit2
+- *Note 3*: Cytofpipe v2.1 runs cytofkit2 (v2.0.1)
 <br />
 
 Cytofpipe assumes that the data has been properly preprocessed beforehand, i.e., that normalisation, debarcoding and compensation
@@ -736,6 +736,11 @@ _________________
 
 
 <ul>
+<li><b>v2.1</b>
+<ul>
+<li>Changed cytofkit_writeResults to pass parameter sampleLabels=FALSE to cytof_clusterPlot, to avoid issues with high number fo samples</li>
+<li>Updated cytofkit2 to version v2.0.1</li>
+</ul>
 <li><b>v2.0</b>
 <ul>
 <li>Removed scaffold and citrus functionalities</li>
