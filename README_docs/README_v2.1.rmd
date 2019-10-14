@@ -146,7 +146,7 @@ Download the cytofpipe singularity image from SingularityHub and save it somewhe
 computer:
 
 ```
-singularity pull --name cytofpipe.img shub://UCL-BLIC/singularity_recipes:cytofpipe
+singularity pull --name cytofpipe.img shub://UCL-BLIC/singularity_recipes:cytofpipe_v2_1
 ```
 
 
