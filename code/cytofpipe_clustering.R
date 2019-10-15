@@ -231,7 +231,7 @@ cytof_writeResults_LC <- function(analysis_results,
 
 
 #- Function to plot all level plots for all markers 
-(https://github.com/JinmiaoChenLab/cytofkit/blob/master/inst/shiny/global.R)
+#- (https://github.com/JinmiaoChenLab/cytofkit/blob/master/inst/shiny/global.R)
 cytof_wrap_colorPlot <- function(data, xlim=NULL, ylim=NULL, xlab, ylab, markers, scaleMarker = FALSE,
                              colorPalette = c("bluered", "spectral1", "spectral2", "heat"), 
                              pointSize=1, min=min, max=max,
